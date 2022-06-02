@@ -1,24 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <h1>App component</h1>
+  <div id="app">
+    <Header />
+  </div>
 </template>
 
 <script>
+import Header from "./components/Header.vue";
 export default {
   name: "App",
+  components: { Header },
   data() {
     return {};
   },
 };
 </script>
 
-<style>
+<style lang="scss">
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  // text-align: center;
 }
+:root {
+  --white: #f9f9f9;
+  --black: #36383f;
+  --gray: #85888c;
+
+  --borderRadius: 4px;
+
+  --fontXL: 2.2rem;
+  --fontL: 1.8rem;
+  --fontStandard: 1.2rem;
+} /* variables*/
 </style>
