@@ -36,5 +36,8 @@ export default {
   --fontXL: 2.2rem;
   --fontL: 1.8rem;
   --fontStandard: 1.2rem;
+
+  --toggleBtnWidth: 40px;
+  --togleBtnHeight: 40px;
 } /* variables*/
 </style>
