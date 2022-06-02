@@ -29,8 +29,8 @@ export default {
 }
 
 .toggle-menu-btn {
-  width: 40px;
-  height: 40px;
+  width: var(--toggleBtnWidth);
+  height: var(--toggleBtnHeight);
   background: red;
   color: white;
   display: flex;
