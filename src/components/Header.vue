@@ -29,15 +29,9 @@ export default {
 }
 
 .toggle-menu-btn {
-  width: var(--toggleBtnWidth);
-  height: var(--toggleBtnHeight);
+  @include toggleBtn;
   background: red;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: var(--borderRadius);
 }
 
 .logo {
@@ -47,10 +41,5 @@ export default {
     height: 100%;
     width: 100%;
   }
-}
-.menu {
-  background: var(--gray);
-  font-size: var(--fontStandard);
-  margin-left: auto;
 }
 </style>
