@@ -10,6 +10,5 @@ library.add(faPhone, faBars);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)
-  .component("font-awesome-icon", FontAwesomeIcon)
 
   .mount("#app");
