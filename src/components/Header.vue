@@ -23,14 +23,14 @@ export default {
   display: flex;
   flex-direction: row;
   background: white;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid $lightblue;
   align-items: center;
   padding: 0px 20px;
 }
 
 .toggle-menu-btn {
   @include toggleBtn;
-  background: red;
+  background: $lightblue;
   color: white;
 }
 
