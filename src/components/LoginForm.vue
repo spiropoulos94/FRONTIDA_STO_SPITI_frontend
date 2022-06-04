@@ -5,21 +5,24 @@
     </div>
     <form>
       <label> Email </label>
-      <input class="input" type="text" v-model="email" />
+      <input class="input" type="text" v-model="formData.email" />
       <label> Password </label>
-      <input class="input" type="password" v-model="password" />
+      <input class="input" type="password" v-model="formData.password" />
       <button @click="submit" class="form-sbmt">Login</button>
     </form>
+    <!-- <pre>{{ formData }}</pre> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "LoginForm",
-  date() {
+  data() {
     return {
-      email: "",
-      password: "",
+      formData: {
+        email: "",
+        password: "",
+      },
     };
   },
   methods: {
