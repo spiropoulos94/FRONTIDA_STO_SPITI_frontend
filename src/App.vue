@@ -16,7 +16,7 @@ export default {
   },
   created() {
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 600) {
+      if (window.innerWidth < 991) {
         this.$store.commit("setMobileSidebar", true);
       } else {
         this.$store.commit("setMobileSidebar", false);

@@ -1,13 +1,17 @@
 <template>
-  <div
-    :class="`sidebar ${isMobileSidebar ? 'mobile' : ''} ${
-      isOpen ? '' : 'closed'
-    }`"
-  >
-    <div class="item"><font-awesome-icon icon="folder" /> one</div>
-    <div class="item"><font-awesome-icon icon="folder" /> one</div>
-    <div class="item"><font-awesome-icon icon="folder" /> one</div>
-  </div>
+  <Transition name="slide">
+    <div
+      v-if="isOpen"
+      v-click-outside="clickOutsideSidebar"
+      :class="`sidebar ${isMobileSidebar ? 'mobile' : ''} ${
+        isOpen ? '' : 'closed'
+      }`"
+    >
+      <div class="item"><font-awesome-icon icon="folder" /> one</div>
+      <div class="item"><font-awesome-icon icon="folder" /> one</div>
+      <div class="item"><font-awesome-icon icon="folder" /> one</div>
+    </div>
+  </Transition>
 </template>
 
 <script>
@@ -18,6 +22,17 @@ export default {
       items: [],
       isHidden: false,
     };
+  },
+  methods: {
+    clickOutsideSidebar() {
+      console.log(this.$store);
+      if (
+        this.$store.getters.isMobileSidebar &&
+        this.$store.getters.sidebarStatus
+      ) {
+        this.$store.commit("toggleSidebar", false);
+      }
+    },
   },
   computed: {
     isMobileSidebar() {
@@ -56,5 +71,24 @@ export default {
     left: -$sidebarWidth;
     transition: 0.2s;
   }
+}
+
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-leave-active {
+  // transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.2s ease-out;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-200px);
+  // opacity: 0;
 }
 </style>
