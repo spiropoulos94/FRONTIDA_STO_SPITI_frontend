@@ -1,5 +1,5 @@
 <template>
-  <div :class="`sidebar ${isMobile ? 'mobile' : ''}`">
+  <div :class="`sidebar ${isMobileSidebar ? 'mobile' : ''}`">
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
@@ -17,8 +17,8 @@ export default {
     };
   },
   computed: {
-    isMobile() {
-      return window.innerWidth < 600;
+    isMobileSidebar() {
+      return this.$store.getters.isMobileSidebar;
     },
   },
 };

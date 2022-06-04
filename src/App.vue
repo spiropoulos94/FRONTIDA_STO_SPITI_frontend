@@ -14,6 +14,15 @@ export default {
   data() {
     return {};
   },
+  created() {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 600) {
+        this.$store.commit("setMobileSidebar", true);
+      } else {
+        this.$store.commit("setMobileSidebar", false);
+      }
+    });
+  },
 };
 </script>
 
