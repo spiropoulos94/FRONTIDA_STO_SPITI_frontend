@@ -7,10 +7,12 @@
         isOpen ? '' : 'closed'
       } ${iconsOnly ? 'icons-only' : ''}`"
     >
-      <div class="item">
-        <font-awesome-icon icon="home" />
-        <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
-      </div>
+      <router-link class="papia" to="/">
+        <div class="item">
+          <font-awesome-icon icon="home" />
+          <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
+        </div>
+      </router-link>
       <div class="item">
         <font-awesome-icon icon="folder" />
         <span v-if="!iconsOnly" class="item-txt">Reports</span>
