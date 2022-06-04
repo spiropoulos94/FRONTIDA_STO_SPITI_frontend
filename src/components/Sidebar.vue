@@ -1,9 +1,9 @@
 <template>
   <div :class="`sidebar ${isMobile ? 'mobile' : ''}`">
-    <div class="item">one</div>
-    <div class="item">two</div>
-    <div class="item">three</div>
-    <div class="item">four</div>
+    <h4>Menu</h4>
+    <div class="item"><font-awesome-icon icon="folder" /> one</div>
+    <div class="item"><font-awesome-icon icon="folder" /> one</div>
+    <div class="item"><font-awesome-icon icon="folder" /> one</div>
     {{ isMobile }}
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       items: [],
+      isHidden: false,
     };
   },
   computed: {
@@ -28,6 +29,9 @@ export default {
 .sidebar {
   top: 0px;
   bottom: 0;
+  width: 350px;
+  border: 1px solid red;
+  height: 100%;
   &.mobile {
     position: absolute;
     background: lightblue;
@@ -35,8 +39,5 @@ export default {
     width: 200px;
     padding: 30px;
   }
-}
-
-.sidebar-hidden {
 }
 </style>
