@@ -5,21 +5,24 @@
       v-click-outside="clickOutsideSidebar"
       :class="`sidebar ${isMobileSidebar ? 'mobile' : ''} ${
         isOpen ? '' : 'closed'
-      }`"
+      } ${iconsOnly ? 'icons-only' : ''}`"
     >
       <div class="item">
         <font-awesome-icon icon="folder" />
-        <span v-if="!iconsOnly" class="item-name">one</span>
+        <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
       </div>
       <div class="item">
         <font-awesome-icon icon="folder" />
-        <span v-if="!iconsOnly" class="item-name">one</span>
+        <span v-if="!iconsOnly" class="item-txt">Reports</span>
       </div>
       <div class="item">
         <font-awesome-icon icon="folder" />
-        <span v-if="!iconsOnly" class="item-name">one</span>
+        <span v-if="!iconsOnly" class="item-txt">Create User</span>
       </div>
-      {{ iconsOnly }}
+      <div class="item">
+        <font-awesome-icon icon="folder" />
+        <span v-if="!iconsOnly" class="item-txt">Account</span>
+      </div>
     </div>
   </Transition>
 </template>
@@ -65,21 +68,41 @@ export default {
   top: 0px;
   left: 0px;
   width: $sidebarWidth;
-  border: 1px solid red;
-  padding: 10px;
+  border: 1px solid #f4f4f4;
   position: relative;
   transition: 0.2s;
   height: 100%;
   min-height: calc(100vh - $header-height);
   background: lightcyan;
+  background: $lightblue;
+  padding-top: 10px;
 
   .item {
+    padding: 10px;
     margin-bottom: 20px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    .item-txt {
+      margin-left: 10px;
+    }
+    &:hover {
+      background: #f4f4f4;
+      background: white;
+      color: $lightblue;
+    }
   }
   &.mobile {
     position: absolute;
     top: 0;
     width: $sidebarMobileWidth;
+  }
+
+  &.icons-only {
+    width: 60px;
+    .item {
+      text-align: center;
+    }
   }
 
   &.closed {
@@ -104,6 +127,5 @@ export default {
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(-$sidebarWidth);
-  // opacity: 0;
 }
 </style>
