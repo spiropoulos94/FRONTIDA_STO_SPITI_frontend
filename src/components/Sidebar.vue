@@ -78,17 +78,17 @@ export default {
   durations and timing functions.
 */
 .slide-enter-active {
-  transition: all 0.2s ease-out;
+  transition: all 0.25s ease-out;
 }
 
 .slide-leave-active {
   // transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-  transition: all 0.2s ease-out;
+  transition: all 0.25s ease-out;
 }
 
 .slide-enter-from,
 .slide-leave-to {
-  transform: translateX(-200px);
+  transform: translateX(-$sidebarWidth);
   // opacity: 0;
 }
 </style>
