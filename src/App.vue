@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <Header />
-    <Sidebar />
+    <div :style="'display: flex'">
+      <Sidebar />
+      <MainView />
+    </div>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import Sidebar from "./components/Sidebar.vue";
+import MainView from "./components/MainView.vue";
 export default {
   name: "App",
-  components: { Header, Sidebar },
+  components: { Header, Sidebar, MainView },
   data() {
     return {
       windowWidth: window.innerWidth,
