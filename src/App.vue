@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <Header v-if="auth" />
     <div :style="'display: flex'">
-      <Sidebar />
+      <Sidebar v-if="auth" />
       <MainView />
     </div>
   </div>
@@ -33,6 +33,11 @@ export default {
         this.$store.commit("toggleSidebar", true);
       }
     });
+  },
+  computed: {
+    auth() {
+      return this.$store.getters.isAuthenticated;
+    },
   },
 };
 </script>

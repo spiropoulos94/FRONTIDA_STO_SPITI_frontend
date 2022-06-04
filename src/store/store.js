@@ -7,7 +7,7 @@ const initialState = {
   isMobileSidebar: window.innerWidth < 600,
   sidebarIconsOnly: false,
   count: 0,
-  user: {},
+  user_data: null,
 };
 
 const store = createStore({
@@ -49,6 +49,9 @@ const store = createStore({
     },
     iconsOnly(state) {
       return state.sidebarIconsOnly;
+    },
+    isAuthenticated(state) {
+      return state.user_data !== null;
     },
   },
 });
