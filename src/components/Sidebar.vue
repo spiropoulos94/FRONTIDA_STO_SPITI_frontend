@@ -1,5 +1,4 @@
 <template>
-  <!-- <Transition name="slide-fade"> -->
   <div
     :class="`sidebar ${isMobileSidebar ? 'mobile' : ''} ${
       isOpen ? '' : 'closed'
@@ -8,9 +7,7 @@
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
-    {{ isMobile }}
   </div>
-  <!-- </Transition> -->
 </template>
 
 <script>
@@ -44,6 +41,7 @@ export default {
   transition: 0.2s;
   height: 100%;
   min-height: calc(100vh - $header-height);
+  background: lightcyan;
 
   .item {
     margin-bottom: 20px;
@@ -51,10 +49,7 @@ export default {
   &.mobile {
     position: absolute;
     top: 0;
-    background: lightblue;
-    border: 1px solid red;
     width: $sidebarMobileWidth;
-    padding: 30px;
   }
 
   &.closed {

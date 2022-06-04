@@ -4,7 +4,7 @@ import _ from "lodash";
 
 const initialState = {
   sidebarStatus: false,
-  isMobileSidebar: false,
+  isMobileSidebar: window.innerWidth < 600,
   count: 0,
 };
 
