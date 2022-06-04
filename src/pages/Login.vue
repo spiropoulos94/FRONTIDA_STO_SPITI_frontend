@@ -46,6 +46,7 @@ export default {
 
     justify-content: center;
     align-items: center;
+    align-items: start;
   }
 }
 </style>

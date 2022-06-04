@@ -43,6 +43,7 @@ export default {
   max-width: 500px;
 
   width: 550px;
+  margin-top: 25vh;
 
   .logo {
     max-width: 195px;
