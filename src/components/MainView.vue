@@ -1,5 +1,7 @@
 <template>
-  <div class="views-wrapper">Main view</div>
+  <div class="views-wrapper">
+    <router-view></router-view>
+  </div>
 </template>
 <script>
 export default {
