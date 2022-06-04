@@ -40,6 +40,9 @@ export default {
   //invert below
   background: white;
   color: $lightblue;
+  &:hover {
+    border: 1px solid $lightblue;
+  }
 }
 
 .logo {
