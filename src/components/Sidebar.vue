@@ -1,6 +1,5 @@
 <template>
   <div :class="`sidebar ${isMobile ? 'mobile' : ''}`">
-    <h4>Menu</h4>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
@@ -19,7 +18,7 @@ export default {
   },
   computed: {
     isMobile() {
-      return window.innerWidth < 900;
+      return window.innerWidth < 600;
     },
   },
 };
@@ -32,6 +31,10 @@ export default {
   width: 350px;
   border: 1px solid red;
   height: 100%;
+  padding: 10px;
+  .item {
+    margin-bottom: 20px;
+  }
   &.mobile {
     position: absolute;
     background: lightblue;
