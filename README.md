@@ -1,4 +1,4 @@
-#FRONTIDA STO SPITI Front-end ( Vue 3 + Vite )
+# FRONTIDA STO SPITI Front-end ( Vue 3 + Vite )
 
 This repo serves as the client side of the fullstack web app "Frontida sto Spiti"
 
