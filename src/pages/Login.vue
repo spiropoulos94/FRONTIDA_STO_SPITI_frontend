@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .login-page {
-  background: black;
+  //   background: black;
   position: absolute;
   left: 0;
   right: 0;

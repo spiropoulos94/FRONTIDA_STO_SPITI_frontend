@@ -30,3 +30,57 @@
     transition: 0s;
   }
 }
+
+@mixin rippleEffect {
+  /* Ripple effect */
+  background-position: center;
+  transition: background 0.8s;
+  &:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%)
+      center/15000%;
+  }
+  &:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+@mixin formInputLabel {
+  top: -0.5em;
+  left: 1em;
+  font-size: 0.8em;
+  color: #aaa;
+  transition: all 0.2s;
+  transform: translateY(0);
+  margin-bottom: 10px;
+  &.active {
+    transform: translateY(-1.5em);
+    font-size: 0.7em;
+    color: #000;
+  }
+}
+
+@mixin formInput {
+  margin-bottom: 10px;
+  border-radius: $borderRadius;
+  border: 1px solid #ccc;
+  padding: 5px;
+  height: 40px;
+}
+
+@mixin formSubmitBtn {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  background: $lightblue;
+  color: white;
+  border: 1px solid $lightblue;
+  font-size: 1.2rem;
+
+  // &:hover {
+  //   box-sizing: border-box;
+  //   background: white;
+  //   color: $lightblue;
+  // }
+}

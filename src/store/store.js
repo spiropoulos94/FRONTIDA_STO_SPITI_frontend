@@ -8,6 +8,7 @@ const initialState = {
   sidebarIconsOnly: false,
   count: 0,
   user_data: null,
+  // user_data: {},
 };
 
 const store = createStore({
