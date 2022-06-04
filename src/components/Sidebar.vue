@@ -13,18 +13,24 @@
           <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
         </div>
       </router-link>
-      <div class="item">
-        <font-awesome-icon icon="folder" />
-        <span v-if="!iconsOnly" class="item-txt">Reports</span>
-      </div>
-      <div class="item">
-        <font-awesome-icon icon="cog" />
-        <span v-if="!iconsOnly" class="item-txt">Account</span>
-      </div>
-      <div class="item">
-        <font-awesome-icon icon="user-plus" />
-        <span v-if="!iconsOnly" class="item-txt">Create User</span>
-      </div>
+      <router-link class="papia" to="/reports">
+        <div class="item">
+          <font-awesome-icon icon="folder" />
+          <span v-if="!iconsOnly" class="item-txt">Reports</span>
+        </div>
+      </router-link>
+      <router-link class="papia" to="/account">
+        <div class="item">
+          <font-awesome-icon icon="cog" />
+          <span v-if="!iconsOnly" class="item-txt">Account</span>
+        </div>
+      </router-link>
+      <router-link class="papia" to="/create-user">
+        <div class="item">
+          <font-awesome-icon icon="user-plus" />
+          <span v-if="!iconsOnly" class="item-txt">Create User</span>
+        </div>
+      </router-link>
     </div>
   </Transition>
 </template>
