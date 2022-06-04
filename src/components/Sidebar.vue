@@ -7,9 +7,19 @@
         isOpen ? '' : 'closed'
       }`"
     >
-      <div class="item"><font-awesome-icon icon="folder" /> one</div>
-      <div class="item"><font-awesome-icon icon="folder" /> one</div>
-      <div class="item"><font-awesome-icon icon="folder" /> one</div>
+      <div class="item">
+        <font-awesome-icon icon="folder" />
+        <span v-if="!iconsOnly" class="item-name">one</span>
+      </div>
+      <div class="item">
+        <font-awesome-icon icon="folder" />
+        <span v-if="!iconsOnly" class="item-name">one</span>
+      </div>
+      <div class="item">
+        <font-awesome-icon icon="folder" />
+        <span v-if="!iconsOnly" class="item-name">one</span>
+      </div>
+      {{ iconsOnly }}
     </div>
   </Transition>
 </template>
@@ -25,7 +35,6 @@ export default {
   },
   methods: {
     clickOutsideSidebar() {
-      console.log(this.$store);
       if (
         this.$store.getters.isMobileSidebar &&
         this.$store.getters.sidebarStatus
@@ -35,11 +44,17 @@ export default {
     },
   },
   computed: {
+    iconsOnly() {
+      return !this.isMobileSidebar && !this.isOpen;
+    },
     isMobileSidebar() {
       return this.$store.getters.isMobileSidebar;
     },
     isOpen() {
       return this.$store.getters.sidebarStatus;
+    },
+    iconsOnly() {
+      return this.$store.getters.iconsOnly;
     },
   },
 };

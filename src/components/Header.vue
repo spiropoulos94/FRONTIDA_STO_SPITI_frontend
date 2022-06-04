@@ -16,7 +16,16 @@ export default {
   },
   methods: {
     toggleSidebar(status) {
-      this.$store.commit("toggleSidebar", status);
+      if (this.isMobileSidebar) {
+        this.$store.commit("toggleSidebar", status);
+      } else {
+        this.$store.commit("toggleIconsOnly", status);
+      }
+    },
+  },
+  computed: {
+    isMobileSidebar() {
+      return this.$store.getters.isMobileSidebar;
     },
   },
 };

@@ -12,14 +12,21 @@ export default {
   name: "App",
   components: { Header, Sidebar },
   data() {
-    return {};
+    return {
+      windowWidth: window.innerWidth,
+    };
   },
   created() {
+    this.$store.commit("toggleSidebar", this.windowWidth > 991);
+
     window.addEventListener("resize", () => {
       if (window.innerWidth < 991) {
+        this.$store.commit("toggleSidebar", false);
         this.$store.commit("setMobileSidebar", true);
+        this.$store.commit("toggleIconsOnly", false);
       } else {
         this.$store.commit("setMobileSidebar", false);
+        this.$store.commit("toggleSidebar", true);
       }
     });
   },

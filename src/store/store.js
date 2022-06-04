@@ -5,6 +5,7 @@ import _ from "lodash";
 const initialState = {
   sidebarStatus: false,
   isMobileSidebar: window.innerWidth < 600,
+  sidebarIconsOnly: false,
   count: 0,
 };
 
@@ -27,6 +28,13 @@ const store = createStore({
         state.sidebarStatus = status;
       }
     },
+    toggleIconsOnly(state, status) {
+      if (status == undefined) {
+        state.sidebarIconsOnly = !state.sidebarIconsOnly;
+      } else {
+        state.sidebarIconsOnly = status;
+      }
+    },
   },
   getters: {
     getCount(state) {
@@ -37,6 +45,9 @@ const store = createStore({
     },
     sidebarStatus(state) {
       return state.sidebarStatus;
+    },
+    iconsOnly(state) {
+      return state.sidebarIconsOnly;
     },
   },
 });
