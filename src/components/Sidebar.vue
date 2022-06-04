@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
-$sidebarWidth: 350px;
+$sidebarWidth: 300px;
 $sidebarMobileWidth: 200px;
 
 .sidebar {
@@ -54,8 +54,7 @@ $sidebarMobileWidth: 200px;
   }
 
   &.closed {
-    position: absolute;
-    left: -600px;
+    // left: -600px;
     background: red;
   }
 }
