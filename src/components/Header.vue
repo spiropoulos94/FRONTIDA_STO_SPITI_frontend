@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
+$header-height: 70px;
+
 .header {
   width: 100%;
   display: flex;
@@ -31,6 +33,7 @@ export default {
   border-bottom: 1px solid $lightblue;
   align-items: center;
   padding: 0px 20px;
+  height: $header-height;
 }
 
 .toggle-menu-btn {
