@@ -7,6 +7,7 @@ const initialState = {
   isMobileSidebar: window.innerWidth < 600,
   sidebarIconsOnly: false,
   count: 0,
+  user: {},
 };
 
 const store = createStore({
