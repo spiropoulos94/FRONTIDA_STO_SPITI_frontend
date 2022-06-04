@@ -1,5 +1,9 @@
 <template>
-  <div :class="`sidebar ${isMobileSidebar ? 'mobile' : ''}`">
+  <div
+    :class="`sidebar ${isMobileSidebar ? 'mobile' : ''} ${
+      isOpen ? '' : 'closed'
+    }`"
+  >
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
     <div class="item"><font-awesome-icon icon="folder" /> one</div>
@@ -20,15 +24,21 @@ export default {
     isMobileSidebar() {
       return this.$store.getters.isMobileSidebar;
     },
+    isOpen() {
+      return this.$store.getters.sidebarStatus;
+    },
   },
 };
 </script>
 
 <style lang="scss">
+$sidebarWidth: 350px;
+$sidebarMobileWidth: 200px;
+
 .sidebar {
   top: 0px;
   bottom: 0;
-  width: 350px;
+  width: $sidebarWidth;
   border: 1px solid red;
   height: 100%;
   padding: 10px;
@@ -39,8 +49,14 @@ export default {
     position: absolute;
     background: lightblue;
     border: 1px solid red;
-    width: 200px;
+    width: $sidebarMobileWidth;
     padding: 30px;
+  }
+
+  &.closed {
+    position: absolute;
+    left: -600px;
+    background: red;
   }
 }
 </style>

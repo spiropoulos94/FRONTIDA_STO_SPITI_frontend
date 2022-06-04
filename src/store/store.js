@@ -19,6 +19,14 @@ const store = createStore({
     setMobileSidebar(state, status) {
       state.isMobileSidebar = status;
     },
+    toggleSidebar(state, status) {
+      console.log(status);
+      if (status == undefined) {
+        state.sidebarStatus = !state.sidebarStatus;
+      } else {
+        state.sidebarStatus = status;
+      }
+    },
   },
   getters: {
     getCount(state) {
@@ -26,6 +34,9 @@ const store = createStore({
     },
     isMobileSidebar(state) {
       return state.isMobileSidebar;
+    },
+    sidebarStatus(state) {
+      return state.sidebarStatus;
     },
   },
 });

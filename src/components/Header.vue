@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <!--  -->
-    <div class="toggle-menu-btn">
+    <div @click="toggleSidebar()" class="toggle-menu-btn">
       <font-awesome-icon icon="bars" />
     </div>
     <div class="logo"><img src="src/assets/LogoWhite.png" /></div>
@@ -13,6 +13,11 @@ export default {
   name: "Header",
   data() {
     return {};
+  },
+  methods: {
+    toggleSidebar(status) {
+      this.$store.commit("toggleSidebar", status);
+    },
   },
 };
 </script>
@@ -32,6 +37,9 @@ export default {
   @include toggleBtn;
   background: $lightblue;
   color: white;
+  //invert below
+  background: white;
+  color: $lightblue;
 }
 
 .logo {
