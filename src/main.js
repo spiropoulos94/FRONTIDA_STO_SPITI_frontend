@@ -22,7 +22,7 @@ library.add(faPhone, faBars, faFolder, faHome, faUserPlus, faCog);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)
-  .use(clickOutside)
-  .use(store)
   .use(router)
+  .use(store)
+  .use(clickOutside)
   .mount("#app");
