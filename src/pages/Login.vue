@@ -1,13 +1,17 @@
 <template>
   <div class="login-page">
-    <!-- <img src="@/assets/login.jpeg" /> -->
-    <div class="login-content"><h1 class="form">this is a form</h1></div>
+    <div class="login-content">
+      <LoginFormVue />
+    </div>
   </div>
 </template>
 
 <script>
+import LoginFormVue from "../components/LoginForm.vue";
+
 export default {
   name: "Login",
+  components: { LoginFormVue },
 };
 </script>
 
@@ -24,7 +28,8 @@ export default {
     content: "";
     background-image: url("https://frontidastospiti.com/wp-content/uploads/2022/05/1_7UA2Rd0xs6AVxtASN-UaA-scaled.jpeg");
     background-image: url("@/assets/login.jpeg");
-    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -35,9 +40,12 @@ export default {
 
   .login-content {
     display: flex;
-    width: 100vh;
+    width: 100%;
     height: 100vh;
     position: relative;
+
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
