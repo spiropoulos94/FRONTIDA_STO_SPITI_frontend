@@ -68,7 +68,7 @@ export default {
   top: 0px;
   left: 0px;
   width: $sidebarWidth;
-  border: 1px solid #f4f4f4;
+  // border: 1px solid #f4f4f4;
   position: relative;
   transition: 0.2s;
   height: 100%;
