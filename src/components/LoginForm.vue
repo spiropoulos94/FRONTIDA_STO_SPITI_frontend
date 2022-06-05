@@ -4,28 +4,28 @@
       <img src="@/assets/logoWhite.png" />
     </div>
     <form>
-      <!-- <div class="input-wrapper"> -->
-      <label> Email </label>
-      <input class="input" type="text" v-model="formData.email" />
-      <span
-        @click="clearInput('email')"
-        v-if="formData.email"
-        class="clear-input"
-        >x</span
-      >
+      <label>
+        Email
+        <input class="input" type="text" v-model="formData.email" />
+        <span
+          @click="clearInput('email')"
+          v-if="formData.email"
+          class="clear-input"
+          >x</span
+        >
+      </label>
 
-      <!-- </div> -->
-      <!-- <div class="input-wrapper"> -->
-      <label> Password </label>
-      <input class="input" type="password" v-model="formData.password" />
-      <span
-        @click="clearInput('password')"
-        v-if="formData.password"
-        class="clear-input"
-        >x</span
-      >
+      <label>
+        Password
+        <input class="input" type="password" v-model="formData.password" />
+        <span
+          @click="clearInput('password')"
+          v-if="formData.password"
+          class="clear-input"
+          >x</span
+        >
+      </label>
 
-      <!-- </div> -->
       <button @click="submit" class="form-sbmt">Login</button>
     </form>
     <!-- <pre>{{ formData }}</pre> -->
@@ -73,7 +73,8 @@ export default {
   background: $lightblue;
   color: white;
   position: relative;
-  bottom: 39px;
+  position: absolute;
+  bottom: 20px;
   left: calc(100% - 20px - 10px);
   cursor: pointer;
   &:hover {
@@ -109,6 +110,7 @@ export default {
     label {
       width: 100%;
       @include formInputLabel;
+      position: relative;
     }
 
     input {
