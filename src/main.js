@@ -10,6 +10,7 @@ import {
   faHome,
   faUserPlus,
   faCog,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -18,7 +19,15 @@ import store from "@/store/store.js";
 // Import your directive, in order to register it.
 import clickOutside from "@/utils/click-outside.js";
 
-library.add(faPhone, faBars, faFolder, faHome, faUserPlus, faCog);
+library.add(
+  faPhone,
+  faBars,
+  faFolder,
+  faHome,
+  faUserPlus,
+  faCog,
+  faCircleXmark
+);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)
