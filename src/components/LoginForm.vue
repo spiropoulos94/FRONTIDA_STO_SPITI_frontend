@@ -33,8 +33,11 @@
 </template>
 
 <script>
+import api from "@/mixins/api.js";
+
 export default {
   name: "LoginForm",
+  mixins: [api],
   data() {
     return {
       formData: {
@@ -47,6 +50,9 @@ export default {
     submit(e) {
       e.preventDefault();
       console.log("click submit");
+      //   this.$store.state.user_data = "fafs";
+      //   this.$router.push("/");
+      this.login();
     },
     clearInput(input) {
       this.formData[input] = "";
