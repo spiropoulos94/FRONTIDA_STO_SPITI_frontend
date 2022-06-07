@@ -26,7 +26,10 @@
         >
       </label>
 
-      <button @click="submit" class="form-sbmt">Login</button>
+      <button :disabled="loading" @click="submit" class="form-sbmt">
+        <span v-if="!loading" class="text"> Login </span>
+        <Spinner v-if="loading" />
+      </button>
     </form>
     <!-- <pre>{{ formData }}</pre> -->
   </div>
@@ -34,9 +37,11 @@
 
 <script>
 import api from "@/mixins/api.js";
+import Spinner from "@/components/Spinner.vue";
 
 export default {
   name: "LoginForm",
+  components: { Spinner },
   mixins: [api],
   data() {
     return {
@@ -44,12 +49,19 @@ export default {
         email: import.meta.env.VITE_DEVMAIL || "",
         password: import.meta.env.VITE_DEVPASS || "",
       },
+      loading: false,
     };
   },
   methods: {
-    submit(e) {
+    async submit(e) {
       e.preventDefault();
-      this.login(this.formData);
+      this.loading = true;
+      let res = await this.login(this.formData);
+      console.log({ res });
+      this.loading = false;
+      if (res.ok) {
+        this.$store.commit("login", res);
+      }
     },
     clearInput(input) {
       this.formData[input] = "";
@@ -120,6 +132,7 @@ export default {
       @include rippleEffect;
       @include formSubmitBtn;
       margin-top: 20px;
+      height: 51px;
     }
   }
 }

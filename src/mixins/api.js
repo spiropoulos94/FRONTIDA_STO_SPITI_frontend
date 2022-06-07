@@ -26,7 +26,7 @@ const api = {
 
       let data = await res.json();
 
-      console.log({ res, data });
+      return data;
     },
   },
 };

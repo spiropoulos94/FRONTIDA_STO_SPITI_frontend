@@ -11,6 +11,7 @@ import {
   faUserPlus,
   faCog,
   faCircleXmark,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -26,7 +27,8 @@ library.add(
   faHome,
   faUserPlus,
   faCog,
-  faCircleXmark
+  faCircleXmark,
+  faSpinner
 );
 
 createApp(App)

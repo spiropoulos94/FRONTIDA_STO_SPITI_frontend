@@ -10,8 +10,6 @@
       <router-link class="papia" to="/">
         <div class="item">
           <font-awesome-icon icon="home" />
-          <!-- spin
-            style="--fa-animation-duration: 0.1s" -->
           <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
         </div>
       </router-link>

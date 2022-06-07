@@ -8,7 +8,6 @@ const initialState = {
   sidebarIconsOnly: false,
   count: 0,
   user_data: null,
-  // user_data: {},
 };
 
 const store = createStore({
@@ -16,6 +15,12 @@ const store = createStore({
     return _.cloneDeep(initialState);
   },
   mutations: {
+    login(state, payload) {
+      console.log({ state, payload });
+      state.user_data = {};
+      state.user_data = payload.user;
+      state.user_data.token = payload.token;
+    },
     increment(state) {
       state.count++;
     },
