@@ -49,10 +49,7 @@ export default {
   methods: {
     submit(e) {
       e.preventDefault();
-      console.log("click submit");
-      //   this.$store.state.user_data = "fafs";
-      //   this.$router.push("/");
-      this.login();
+      this.login(this.formData);
     },
     clearInput(input) {
       this.formData[input] = "";
