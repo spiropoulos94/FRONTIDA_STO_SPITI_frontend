@@ -41,8 +41,8 @@ export default {
   data() {
     return {
       formData: {
-        email: "",
-        password: "",
+        email: import.meta.env.VITE_DEVMAIL || "",
+        password: import.meta.env.VITE_DEVPASS || "",
       },
     };
   },
