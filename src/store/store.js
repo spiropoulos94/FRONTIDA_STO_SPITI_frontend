@@ -22,6 +22,7 @@ const store = createStore({
       state.user_data = payload.user;
       state.user_data.token = payload.token;
       router.push("/");
+      state.sidebarStatus = window.innerWidth > 991;
     },
     increment(state) {
       state.count++;
@@ -30,7 +31,6 @@ const store = createStore({
       state.isMobileSidebar = status;
     },
     toggleSidebar(state, status) {
-      console.log(status);
       if (status == undefined) {
         state.sidebarStatus = !state.sidebarStatus;
       } else {
