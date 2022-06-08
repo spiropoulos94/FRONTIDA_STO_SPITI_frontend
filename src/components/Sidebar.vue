@@ -31,7 +31,7 @@
           <span v-if="!iconsOnly" class="item-txt">Create User</span>
         </button>
       </router-link>
-      <div @click="$store.commit('signOussst')">
+      <div @click="$store.commit('signOut')">
         <button class="item">
           <!-- <font-awesome-icon icon="sign-out" /> -->
           <font-awesome-icon icon="power-off" />
@@ -142,6 +142,12 @@ export default {
   &.closed {
     left: -$sidebarWidth;
     transition: 0.2s;
+  }
+
+  .router-link-active {
+    button {
+      background: $darken_lightblue;
+    }
   }
 }
 
