@@ -1,8 +1,10 @@
 <template>
   <header class="header">
     <!--  -->
-    <div class="logo"><img src="src/assets/LogoWhite.png" /></div>
-    <div class="header-controls">
+    <div :style="{ order: isMobileSidebar ? 1 : 2 }" class="logo">
+      <img src="src/assets/LogoWhite.png" />
+    </div>
+    <div :style="{ order: isMobileSidebar ? 2 : 1 }" class="header-controls">
       <div @click="toggleSidebar()" class="toggle-menu-btn">
         <font-awesome-icon
           :icon="isMobileSidebar && !isClosedSidebar ? 'xmark' : 'bars'"
@@ -63,6 +65,10 @@ $header-height: 70px;
     height: 100%;
     padding: 0px 10px 0px 0px;
     // background: red;
+    // order: 1;
+  }
+  .logo {
+    // order: 2;
   }
 }
 
