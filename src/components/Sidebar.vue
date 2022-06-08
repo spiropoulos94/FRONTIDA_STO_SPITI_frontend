@@ -7,25 +7,25 @@
         isOpen ? '' : 'closed'
       } ${iconsOnly ? 'icons-only' : ''}`"
     >
-      <router-link class="papia" to="/">
+      <router-link @click="closeSidebar" to="/">
         <div class="item">
           <font-awesome-icon icon="home" />
           <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
         </div>
       </router-link>
-      <router-link class="papia" to="/reports">
+      <router-link @click="closeSidebar" to="/reports">
         <div class="item">
           <font-awesome-icon icon="folder" />
           <span v-if="!iconsOnly" class="item-txt">Reports</span>
         </div>
       </router-link>
-      <router-link class="papia" to="/account">
+      <router-link @click="closeSidebar" to="/account">
         <div class="item">
           <font-awesome-icon icon="cog" />
           <span v-if="!iconsOnly" class="item-txt">Account</span>
         </div>
       </router-link>
-      <router-link class="papia" to="/create-user">
+      <router-link @click="closeSidebar" to="/create-user">
         <div class="item">
           <font-awesome-icon icon="user-plus" />
           <span v-if="!iconsOnly" class="item-txt">Create User</span>
@@ -50,6 +50,12 @@ export default {
         this.$store.getters.isMobileSidebar &&
         this.$store.getters.sidebarStatus
       ) {
+        this.$store.commit("toggleSidebar", false);
+      }
+    },
+    closeSidebar() {
+      console.log("close sidebar runs");
+      if (this.$store.getters.isMobileSidebar) {
         this.$store.commit("toggleSidebar", false);
       }
     },
