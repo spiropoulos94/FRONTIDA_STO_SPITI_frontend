@@ -1,6 +1,7 @@
 // Create a new store instance.
 import { createStore } from "vuex";
 import _ from "lodash";
+import router from "@/router";
 
 const initialState = {
   sidebarStatus: false,
@@ -20,6 +21,7 @@ const store = createStore({
       state.user_data = {};
       state.user_data = payload.user;
       state.user_data.token = payload.token;
+      router.push("/");
     },
     increment(state) {
       state.count++;
