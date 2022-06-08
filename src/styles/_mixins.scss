@@ -78,6 +78,11 @@
   border: 1px solid $lightblue;
   font-size: 1.2rem;
 
+  &:active {
+    background: $darken_lightblue;
+    // color: white;
+  }
+
   // &:hover {
   //   box-sizing: border-box;
   //   background: white;

@@ -8,35 +8,35 @@
       } ${iconsOnly ? 'icons-only' : ''}`"
     >
       <router-link @click="closeSidebar" to="/">
-        <div class="item">
+        <button class="item">
           <font-awesome-icon icon="home" />
           <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
-        </div>
+        </button>
       </router-link>
       <router-link @click="closeSidebar" to="/reports">
-        <div class="item">
+        <button class="item">
           <font-awesome-icon icon="folder" />
           <span v-if="!iconsOnly" class="item-txt">Reports</span>
-        </div>
+        </button>
       </router-link>
       <router-link @click="closeSidebar" to="/account">
-        <div class="item">
+        <button class="item">
           <font-awesome-icon icon="cog" />
           <span v-if="!iconsOnly" class="item-txt">Account</span>
-        </div>
+        </button>
       </router-link>
       <router-link @click="closeSidebar" to="/create-user">
-        <div class="item">
+        <button class="item">
           <font-awesome-icon icon="user-plus" />
           <span v-if="!iconsOnly" class="item-txt">Create User</span>
-        </div>
+        </button>
       </router-link>
-      <div @click="$store.commit('signOut')">
-        <div class="item">
+      <div @click="$store.commit('signOussst')">
+        <button class="item">
           <!-- <font-awesome-icon icon="sign-out" /> -->
           <font-awesome-icon icon="power-off" />
           <span v-if="!iconsOnly" class="item-txt">Exit</span>
-        </div>
+        </button>
       </div>
     </div>
   </Transition>
@@ -99,10 +99,16 @@ export default {
   padding-top: 10px;
 
   .item {
+    display: block;
     padding: 10px;
+    background: none;
+    width: 100%;
+    text-align: start;
     margin-bottom: 20px;
     font-size: 16px;
     color: white;
+    border: none;
+
     cursor: pointer;
     .item-txt {
       margin-left: 10px;
@@ -111,6 +117,13 @@ export default {
       background: #f4f4f4;
       background: white;
       color: $lightblue;
+    }
+
+    &:active {
+      color: $lightblue;
+      background: white;
+      background: $darken_lightblue;
+      color: white;
     }
   }
   &.mobile {
