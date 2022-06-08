@@ -5,7 +5,7 @@ import router from "@/router";
 
 const initialState = {
   sidebarStatus: false,
-  isMobileSidebar: window.innerWidth < 600,
+  isMobileSidebar: window.innerWidth < 991,
   sidebarIconsOnly: false,
   count: 0,
   user_data: null,

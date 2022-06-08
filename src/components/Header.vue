@@ -1,10 +1,13 @@
 <template>
   <header class="header">
     <!--  -->
-    <div @click="toggleSidebar()" class="toggle-menu-btn">
-      <font-awesome-icon icon="bars" />
-    </div>
     <div class="logo"><img src="src/assets/LogoWhite.png" /></div>
+    <div @click="toggleSidebar()" class="toggle-menu-btn">
+      <font-awesome-icon
+        :icon="isMobileSidebar && !isClosedSidebar ? 'xmark' : 'bars'"
+      />
+      <!-- <font-awesome-icon icon="xmark" /> -->
+    </div>
   </header>
 </template>
 
@@ -27,6 +30,9 @@ export default {
     isMobileSidebar() {
       return this.$store.getters.isMobileSidebar;
     },
+    isClosedSidebar() {
+      return this.$store.getters.sidebarStatus !== true;
+    },
   },
 };
 </script>
@@ -43,6 +49,7 @@ $header-height: 70px;
   align-items: center;
   padding: 0px 20px;
   height: $header-height;
+  justify-content: space-between;
 }
 
 .toggle-menu-btn {
@@ -58,7 +65,7 @@ $header-height: 70px;
 }
 
 .logo {
-  margin-left: auto;
+  // margin-left: auto;
   display: flex;
   img {
     height: 100%;

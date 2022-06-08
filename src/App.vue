@@ -29,8 +29,8 @@ export default {
         this.$store.commit("setMobileSidebar", true);
         this.$store.commit("toggleIconsOnly", false);
       } else {
-        this.$store.commit("setMobileSidebar", false);
         this.$store.commit("toggleSidebar", true);
+        this.$store.commit("setMobileSidebar", false);
       }
     });
   },
