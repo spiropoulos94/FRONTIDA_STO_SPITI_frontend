@@ -13,6 +13,8 @@ import {
   faCircleXmark,
   faSpinner,
   faXmark,
+  faSignOut,
+  faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -30,7 +32,9 @@ library.add(
   faCog,
   faCircleXmark,
   faSpinner,
-  faXmark
+  faXmark,
+  faPowerOff,
+  faSignOut
 );
 
 createApp(App)

@@ -7,7 +7,6 @@ const initialState = {
   sidebarStatus: false,
   isMobileSidebar: window.innerWidth < 991,
   sidebarIconsOnly: false,
-  count: 0,
   user_data: null,
 };
 
@@ -24,8 +23,9 @@ const store = createStore({
       router.push("/");
       state.sidebarStatus = window.innerWidth > 991;
     },
-    increment(state) {
-      state.count++;
+    signOut(state) {
+      state.user_data = null;
+      router.push("/login");
     },
     setMobileSidebar(state, status) {
       state.isMobileSidebar = status;

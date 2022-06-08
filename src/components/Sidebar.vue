@@ -31,6 +31,13 @@
           <span v-if="!iconsOnly" class="item-txt">Create User</span>
         </div>
       </router-link>
+      <div @click="$store.commit('signOut')">
+        <div class="item">
+          <!-- <font-awesome-icon icon="sign-out" /> -->
+          <font-awesome-icon icon="power-off" />
+          <span v-if="!iconsOnly" class="item-txt">Exit</span>
+        </div>
+      </div>
     </div>
   </Transition>
 </template>

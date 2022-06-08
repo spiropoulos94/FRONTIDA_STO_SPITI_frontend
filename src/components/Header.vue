@@ -2,11 +2,17 @@
   <header class="header">
     <!--  -->
     <div class="logo"><img src="src/assets/LogoWhite.png" /></div>
-    <div @click="toggleSidebar()" class="toggle-menu-btn">
-      <font-awesome-icon
-        :icon="isMobileSidebar && !isClosedSidebar ? 'xmark' : 'bars'"
-      />
-      <!-- <font-awesome-icon icon="xmark" /> -->
+    <div class="header-controls">
+      <div @click="toggleSidebar()" class="toggle-menu-btn">
+        <font-awesome-icon
+          :icon="isMobileSidebar && !isClosedSidebar ? 'xmark' : 'bars'"
+        />
+        <!-- <font-awesome-icon icon="xmark" /> -->
+      </div>
+      <!-- @click="toggleSidebar()" -->
+      <!-- <div class="toggle-menu-btn">
+        <font-awesome-icon icon="sign-out" />
+      </div> -->
     </div>
   </header>
 </template>
@@ -47,9 +53,17 @@ $header-height: 70px;
   background: white;
   border-bottom: 1px solid $lightblue;
   align-items: center;
-  padding: 0px 20px;
   height: $header-height;
   justify-content: space-between;
+
+  .header-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    padding: 0px 10px 0px 0px;
+    // background: red;
+  }
 }
 
 .toggle-menu-btn {
@@ -59,6 +73,7 @@ $header-height: 70px;
   //invert below
   background: white;
   color: $lightblue;
+  margin: 10px;
   &:hover {
     border: 1px solid $lightblue;
   }
