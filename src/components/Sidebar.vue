@@ -45,13 +45,14 @@
         </button>
       </div>
       <Modal
+        v-if="modalStatus"
         :confirmFn="completeSignoutAndCloseModal"
         :cancelFn="closeModal"
-        v-if="modalStatus"
         :confirmBtn="modalContent.confirm"
         :cancelBtn="modalContent.cancel"
-        :modalTitle="modalContent.title"
       >
+        <!-- :modalTitle="modalContent.title" -->
+        Are you sure you want to exit ?
       </Modal>
     </div>
   </Transition>
