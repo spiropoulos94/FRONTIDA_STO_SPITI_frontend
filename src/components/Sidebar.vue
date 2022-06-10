@@ -7,43 +7,55 @@
         isOpen ? '' : 'closed'
       } ${iconsOnly ? 'icons-only' : ''}`"
     >
-      <router-link @click="closeSidebar" to="/">
-        <button class="item">
-          <font-awesome-icon icon="home" />
-          <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
-        </button>
-      </router-link>
-      <router-link @click="closeSidebar" to="/reports">
-        <button class="item">
-          <font-awesome-icon icon="folder" />
-          <span v-if="!iconsOnly" class="item-txt">Reports</span>
-        </button>
-      </router-link>
-      <router-link @click="closeSidebar" to="/account">
-        <button class="item">
-          <font-awesome-icon icon="cog" />
-          <span v-if="!iconsOnly" class="item-txt">Account</span>
-        </button>
-      </router-link>
-      <router-link @click="closeSidebar" to="/users">
-        <button class="item">
-          <font-awesome-icon icon="user" />
-          <span v-if="!iconsOnly" class="item-txt">Users</span>
-        </button>
-      </router-link>
-      <router-link @click="closeSidebar" to="/patients">
-        <button class="item">
-          <font-awesome-icon icon="user-injured" />
-          <span v-if="!iconsOnly" class="item-txt">Patients</span>
-        </button>
-      </router-link>
-      <div @click="signOut">
-        <button class="item">
-          <!-- <font-awesome-icon icon="sign-out" /> -->
-          <font-awesome-icon icon="power-off" />
-          <span v-if="!iconsOnly" class="item-txt">Exit</span>
-        </button>
-      </div>
+      <Tooltip text="Dashboard">
+        <router-link @click="closeSidebar" to="/">
+          <button class="item">
+            <font-awesome-icon icon="home" />
+            <span v-if="!iconsOnly" class="item-txt">Dashboard</span>
+          </button>
+        </router-link>
+      </Tooltip>
+      <Tooltip text="Reports">
+        <router-link @click="closeSidebar" to="/reports">
+          <button class="item">
+            <font-awesome-icon icon="folder" />
+            <span v-if="!iconsOnly" class="item-txt">Reports</span>
+          </button>
+        </router-link>
+      </Tooltip>
+      <Tooltip text="Account">
+        <router-link @click="closeSidebar" to="/account">
+          <button class="item">
+            <font-awesome-icon icon="cog" />
+            <span v-if="!iconsOnly" class="item-txt">Account</span>
+          </button>
+        </router-link>
+      </Tooltip>
+      <Tooltip text="Users">
+        <router-link @click="closeSidebar" to="/users">
+          <button class="item">
+            <font-awesome-icon icon="user" />
+            <span v-if="!iconsOnly" class="item-txt">Users</span>
+          </button>
+        </router-link>
+      </Tooltip>
+      <Tooltip text="Patients">
+        <router-link @click="closeSidebar" to="/patients">
+          <button class="item">
+            <font-awesome-icon icon="user-injured" />
+            <span v-if="!iconsOnly" class="item-txt">Patients</span>
+          </button>
+        </router-link>
+      </Tooltip>
+      <Tooltip text="Sign Out">
+        <div @click="signOut">
+          <button class="item">
+            <!-- <font-awesome-icon icon="sign-out" /> -->
+            <font-awesome-icon icon="power-off" />
+            <span v-if="!iconsOnly" class="item-txt">Exit</span>
+          </button>
+        </div>
+      </Tooltip>
       <Modal
         v-if="modalStatus"
         :confirmFn="completeSignoutAndCloseModal"
@@ -60,10 +72,12 @@
 
 <script>
 import Modal from "@/components/Modal.vue";
+import Tooltip from "@/components/Tooltip.vue";
 export default {
   name: "Sidebar",
   components: {
     Modal,
+    Tooltip,
   },
   data() {
     return {

@@ -1,0 +1,60 @@
+<template>
+  <div class="element">
+    <div v-if="sidebarIconsOnly" class="tooltip-text">{{ text }}</div>
+    <slot></slot>
+  </div>
+</template>
+<script>
+export default {
+  name: "Tooltip",
+  props: {
+    text: {
+      type: String,
+      default: "i",
+    },
+  },
+  computed: {
+    sidebarIconsOnly() {
+      return this.$store.getters.iconsOnly;
+    },
+  },
+};
+</script>
+<style lang="scss">
+.tooltip-text {
+  position: absolute;
+  top: -20px;
+  top: 0px;
+  left: 70px;
+  width: 80px;
+  padding: 10px;
+  background: #f4f4f4;
+  background: white;
+  color: $lightblue;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+  visibility: hidden;
+
+  box-shadow: 6px 8px 23px -7px rgba(0, 0, 0, 0.54);
+  -webkit-box-shadow: 6px 8px 23px -7px rgba(0, 0, 0, 0.54);
+  -moz-box-shadow: 6px 8px 23px -7px rgba(0, 0, 0, 0.54);
+
+  //   visibility: visible;
+  //   opacity: 1;
+}
+.element {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+</style>
