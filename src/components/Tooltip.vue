@@ -12,6 +12,14 @@ export default {
       type: String,
       default: "i",
     },
+    position: {
+      type: String,
+      default: "right",
+    },
+    distance: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     sidebarIconsOnly() {
