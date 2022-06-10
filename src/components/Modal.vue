@@ -2,9 +2,10 @@
   <Teleport to="body">
     <div class="modal-overlay">
       <div class="modal">
-        <div class="modal-header">{{ modalTitle }}</div>
+        <div class="modal-header"></div>
         <div class="modal-body">
           <slot></slot>
+          {{ modalTitle }}
         </div>
         <div class="modal-footer">
           <button class="controlsBtn cancel" @click="cancelFn">
@@ -109,8 +110,9 @@ export default {
   }
 
   .modal-header {
-    height: 50px;
-    background: red;
+    height: 60px;
+    background: $darken_lightblue;
+    background: $lighten_lightblue;
     font-size: 1.2rem;
     padding: 10px;
     display: flex;
@@ -118,17 +120,18 @@ export default {
 
   .modal-body {
     padding: 10px;
+    font-size: 1.2rem;
+    color: $darken_lightblue;
   }
 
   .modal-footer {
-    bottom: 0;
-    left: 0;
-    right: 0;
     display: block;
-    border: 1px solid red;
+    padding: 0px 10px 0px;
+    border-top: 1px solid $lightblue;
     display: flex;
     justify-content: end;
-    padding: 10px;
+    align-items: center;
+    height: 60px;
   }
 }
 </style>
