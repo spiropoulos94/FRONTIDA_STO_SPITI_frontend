@@ -44,9 +44,9 @@
           <span v-if="!iconsOnly" class="item-txt">Exit</span>
         </button>
       </div>
-      <!-- :confirmFn="completeSignoutAndCloseModal"
-        :cancelFn="closeModal" -->
       <Modal
+        :confirmFn="completeSignoutAndCloseModal"
+        :cancelFn="closeModal"
         v-if="modalStatus"
         :confirmBtn="modalContent.confirm"
         :cancelBtn="modalContent.cancel"
