@@ -14,6 +14,8 @@ import {
   faSpinner,
   faXmark,
   faSignOut,
+  faUserInjured,
+  faUser,
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -34,6 +36,8 @@ library.add(
   faSpinner,
   faXmark,
   faPowerOff,
+  faUserInjured,
+  faUser,
   faSignOut
 );
 

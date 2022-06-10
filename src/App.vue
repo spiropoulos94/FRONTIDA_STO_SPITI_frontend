@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <Header v-if="auth" />
-    <div :style="'display: flex'">
+    <main :style="'display: flex'">
       <Sidebar v-if="auth" />
       <MainView />
-    </div>
+    </main>
   </div>
 </template>
 
@@ -43,6 +43,12 @@ export default {
 </script>
 
 <style lang="scss">
+main {
+  background-color: $bodyBg;
+  background-color: $bodyBg;
+  height: calc(100vh - $header-height);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

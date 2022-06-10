@@ -25,10 +25,16 @@
           <span v-if="!iconsOnly" class="item-txt">Account</span>
         </button>
       </router-link>
-      <router-link @click="closeSidebar" to="/create-user">
+      <router-link @click="closeSidebar" to="/users">
         <button class="item">
-          <font-awesome-icon icon="user-plus" />
-          <span v-if="!iconsOnly" class="item-txt">Create User</span>
+          <font-awesome-icon icon="user" />
+          <span v-if="!iconsOnly" class="item-txt">Users</span>
+        </button>
+      </router-link>
+      <router-link @click="closeSidebar" to="/patients">
+        <button class="item">
+          <font-awesome-icon icon="user-injured" />
+          <span v-if="!iconsOnly" class="item-txt">Patients</span>
         </button>
       </router-link>
       <div @click="$store.commit('signOut')">

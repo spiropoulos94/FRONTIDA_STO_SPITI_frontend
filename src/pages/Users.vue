@@ -1,8 +1,8 @@
 <template>
-  <h1>Create User page</h1>
+  <h1>Users</h1>
 </template>
 <script>
 export default {
-  name: "CreateUser",
+  name: "Users",
 };
 </script>

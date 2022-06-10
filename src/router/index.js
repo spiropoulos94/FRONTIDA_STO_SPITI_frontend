@@ -2,7 +2,8 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/pages/Home.vue";
 import Reports from "@/pages/Reports.vue";
 import Account from "@/pages/Account.vue";
-import CreateUser from "@/pages/CreateUser.vue";
+import Users from "@/pages/Users.vue";
+import Patients from "@/pages/Patients.vue";
 import Login from "@/pages/Login.vue";
 import store from "../store/store";
 import NotFound from "@/components/NotFound.vue";
@@ -33,9 +34,14 @@ const routes = [
     component: Account,
   },
   {
-    path: "/create-user",
-    name: "Create User",
-    component: CreateUser,
+    path: "/users",
+    name: "Users",
+    component: Users,
+  },
+  {
+    path: "/patients",
+    name: "Patients",
+    component: Patients,
   },
   {
     path: "/",
