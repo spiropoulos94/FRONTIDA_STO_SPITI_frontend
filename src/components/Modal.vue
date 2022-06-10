@@ -82,7 +82,7 @@ export default {
   .modal {
     text-align: center;
     background-color: white;
-    width: 80vh;
+    width: 80vw;
     margin: auto;
     max-width: 700px;
     margin-top: 10%;
@@ -119,8 +119,8 @@ export default {
   }
 
   .modal-body {
-    padding: 10px;
-    font-size: 1.2rem;
+    padding: 20px 10px;
+    font-size: 1.1rem;
     color: $darken_lightblue;
   }
 
