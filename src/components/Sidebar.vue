@@ -50,7 +50,7 @@
         v-if="modalStatus"
         :confirmBtn="modalContent.confirm"
         :cancelBtn="modalContent.cancel"
-        :text="modalContent.message"
+        :modalTitle="modalContent.title"
       >
       </Modal>
     </div>
@@ -70,8 +70,8 @@ export default {
       isSidebarHidden: false,
       modalStatus: false,
       modalContent: {
-        // title: "You are about to log off.",
-        message: "Are you sure you want to sign out?",
+        title: "Are you sure you want to sign out?",
+        // message: "You are about to log off.",
         confirm: "Exit",
         cancel: "Cancel",
       },

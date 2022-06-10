@@ -90,14 +90,6 @@
   // }
 }
 
-@mixin controls {
-  display: flex;
-  flex-direction: row;
-  // justify-content: space-between;
-  // justify-content: center;
-  // align-items: center;
-}
-
 @mixin simpleButton {
   padding: 5px;
   cursor: pointer;
@@ -106,6 +98,8 @@
   border: 1px solid $lightblue;
   width: 90px;
   height: 40px;
+  border-radius: $borderRadius;
+  margin-left: 10px;
 
   &:active {
     background: $darken_lightblue;

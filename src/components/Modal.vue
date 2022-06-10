@@ -2,19 +2,17 @@
   <Teleport to="body">
     <div class="modal-overlay">
       <div class="modal">
-        <div class="modal-header">{{ text }}</div>
-        <div class="body">
+        <div class="modal-header">{{ modalTitle }}</div>
+        <div class="modal-body">
           <slot></slot>
         </div>
-        <div class="footer">
-          <div class="controls">
-            <button class="controlsBtn cancel" @click="cancelFn">
-              {{ cancelBtn }}
-            </button>
-            <button class="controlsBtn confirm" @click="confirmFn">
-              {{ confirmBtn }}
-            </button>
-          </div>
+        <div class="modal-footer">
+          <button class="controlsBtn cancel" @click="cancelFn">
+            {{ cancelBtn }}
+          </button>
+          <button class="controlsBtn confirm" @click="confirmFn">
+            {{ confirmBtn }}
+          </button>
         </div>
       </div>
     </div>
@@ -51,7 +49,7 @@ export default {
       type: String,
       default: "Cancel",
     },
-    text: {
+    modalTitle: {
       type: String,
       default: "",
     },
@@ -87,7 +85,6 @@ export default {
     margin: auto;
     max-width: 700px;
     margin-top: 10%;
-    padding: 60px 0;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -96,8 +93,6 @@ export default {
 
     .controlsBtn {
       background: green;
-      border-radius: 0px;
-      height: 50px;
       width: 100%;
       border: none;
 
@@ -114,25 +109,26 @@ export default {
   }
 
   .modal-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
+    height: 50px;
     background: red;
     font-size: 1.2rem;
-    margin: auto;
+    padding: 10px;
+    display: flex;
   }
 
-  .footer {
-    background: red;
-    .controls {
-      @include controls;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
+  .modal-body {
+    padding: 10px;
+  }
+
+  .modal-footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    border: 1px solid red;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
   }
 }
 </style>
