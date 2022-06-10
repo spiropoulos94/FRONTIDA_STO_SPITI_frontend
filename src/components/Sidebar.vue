@@ -51,7 +51,8 @@
         :confirmBtn="modalContent.confirm"
         :cancelBtn="modalContent.cancel"
         :text="modalContent.message"
-      />
+      >
+      </Modal>
     </div>
   </Transition>
 </template>
@@ -66,7 +67,7 @@ export default {
   data() {
     return {
       items: [],
-      isHidden: false,
+      isSidebarHidden: false,
       modalStatus: false,
       modalContent: {
         // title: "You are about to log off.",
