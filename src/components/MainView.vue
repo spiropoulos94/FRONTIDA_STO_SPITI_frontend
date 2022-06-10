@@ -13,6 +13,6 @@ export default {
 .views-wrapper {
   //   background: red;
   width: 100%;
-  padding: 15px 30px;
+  padding: 30px 50px;
 }
 </style>
