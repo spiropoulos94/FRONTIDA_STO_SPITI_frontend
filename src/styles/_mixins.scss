@@ -92,22 +92,31 @@
 
 @mixin controls {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  flex-direction: row;
+  // justify-content: space-between;
+  // justify-content: center;
+  // align-items: center;
 }
 
-@mixin mediumBtn {
-  width: 100%;
-  height: 40px;
-  border-radius: $borderRadius;
-  border: 1px solid #ccc;
+@mixin simpleButton {
   padding: 5px;
-  font-size: 1.2rem;
+  cursor: pointer;
   background: $lightblue;
   color: white;
+  border: 1px solid $lightblue;
+  width: 90px;
+  height: 40px;
+
   &:active {
     background: $darken_lightblue;
     // color: white;
+  }
+
+  &:hover {
+    box-sizing: border-box;
+    background: white;
+    color: $lightblue;
+    background: darken($lightblue, 10);
+    color: white;
   }
 }

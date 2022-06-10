@@ -2,16 +2,18 @@
   <Teleport to="body">
     <div class="modal-overlay">
       <div class="modal">
-        <div class="header">{{ text }}</div>
+        <div class="modal-header">{{ text }}</div>
         <div class="body">
           <slot></slot>
         </div>
         <div class="footer">
           <div class="controls">
-            <button class="closeBtn" @click="confirmFn">
+            <button class="controlsBtn cancel" @click="cancelFn">
+              {{ cancelBtn }}
+            </button>
+            <button class="controlsBtn confirm" @click="confirmFn">
               {{ confirmBtn }}
             </button>
-            <button class="closeBtn" @click="cancelFn">{{ cancelBtn }}</button>
           </div>
         </div>
       </div>
@@ -90,20 +92,46 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 
-    .closeBtn {
+    .controlsBtn {
       background: green;
-      @include formSubmitBtn;
-      @include mediumBtn;
-      border-radius: 8px;
+      border-radius: 0px;
+      height: 50px;
+      width: 100%;
+      border: none;
+
+      &.confirm {
+        background: $lightblue;
+        color: white;
+      }
+      &.cancel {
+        background: $bodyBg;
+        color: $lightblue;
+      }
+      @include simpleButton;
     }
+  }
+
+  .modal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: red;
+    font-size: 1.2rem;
+    margin: auto;
   }
 
   .footer {
     background: red;
     .controls {
       @include controls;
-      width: 200px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
   }
 }
