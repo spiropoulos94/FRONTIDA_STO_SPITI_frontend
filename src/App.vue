@@ -55,8 +55,11 @@ main {
   padding: 0;
 }
 
-#app {
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+#app {
   // text-align: center;
 }
 :root {

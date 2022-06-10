@@ -50,8 +50,8 @@
         :cancelFn="closeModal"
         :confirmBtn="modalContent.confirm"
         :cancelBtn="modalContent.cancel"
+        :modalTitle="modalContent.title"
       >
-        <!-- :modalTitle="modalContent.title" -->
         Are you sure you want to exit ?
       </Modal>
     </div>
@@ -71,7 +71,7 @@ export default {
       isSidebarHidden: false,
       modalStatus: false,
       modalContent: {
-        title: "Are you sure you want to sign out?",
+        title: "Modal title",
         // message: "You are about to log off.",
         confirm: "Exit",
         cancel: "Cancel",
