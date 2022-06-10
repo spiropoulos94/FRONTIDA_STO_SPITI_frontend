@@ -44,7 +44,14 @@
           <span v-if="!iconsOnly" class="item-txt">Exit</span>
         </button>
       </div>
-      <Modal v-if="modalStatus" @close="modalStatus = false" />
+      <Modal
+        v-if="modalStatus"
+        :confirmFn="completeSignoutAndCloseModal"
+        :cancelFn="closeModal"
+        :confirmBtn="modalContent.confirm"
+        :cancelBtn="modalContent.cancel"
+        :text="modalContent.message"
+      />
     </div>
   </Transition>
 </template>
@@ -61,6 +68,12 @@ export default {
       items: [],
       isHidden: false,
       modalStatus: false,
+      modalContent: {
+        // title: "You are about to log off.",
+        message: "Are you sure you want to sign out?",
+        confirm: "Exit",
+        cancel: "Cancel",
+      },
     };
   },
   methods: {
@@ -78,10 +91,17 @@ export default {
         this.$store.commit("toggleSidebar", false);
       }
     },
+    closeModal() {
+      this.modalStatus = false;
+    },
     signOut() {
       // this.$store.commit("signOut");
       console.log("sign out runs");
       this.modalStatus = true;
+    },
+    completeSignoutAndCloseModal() {
+      this.$store.commit("signOut");
+      this.modalStatus = false;
     },
   },
   computed: {

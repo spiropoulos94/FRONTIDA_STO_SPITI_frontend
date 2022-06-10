@@ -2,9 +2,10 @@
   <Teleport to="body">
     <div class="modal-overlay">
       <div class="modal">
-        <div class="title">I am a modal</div>
+        <div class="text">{{ text }}</div>
         <div class="controls">
-          <button @click="closeModal">Close dsgfasdg</button>
+          <button class="closeBtn" @click="confirm">{{ confirmBtn }}</button>
+          <button class="closeBtn" @click="cancel">{{ cancelBtn }}</button>
         </div>
       </div>
     </div>
@@ -25,12 +26,32 @@ export default {
       type: Boolean,
       default: false,
     },
+    confirmFn: {
+      type: Function,
+      default: () => {},
+    },
+    cancelFn: {
+      type: Function,
+      default: () => {},
+    },
+    confirmBtn: {
+      type: String,
+      default: "Confirm",
+    },
+    cancelBtn: {
+      type: String,
+      default: "Cancel",
+    },
+    text: {
+      type: String,
+      default: "",
+    },
   },
   methods: {
     closeModal() {
       console.log("close modal runs");
       // this.status = false;
-      this.$emit("close");
+      // this.$emit("close");
     },
     toggleModal() {
       this.isOpen = !this.isOpen;
@@ -49,14 +70,20 @@ export default {
   display: flex;
   justify-content: center;
   background-color: #000000da;
-}
-.modal {
-  text-align: center;
-  background-color: white;
-  height: 500px;
-  width: 500px;
-  margin-top: 10%;
-  padding: 60px 0;
-  border-radius: 20px;
+  .modal {
+    text-align: center;
+    background-color: white;
+    height: 500px;
+    width: 500px;
+    margin-top: 10%;
+    padding: 60px 0;
+    border-radius: 20px;
+
+    .closeBtn {
+      background: green;
+      @include formSubmitBtn;
+      border-radius: 8px;
+    }
+  }
 }
 </style>
