@@ -37,24 +37,30 @@
           <span v-if="!iconsOnly" class="item-txt">Patients</span>
         </button>
       </router-link>
-      <div @click="$store.commit('signOut')">
+      <div @click="signOut">
         <button class="item">
           <!-- <font-awesome-icon icon="sign-out" /> -->
           <font-awesome-icon icon="power-off" />
           <span v-if="!iconsOnly" class="item-txt">Exit</span>
         </button>
       </div>
+      <Modal v-if="modalStatus" @close="modalStatus = false" />
     </div>
   </Transition>
 </template>
 
 <script>
+import Modal from "@/components/Modal.vue";
 export default {
   name: "Sidebar",
+  components: {
+    Modal,
+  },
   data() {
     return {
       items: [],
       isHidden: false,
+      modalStatus: false,
     };
   },
   methods: {
@@ -71,6 +77,11 @@ export default {
       if (this.$store.getters.isMobileSidebar) {
         this.$store.commit("toggleSidebar", false);
       }
+    },
+    signOut() {
+      // this.$store.commit("signOut");
+      console.log("sign out runs");
+      this.modalStatus = true;
     },
   },
   computed: {

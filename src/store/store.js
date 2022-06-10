@@ -53,13 +53,15 @@ const store = createStore({
       return state.isMobileSidebar;
     },
     sidebarStatus(state) {
-      return state.sidebarStatus;
+      // return state.sidebarStatus;
+      return window.innerWidth > 991;
     },
     iconsOnly(state) {
       return state.sidebarIconsOnly;
     },
     isAuthenticated(state) {
-      return state.user_data !== null;
+      // return state.user_data !== null;
+      return true;
     },
   },
 });
