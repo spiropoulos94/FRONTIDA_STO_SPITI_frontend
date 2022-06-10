@@ -1,7 +1,7 @@
 <template>
   <Transition name="slide">
     <div
-      v-if="isOpen"
+      v-show="isOpen"
       v-click-outside="clickOutsideSidebar"
       :class="`sidebar ${isMobileSidebar ? 'mobile' : ''} ${
         isOpen ? '' : 'closed'
