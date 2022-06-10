@@ -101,6 +101,8 @@ export default {
 
   width: 550px;
   margin-top: 25vh;
+  margin-left: 10px;
+  margin-right: 10px;
 
   .logo {
     max-width: 195px;
