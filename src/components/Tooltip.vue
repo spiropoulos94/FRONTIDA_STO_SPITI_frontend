@@ -34,7 +34,7 @@ export default {
   top: -20px;
   top: 0px;
   left: 70px;
-  width: 80px;
+  width: 100px;
   padding: 10px;
   background: #f4f4f4;
   background: white;

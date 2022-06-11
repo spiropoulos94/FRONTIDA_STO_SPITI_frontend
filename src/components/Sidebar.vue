@@ -7,7 +7,7 @@
         isOpen ? '' : 'closed'
       } ${iconsOnly ? 'icons-only' : ''}`"
     >
-      <Tooltip text="Dashboard">
+      <Tooltip position="right" :distance="70" text="Dashboard">
         <router-link @click="closeSidebar" to="/">
           <button class="item">
             <font-awesome-icon icon="home" />
@@ -15,7 +15,7 @@
           </button>
         </router-link>
       </Tooltip>
-      <Tooltip text="Reports">
+      <Tooltip position="right" :distance="70" text="Reports">
         <router-link @click="closeSidebar" to="/reports">
           <button class="item">
             <font-awesome-icon icon="folder" />
@@ -23,7 +23,7 @@
           </button>
         </router-link>
       </Tooltip>
-      <Tooltip text="Account">
+      <Tooltip position="right" :distance="70" text="Account">
         <router-link @click="closeSidebar" to="/account">
           <button class="item">
             <font-awesome-icon icon="cog" />
@@ -31,7 +31,7 @@
           </button>
         </router-link>
       </Tooltip>
-      <Tooltip text="Users">
+      <Tooltip position="right" :distance="70" text="Users">
         <router-link @click="closeSidebar" to="/users">
           <button class="item">
             <font-awesome-icon icon="user" />
@@ -39,7 +39,7 @@
           </button>
         </router-link>
       </Tooltip>
-      <Tooltip text="Patients">
+      <Tooltip position="right" :distance="70" text="Patients">
         <router-link @click="closeSidebar" to="/patients">
           <button class="item">
             <font-awesome-icon icon="user-injured" />
@@ -47,7 +47,7 @@
           </button>
         </router-link>
       </Tooltip>
-      <Tooltip text="Sign Out">
+      <Tooltip position="right" :distance="70" text="Sign Out">
         <div @click="signOut">
           <button class="item">
             <!-- <font-awesome-icon icon="sign-out" /> -->
