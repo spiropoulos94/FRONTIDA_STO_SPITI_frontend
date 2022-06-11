@@ -46,9 +46,8 @@ export default {
   transition: 0.2s;
   visibility: hidden;
 
-  box-shadow: 6px 8px 23px -7px rgba(0, 0, 0, 0.54);
-  -webkit-box-shadow: 6px 8px 23px -7px rgba(0, 0, 0, 0.54);
-  -moz-box-shadow: 6px 8px 23px -7px rgba(0, 0, 0, 0.54);
+  -webkit-box-shadow: -11px 18px 50px -13px #000000;
+  box-shadow: -11px 18px 50px -13px #000000;
 
   //   visibility: visible;
   //   opacity: 1;
