@@ -21,7 +21,7 @@ export default {
     };
   },
   created() {
-    // this.$store.commit("toggleSidebar", this.windowWidth > 991);
+    this.$store.commit("toggleSidebar", this.windowWidth > 991);
 
     window.addEventListener("resize", () => {
       if (window.innerWidth < 991) {
