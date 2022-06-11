@@ -2,7 +2,7 @@
   <header class="header">
     <!--  -->
     <div :style="{ order: isMobileSidebar ? 1 : 2 }" class="logo">
-      <img src="src/assets/LogoWhite.png" />
+      <!-- <img src="src/assets/LogoWhite.png" /> -->
     </div>
     <div :style="{ order: isMobileSidebar ? 2 : 1 }" class="header-controls">
       <div @click="toggleSidebar($event)" class="toggle-menu-btn">

@@ -3,6 +3,9 @@ import Home from "@/pages/Home.vue";
 import Reports from "@/pages/Reports.vue";
 import Account from "@/pages/Account.vue";
 import Users from "@/pages/Users.vue";
+import UserCreate from "@/components/user/UserCreate.vue";
+import UserList from "@/components/user/UserList.vue";
+import UserProfile from "@/components/user/UserProfile.vue";
 import Patients from "@/pages/Patients.vue";
 import Login from "@/pages/Login.vue";
 import store from "../store/store";
@@ -37,6 +40,29 @@ const routes = [
     path: "/users",
     name: "Users",
     component: Users,
+    children: [
+      {
+        path: "",
+        components: {
+          default: Users,
+          users: UserList,
+        },
+      },
+      {
+        path: ":id",
+        components: {
+          // default: Users,
+          users: UserProfile,
+        },
+      },
+      {
+        path: "create",
+        components: {
+          // default: Users,
+          users: UserCreate,
+        },
+      },
+    ],
   },
   {
     path: "/patients",
