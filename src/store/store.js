@@ -18,6 +18,36 @@ const initialState = {
         AMKA: 0,
         Email: "dev@dev.gr",
         Profession: { Role_id: 1, Title: "Admin" },
+        Roles: [
+          {
+            Role_id: 1,
+            Title: "Admin",
+          },
+          {
+            Role_id: 2,
+            Title: "Doctor",
+          },
+          {
+            Role_id: 4,
+            Title: "Family Helper",
+          },
+          {
+            Role_id: 3,
+            Title: "Nurse",
+          },
+          {
+            Role_id: 7,
+            Title: "Patient",
+          },
+          {
+            Role_id: 6,
+            Title: "Physiotherapist",
+          },
+          {
+            Role_id: 5,
+            Title: "Social Worker/ Psychologist",
+          },
+        ],
         Services: [
           { Service_id: 1, Title: "Measurement of vital points", Role_id: 3 },
           { Service_id: 2, Title: "Body wash", Role_id: 3 },
