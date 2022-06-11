@@ -31,6 +31,18 @@
   }
 }
 
+@mixin card {
+  background: #fff;
+  border-radius: var(--borderRadius);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: $borderRadius;
+  max-width: 1100px;
+  margin: auto;
+}
+
 @mixin rippleEffect {
   /* Ripple effect */
   background-position: center;
@@ -83,11 +95,11 @@
     // color: white;
   }
 
-  // &:hover {
-  //   box-sizing: border-box;
-  //   background: white;
-  //   color: $lightblue;
-  // }
+  &:hover {
+    box-sizing: border-box;
+    background: white;
+    color: $lightblue;
+  }
 }
 
 @mixin simpleButton {

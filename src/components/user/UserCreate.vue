@@ -21,7 +21,7 @@
     </div>
     <div class="field">
       <div class="control">
-        <button class="button is-primary">Create</button>
+        <button class="form-button create">Create</button>
       </div>
     </div>
   </form>
@@ -31,3 +31,40 @@ export default {
   name: "UserCreate",
 };
 </script>
+<style lang="scss">
+.user-view {
+  form {
+    @include card;
+    .field {
+      margin-bottom: 15px;
+      .label {
+        display: inline-block;
+        color: $lightblue;
+        margin-bottom: 10px;
+      }
+
+      .input {
+        // border: 1px solid $lightblue;
+        // border-radius: 4px;
+        // padding: 10px;
+        // width: 100%;
+        &:focus {
+          border-color: $lightblue;
+        }
+        @include formInput;
+        width: 100%;
+      }
+    }
+    .form-button {
+      @include formSubmitBtn;
+      width: 150px;
+      display: block;
+      margin-left: auto;
+      border-radius: $borderRadius;
+      height: 40px;
+      padding: 0;
+      font-size: 1rem;
+    }
+  }
+}
+</style>
