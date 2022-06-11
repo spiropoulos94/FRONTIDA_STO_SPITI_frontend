@@ -1,11 +1,61 @@
 <template>
-  <h1>Users</h1>
+  <!-- <h1>Users</h1> -->
   <div class="user-view">
+    <div class="user-controls">
+      <router-link v-if="usersHome" to="/users/create">
+        <button class="user-btn create">
+          Add
+          <font-awesome-icon icon="plus" size="sm" />
+        </button>
+      </router-link>
+      <router-link v-if="!usersHome" to="/users/">
+        <button class="user-btn return">
+          <font-awesome-icon icon="arrow-left" />
+          Back
+        </button>
+      </router-link>
+    </div>
     <router-view name="users"></router-view>
   </div>
 </template>
 <script>
 export default {
   name: "Users",
+
+  computed: {
+    usersHome() {
+      return this.$route.path === "/users/" || this.$route.path === "/users";
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.user-view {
+  .user-controls {
+    display: flex;
+    justify-content: end;
+  }
+}
+.user-btn {
+  background-color: #00bcd4;
+  color: #fff;
+  //   background: $bodyBg;
+  //   color: $lightblue;
+  &.return {
+    background: $bodyBg;
+    color: $lightblue;
+    svg {
+      margin-right: 5px;
+    }
+  }
+  &.create {
+    background: $bodyBg;
+    color: $lightblue;
+    svg {
+      margin-left: 5px;
+    }
+  }
+  @include simpleButton;
+}
+</style>

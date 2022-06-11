@@ -17,6 +17,8 @@ import {
   faUserInjured,
   faUser,
   faPowerOff,
+  faArrowLeft,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -38,6 +40,8 @@ library.add(
   faPowerOff,
   faUserInjured,
   faUser,
+  faArrowLeft,
+  faPlus,
   faSignOut
 );
 

@@ -92,7 +92,6 @@ export default {
     position: relative;
 
     .controlsBtn {
-      background: green;
       width: 100%;
       border: none;
 
