@@ -35,6 +35,7 @@ export default {
   .user-controls {
     display: flex;
     justify-content: end;
+    margin-bottom: 15px;
   }
 }
 .user-btn {

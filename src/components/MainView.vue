@@ -15,4 +15,15 @@ export default {
   width: 100%;
   padding: 30px 50px;
 }
+
+@media (max-width: 991px) {
+  .views-wrapper {
+    padding: 30px 30px;
+  }
+}
+@media (max-width: 500px) {
+  .views-wrapper {
+    padding: 30px 15px;
+  }
+}
 </style>
