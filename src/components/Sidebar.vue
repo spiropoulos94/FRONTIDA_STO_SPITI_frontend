@@ -93,7 +93,8 @@ export default {
     };
   },
   methods: {
-    clickOutsideSidebar() {
+    clickOutsideSidebar(e) {
+      e.stopPropagation();
       if (
         this.$store.getters.isMobileSidebar &&
         this.$store.getters.sidebarStatus

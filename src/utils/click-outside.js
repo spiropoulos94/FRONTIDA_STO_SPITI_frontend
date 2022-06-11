@@ -17,3 +17,5 @@ export default function directive(app) {
     },
   });
 }
+
+// Panta otan xrisimopoieis to click outside, frontise na vazeis event stop propagation sta elements ta opoia DEN theleis na trexei. Px otan kaneis klik na anoiksei i sidebar, DEN thes na to ws clickOutside, giati tha thn kleisei

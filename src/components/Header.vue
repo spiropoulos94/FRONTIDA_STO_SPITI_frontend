@@ -5,7 +5,7 @@
       <img src="src/assets/LogoWhite.png" />
     </div>
     <div :style="{ order: isMobileSidebar ? 2 : 1 }" class="header-controls">
-      <div @click="toggleSidebar()" class="toggle-menu-btn">
+      <div @click="toggleSidebar($event)" class="toggle-menu-btn">
         <font-awesome-icon
           :icon="isMobileSidebar && !isClosedSidebar ? 'xmark' : 'bars'"
         />
@@ -26,7 +26,9 @@ export default {
     return {};
   },
   methods: {
-    toggleSidebar(status) {
+    toggleSidebar(e, status) {
+      e.stopPropagation();
+
       if (this.isMobileSidebar) {
         this.$store.commit("toggleSidebar", status);
       } else {
