@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     clickOutsideSidebar(e) {
-      e.stopPropagation();
       if (
         this.$store.getters.isMobileSidebar &&
         this.$store.getters.sidebarStatus
