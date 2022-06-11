@@ -47,8 +47,8 @@ export default {
   visibility: hidden;
   pointer-events: none;
 
-  -webkit-box-shadow: -11px 18px 50px -13px #000000;
-  box-shadow: -11px 18px 50px -13px #000000;
+  -webkit-box-shadow: -5px 5px 15px -13px #000000;
+  box-shadow: -5px 5px 15px -13px #000000;
 
   //   visibility: visible;
   //   opacity: 1;
