@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 import _ from "lodash";
 import router from "@/router";
 
-const isDev = import.meta.env.VITE_ENV === "dev";
+const isDev = import.meta.env.VITE_ENV === "dfaxev";
 
 const initialState = {
   sidebarStatus: false,

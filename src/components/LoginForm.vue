@@ -17,7 +17,11 @@
 
       <label>
         Password
-        <input class="input" type="password" v-model="formData.password" />
+        <input
+          class="input"
+          :type="showPassword ? 'text' : 'password'"
+          v-model="formData.password"
+        />
         <span
           @click="clearInput('password')"
           v-if="formData.password"
@@ -25,6 +29,14 @@
           >x</span
         >
       </label>
+      <div class="show-password">
+        <span class="title">Show Password</span>
+        <input
+          v-model="showPassword"
+          type="checkbox"
+          class="show-password-checkbox"
+        />
+      </div>
 
       <button :disabled="loading" @click="submit" class="form-sbmt">
         <span v-if="!loading" class="text"> Login </span>
@@ -50,6 +62,7 @@ export default {
         password: import.meta.env.VITE_DEVPASS || "",
       },
       loading: false,
+      showPassword: false,
     };
   },
   methods: {
@@ -135,6 +148,22 @@ export default {
       @include formSubmitBtn;
       margin-top: 20px;
       height: 51px;
+    }
+
+    .show-password {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+
+      .title {
+        font-size: 13px;
+      }
+      .show-password-checkbox {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        margin-left: 10px;
+      }
     }
   }
 }
