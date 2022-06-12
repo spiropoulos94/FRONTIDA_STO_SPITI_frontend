@@ -85,7 +85,7 @@ export default {
       isSidebarHidden: false,
       modalStatus: false,
       modalContent: {
-        title: "Modal title",
+        title: "Sign out",
         // message: "You are about to log off.",
         confirm: "Exit",
         cancel: "Cancel",
