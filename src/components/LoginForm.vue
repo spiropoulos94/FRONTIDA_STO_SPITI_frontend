@@ -38,7 +38,7 @@
         />
       </div>
 
-      <Switch></Switch>
+      <Switch @toggle="toggleShowPassword" />
 
       <button :disabled="loading" @click="submit" class="form-sbmt">
         <span v-if="!loading" class="text"> Login </span>
@@ -82,6 +82,10 @@ export default {
     },
     clearInput(input) {
       this.formData[input] = "";
+    },
+    toggleShowPassword(status) {
+      // console.log(status);
+      this.showPassword = status;
     },
   },
 };

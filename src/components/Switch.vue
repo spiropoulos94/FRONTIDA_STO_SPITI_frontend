@@ -1,20 +1,27 @@
 <template>
-  <input class="toggle" type="checkbox" />
+  <input @change="toggle" v-model="status" class="toggle" type="checkbox" />
+  {{ status }}
 </template>
 
 <script>
 export default {
   name: "Switch",
-  props: {
-    status: {
-      type: Boolean,
-      default: false,
-    },
-  },
+  emits: ["toggle"],
+  //   props: {
+  //     status: {
+  //       type: Boolean,
+  //       default: false,
+  //     },
+  //   },
   data() {
     return {
-      //   status: false,
+      status: false,
     };
+  },
+  methods: {
+    toggle() {
+      this.$emit("toggle", this.status);
+    },
   },
 };
 </script>
@@ -39,6 +46,7 @@ export default {
 
 .toggle:before {
   content: "on off";
+  content: "";
   display: block;
   position: absolute;
   z-index: 2;
