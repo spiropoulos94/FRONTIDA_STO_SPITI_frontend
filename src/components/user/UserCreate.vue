@@ -8,20 +8,32 @@
       </div>
     </div>
     <div class="field">
-      <label class="label">Email</label>
+      <label class="label">Surname</label>
       <div class="control">
-        <input class="input" type="email" />
+        <input class="input" type="text" />
       </div>
     </div>
     <div class="field">
-      <label class="label">Password</label>
+      <label class="label">AFM</label>
       <div class="control">
-        <input class="input" type="password" />
+        <input class="input" type="number" />
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">AMKA</label>
+      <div class="control">
+        <input class="input" type="number" />
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Profession(Role_id)</label>
+      <div class="control">
+        <input class="input" type="text" />
       </div>
     </div>
     <div class="field">
       <div class="control">
-        <button class="form-button create">Create</button>
+        <button @click="submit" class="form-button create">Create</button>
       </div>
     </div>
   </form>
@@ -29,6 +41,12 @@
 <script>
 export default {
   name: "UserCreate",
+  methods: {
+    submit(e) {
+      e.preventDefault();
+      console.log("submit");
+    },
+  },
 };
 </script>
 <style lang="scss">
