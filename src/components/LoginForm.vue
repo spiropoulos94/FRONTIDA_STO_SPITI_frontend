@@ -38,6 +38,8 @@
         />
       </div>
 
+      <Switch></Switch>
+
       <button :disabled="loading" @click="submit" class="form-sbmt">
         <span v-if="!loading" class="text"> Login </span>
         <Spinner v-if="loading" />
@@ -50,10 +52,12 @@
 <script>
 import api from "@/mixins/api.js";
 import Spinner from "@/components/Spinner.vue";
+import Switch from "@/components/Switch.vue";
+import Switch1 from "./Switch.vue";
 
 export default {
   name: "LoginForm",
-  components: { Spinner },
+  components: { Spinner, Switch, Switch1 },
   mixins: [api],
   data() {
     return {
@@ -137,7 +141,7 @@ export default {
       position: relative;
     }
 
-    input {
+    .input {
       @include formInput;
       width: 100%;
       position: relative !important;
