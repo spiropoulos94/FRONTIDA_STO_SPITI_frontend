@@ -31,14 +31,13 @@
       </label>
       <div class="show-password">
         <span class="title">Show Password</span>
-        <input
+        <!-- <input
           v-model="showPassword"
           type="checkbox"
           class="show-password-checkbox"
-        />
+        /> -->
+        <Switch @toggle="toggleShowPassword" />
       </div>
-
-      <Switch @toggle="toggleShowPassword" />
 
       <button :disabled="loading" @click="submit" class="form-sbmt">
         <span v-if="!loading" class="text"> Login </span>
@@ -165,6 +164,7 @@ export default {
 
       .title {
         font-size: 13px;
+        margin-right: 10px;
       }
       .show-password-checkbox {
         width: 20px;

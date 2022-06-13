@@ -1,6 +1,6 @@
 <template>
   <input @change="toggle" v-model="status" class="toggle" type="checkbox" />
-  {{ status }}
+  <!-- {{ status }} -->
 </template>
 
 <script>
@@ -28,11 +28,13 @@ export default {
 
 <style>
 .toggle {
+  /*  */
+
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 62px;
-  height: 32px;
+  width: 38px;
+  height: 20px;
   display: inline-block;
   position: relative;
   border-radius: 50px;
@@ -50,8 +52,9 @@ export default {
   display: block;
   position: absolute;
   z-index: 2;
-  width: 28px;
-  height: 28px;
+
+  width: 16px;
+  height: 16px;
   background: #fff;
   left: 2px;
   top: 2px;
@@ -73,6 +76,6 @@ export default {
 }
 
 .toggle:checked:before {
-  left: 32px;
+  left: 20px;
 }
 </style>
