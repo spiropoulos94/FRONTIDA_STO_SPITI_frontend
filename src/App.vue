@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app2">
     <Header v-if="auth" />
     <main :style="'display: flex'">
       <Sidebar v-if="auth" />
@@ -45,8 +45,8 @@ export default {
 <style lang="scss">
 main {
   background-color: $bodyBg;
-  background-color: $bodyBg;
-  height: calc(100vh - $header-height);
+  // height: calc(100vh - $header-height);
+  min-height: calc(100vh - $header-height);
 }
 
 * {

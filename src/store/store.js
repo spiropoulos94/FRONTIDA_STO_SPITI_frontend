@@ -148,6 +148,9 @@ const store = createStore({
     isAuthenticated(state) {
       return state.user_data !== null;
     },
+    getRoles(state) {
+      return state.user_data.Roles;
+    },
   },
 });
 
