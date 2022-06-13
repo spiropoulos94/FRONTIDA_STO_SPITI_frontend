@@ -57,10 +57,15 @@ main {
 
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  background-color: $bodyBg;
+  background-color: lighten($lightblue, 25);
 }
 
 #app {
   // text-align: center;
+  max-width: 2000px;
+  max-width: 2440px;
+  margin: auto;
 }
 :root {
   --white: #f9f9f9;
