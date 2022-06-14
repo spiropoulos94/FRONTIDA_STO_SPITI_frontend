@@ -3,12 +3,13 @@ import { createStore } from "vuex";
 import _ from "lodash";
 import router from "@/router";
 
-const isDev = import.meta.env.VITE_ENV === "dev";
+const isDev = import.meta.env.VITE_ENV === "defasv";
 
 const initialState = {
   sidebarStatus: false,
   isMobileSidebar: window.innerWidth < 991,
   sidebarIconsOnly: false,
+  homepath: window.location.origin,
   user_data: isDev
     ? {
         User_id: 21,
@@ -107,6 +108,7 @@ const store = createStore({
       state.user_data = {};
       state.user_data = payload.user;
       state.user_data.token = payload.token;
+      state.user_data.Roles = payload.roles;
       router.push("/");
       state.sidebarStatus = window.innerWidth > 991;
     },
@@ -150,6 +152,9 @@ const store = createStore({
     },
     getRoles(state) {
       return state.user_data.Roles;
+    },
+    getHomepath(state) {
+      return state.homepath;
     },
   },
 });

@@ -14,18 +14,20 @@
       <el-input :disabled="loading" v-model="formData.Surname"></el-input>
     </el-form-item>
     <el-form-item label="AFM" prop="AFM">
-      <el-input
+      <el-input-number
+        :controls="false"
         :disabled="loading"
         type="number"
         v-model="formData.AFM"
-      ></el-input>
+      ></el-input-number>
     </el-form-item>
     <el-form-item label="AMKA" prop="AMKA">
-      <el-input
+      <el-input-number
+        :controls="false"
         :disabled="loading"
         type="number"
         v-model="formData.AMKA"
-      ></el-input>
+      ></el-input-number>
     </el-form-item>
     <el-form-item label="Profession" prop="Role_id">
       <el-select
@@ -54,19 +56,35 @@
     </div>
   </el-form>
   <div v-if="mode === 'response'" class="response">
-    <h3>Response</h3>
+    <h3>User created!</h3>
+    <p>
+      Link :
+      <span>{{ url }}/{{ response["encodedFields(base64)"] }} </span>
+    </p>
   </div>
   <pre>{{ formData }}</pre>
+  <pre>{{ response }}</pre>
 </template>
 <script>
 import Spinner from "@/components/Spinner.vue";
+import api from "@/mixins/api";
 export default {
   name: "UserCreate",
   components: { Spinner },
+  mixins: [api],
   data() {
     return {
       loading: false,
       mode: "create",
+      mode: "response",
+      response: {},
+      response: {
+        "encodedFields(base64)":
+          "eyJBRk0iOjQyMSwiQU1LQSI6MTI0LCJOYW1lIjoiZ2FzZGdhc2QiLCJQcm9mZXNzaW9uIjo2LCJTdXJuYW1lIjoiZ2FzZGdzZGEifQ==",
+        message: "User added",
+        ok: true,
+        "rows affected": 1,
+      },
       formData: {
         Name: "",
         Surname: "",
@@ -120,15 +138,23 @@ export default {
     availableRoles() {
       return this.$store.getters.getRoles;
     },
+    url() {
+      return this.$store.getters.getHomepath;
+    },
   },
   methods: {
-    submitForm(e, formName) {
+    async submitForm(e, formName) {
       e.preventDefault();
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          alert("submit!");
+          // this.loading = true;
+          let res = await this.adminCreateuser(this.formData);
+          console.log(res);
+          if (res.ok) {
+            this.mode = "response";
+            this.response = res;
+          }
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -166,6 +192,13 @@ export default {
         }
       }
 
+      .el-input-number {
+        width: 100%;
+        input {
+          text-align: start;
+        }
+      }
+
       .el-select {
         width: 100%;
       }
@@ -188,6 +221,10 @@ export default {
       padding: 0;
       font-size: 1rem;
     }
+  }
+
+  .response {
+    @include card;
   }
 }
 </style>
