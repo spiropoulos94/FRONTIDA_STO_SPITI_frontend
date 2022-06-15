@@ -53,6 +53,7 @@ const api = {
       });
 
       let data = await res.json();
+      console.log({ data });
 
       return data;
     },

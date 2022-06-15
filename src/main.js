@@ -22,6 +22,8 @@ import {
   faPowerOff,
   faArrowLeft,
   faPlus,
+  faCopy,
+  faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -45,6 +47,8 @@ library.add(
   faUser,
   faArrowLeft,
   faPlus,
+  faCheckCircle,
+  faCopy,
   faSignOut
 );
 

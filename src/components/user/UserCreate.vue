@@ -57,10 +57,20 @@
   </el-form>
   <div v-if="mode === 'response'" class="response">
     <h3>User created!</h3>
-    <p>
-      Link :
-      <span>{{ url }}/{{ response["encodedFields(base64)"] }} </span>
-    </p>
+    <span>Sent user this link to complete sign up</span>
+    <el-input
+      ref="userlink"
+      v-model="userLink"
+      :rows="2"
+      type="textarea"
+      placeholder="Please input"
+    />
+    <button @click="copyLink" class="response-button">
+      <font-awesome-icon v-if="linkCopied" icon="check-circle" />
+      <font-awesome-icon v-if="!linkCopied" icon="copy" />
+
+      Copy
+    </button>
   </div>
   <pre>{{ formData }}</pre>
   <pre>{{ response }}</pre>
@@ -75,6 +85,7 @@ export default {
   data() {
     return {
       loading: false,
+      linkCopied: false,
       mode: "create",
       mode: "response",
       response: {},
@@ -141,23 +152,46 @@ export default {
     url() {
       return this.$store.getters.getHomepath;
     },
+    userLink() {
+      return `${this.url}/sign-up/${this.response["encodedFields(base64)"]}`;
+    },
   },
   methods: {
+    copyLink() {
+      this.$refs.userlink.select();
+      document.execCommand("copy");
+      this.linkCopied = true;
+      setTimeout(() => {
+        this.linkCopied = false;
+      }, 3000);
+    },
     async submitForm(e, formName) {
       e.preventDefault();
+      this.loading = true;
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           // this.loading = true;
           let res = await this.adminCreateuser(this.formData);
           console.log(res);
           if (res.ok) {
-            this.mode = "response";
+            this.$message({
+              message: "User succesfully created.",
+              type: "success",
+            });
             this.response = res;
+            this.mode = "response";
+          } else {
+            this.$message({
+              message: res.error,
+              duration: 5000,
+              type: "error",
+            });
           }
         } else {
           return false;
         }
       });
+      this.loading = false;
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
@@ -225,6 +259,25 @@ export default {
 
   .response {
     @include card;
+
+    h3 {
+      margin-bottom: 15px;
+    }
+
+    span {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 0.7rem;
+    }
+
+    .response-button {
+      @include simpleButton;
+      @include rippleEffect;
+      display: block;
+      margin: 0;
+      margin-top: 10px;
+      margin-left: auto;
+    }
   }
 }
 </style>
