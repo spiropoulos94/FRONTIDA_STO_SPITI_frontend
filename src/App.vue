@@ -1,7 +1,7 @@
 <template>
   <div id="app2">
     <Header v-if="auth" />
-    <main :style="'display: flex'">
+    <main :style="'display: flex'" :class="auth ? '' : 'fullHeight'">
       <Sidebar v-if="auth" />
       <MainView />
     </main>
@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style lang="scss">
+.fullHeight {
+  height: 100vh !important;
+}
 main {
   background-color: $bodyBg;
   // height: calc(100vh - $header-height);
