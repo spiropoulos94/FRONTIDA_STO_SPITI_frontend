@@ -153,7 +153,7 @@ export default {
       return this.$store.getters.getHomepath;
     },
     userLink() {
-      return `${this.url}/sign-up/${this.response["encodedFields(base64)"]}`;
+      return `${window.location.origin}/sign-up/${this.response["encodedFields(base64)"]}`;
     },
   },
   methods: {
