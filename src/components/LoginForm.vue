@@ -1,16 +1,16 @@
 <template>
   <div class="form-wrapper">
-    <div class="form-card">
+    <div v-if="formType === 'login'" class="form-card">
       <div class="logo">
         <img src="@/assets/logoWhite.png" />
       </div>
       <form>
         <label>
           Email
-          <input class="input" type="text" v-model="formData.email" />
+          <input class="input" type="text" v-model="loginFormData.email" />
           <span
             @click="clearInput('email')"
-            v-if="formData.email"
+            v-if="loginFormData.email"
             class="clear-input"
             >x</span
           >
@@ -21,11 +21,11 @@
           <input
             class="input"
             :type="showPassword ? 'text' : 'password'"
-            v-model="formData.password"
+            v-model="loginFormData.password"
           />
           <span
             @click="clearInput('password')"
-            v-if="formData.password"
+            v-if="loginFormData.password"
             class="clear-input"
             >x</span
           >
@@ -45,7 +45,122 @@
           <Spinner v-if="loading" />
         </button>
       </form>
-      <!-- <pre>{{ formData }}</pre> -->
+      <!-- <pre>{{ loginFormData }}</pre> -->
+    </div>
+    <div v-if="formType === 'signup'" class="form-card">
+      <div class="logo">
+        <img src="@/assets/logoWhite.png" />
+      </div>
+      <form>
+        <label>
+          Name
+          <input class="input" type="text" v-model="signupFormData.name" />
+          <span
+            @click="clearInput('name')"
+            v-if="signupFormData.name"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          Surname
+          <input class="input" type="text" v-model="signupFormData.surname" />
+          <span
+            @click="clearInput('surname')"
+            v-if="signupFormData.surname"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          Profession
+          <input
+            class="input"
+            type="text"
+            v-model="signupFormData.profession.Title"
+          />
+          <span
+            @click="clearInput('profession.title')"
+            v-if="signupFormData.profession.Title"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          AFM
+          <input class="input" type="number" v-model="signupFormData.AFM" />
+          <span
+            @click="clearInput('AFM')"
+            v-if="signupFormData.AFM"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          AMKA
+          <input class="input" type="number" v-model="signupFormData.AMKA" />
+          <span
+            @click="clearInput('AMKA')"
+            v-if="signupFormData.AMKA"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          Email
+          <input class="input" type="text" v-model="signupFormData.email" />
+          <span
+            @click="clearInput('email')"
+            v-if="signupFormData.email"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+
+        <label>
+          Password
+          <input
+            class="input"
+            :type="showPassword ? 'text' : 'password'"
+            v-model="signupFormData.password"
+          />
+          <span
+            @click="clearInput('password')"
+            v-if="signupFormData.password"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          Password Confirm
+          <input
+            class="input"
+            :type="showPassword ? 'text' : 'password'"
+            v-model="signupFormData.passwordConfirm"
+          />
+          <span
+            @click="clearInput('passwordConfirm')"
+            v-if="signupFormData.passwordConfirm"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <div class="show-password">
+          <span class="title">Show Password</span>
+          <!-- <input
+          v-model="showPassword"
+          type="checkbox"
+          class="show-password-checkbox"
+        /> -->
+          <Switch @toggle="toggleShowPassword" />
+        </div>
+
+        <button :disabled="loading" @click="submit" class="form-sbmt">
+          <span v-if="!loading" class="text"> Login </span>
+          <Spinner v-if="loading" />
+        </button>
+      </form>
+      <!-- <pre>{{ signupFormData }}</pre> -->
     </div>
   </div>
 </template>
@@ -62,9 +177,24 @@ export default {
   mixins: [api],
   data() {
     return {
-      formData: {
+      formType: "login",
+      formType: "signup",
+      loginFormData: {
         email: import.meta.env.VITE_DEVMAIL || "",
         password: import.meta.env.VITE_DEVPASS || "",
+      },
+      signupFormData: {
+        email: import.meta.env.VITE_DEVMAIL || "",
+        name: "",
+        surname: "",
+        profession: {
+          Role_id: "",
+          Title: "",
+        },
+        AFM: null,
+        AMKA: null,
+        password: import.meta.env.VITE_DEVPASS || "",
+        passwordConfirm: import.meta.env.VITE_DEVPASS || "",
       },
       loading: false,
       showPassword: false,
@@ -74,7 +204,7 @@ export default {
     async submit(e) {
       e.preventDefault();
       this.loading = true;
-      let res = await this.login(this.formData);
+      let res = await this.login(this.loginFormData);
       console.log({ res });
       this.loading = false;
       if (res.ok) {
@@ -82,7 +212,11 @@ export default {
       }
     },
     clearInput(input) {
-      this.formData[input] = "";
+      if (this.formType === "login") {
+        this.loginFormData[input] = "";
+      } else if (this.formType === "login") {
+        this.signupFormData[input] = "";
+      }
     },
     toggleShowPassword(status) {
       // console.log(status);
