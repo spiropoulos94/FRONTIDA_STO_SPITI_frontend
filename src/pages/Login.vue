@@ -1,8 +1,8 @@
 <template>
   <div class="login-page">
-    <div class="login-content">
-      <LoginFormVue />
-    </div>
+    <!-- <div class="login-wrapper"> -->
+    <LoginFormVue />
+    <!-- </div> -->
   </div>
 </template>
 
@@ -15,9 +15,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .login-page {
-  //   background: black;
+  // background: black;
   position: absolute;
   left: 0;
   right: 0;
@@ -38,15 +38,15 @@ export default {
     opacity: 0.75;
   }
 
-  .login-content {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    position: relative;
+  // .login-wrapper {
+  //   display: flex;
+  //   width: 100%;
+  //   height: 100vh;
+  //   position: relative;
 
-    justify-content: center;
-    align-items: center;
-    align-items: start;
-  }
+  //   justify-content: center;
+  //   align-items: center;
+  //   align-items: start;
+  // }
 }
 </style>

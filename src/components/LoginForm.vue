@@ -1,50 +1,52 @@
 <template>
   <div class="form-wrapper">
-    <div class="logo">
-      <img src="@/assets/logoWhite.png" />
-    </div>
-    <form>
-      <label>
-        Email
-        <input class="input" type="text" v-model="formData.email" />
-        <span
-          @click="clearInput('email')"
-          v-if="formData.email"
-          class="clear-input"
-          >x</span
-        >
-      </label>
+    <div class="form-card">
+      <div class="logo">
+        <img src="@/assets/logoWhite.png" />
+      </div>
+      <form>
+        <label>
+          Email
+          <input class="input" type="text" v-model="formData.email" />
+          <span
+            @click="clearInput('email')"
+            v-if="formData.email"
+            class="clear-input"
+            >x</span
+          >
+        </label>
 
-      <label>
-        Password
-        <input
-          class="input"
-          :type="showPassword ? 'text' : 'password'"
-          v-model="formData.password"
-        />
-        <span
-          @click="clearInput('password')"
-          v-if="formData.password"
-          class="clear-input"
-          >x</span
-        >
-      </label>
-      <div class="show-password">
-        <span class="title">Show Password</span>
-        <!-- <input
+        <label>
+          Password
+          <input
+            class="input"
+            :type="showPassword ? 'text' : 'password'"
+            v-model="formData.password"
+          />
+          <span
+            @click="clearInput('password')"
+            v-if="formData.password"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <div class="show-password">
+          <span class="title">Show Password</span>
+          <!-- <input
           v-model="showPassword"
           type="checkbox"
           class="show-password-checkbox"
         /> -->
-        <Switch @toggle="toggleShowPassword" />
-      </div>
+          <Switch @toggle="toggleShowPassword" />
+        </div>
 
-      <button :disabled="loading" @click="submit" class="form-sbmt">
-        <span v-if="!loading" class="text"> Login </span>
-        <Spinner v-if="loading" />
-      </button>
-    </form>
-    <!-- <pre>{{ formData }}</pre> -->
+        <button :disabled="loading" @click="submit" class="form-sbmt">
+          <span v-if="!loading" class="text"> Login </span>
+          <Spinner v-if="loading" />
+        </button>
+      </form>
+      <!-- <pre>{{ formData }}</pre> -->
+    </div>
   </div>
 </template>
 
@@ -111,7 +113,17 @@ export default {
     background: white;
   }
 }
+
 .form-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  align-items: start;
+}
+.form-card {
   background: white;
   border-radius: calc(2 * $borderRadius);
   display: flex;

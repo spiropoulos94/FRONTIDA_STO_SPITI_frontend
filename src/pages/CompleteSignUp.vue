@@ -1,5 +1,5 @@
 <template>
-  <div class="signup-wrapper">
+  <div class="signup-page">
     <login-form-vue />
   </div>
 </template>
@@ -13,16 +13,13 @@ export default {
 </script>
 
 <style lang="scss">
-.signup-wrapper {
-  background: red;
+.signup-page {
+  // background: red;
+  background: lighten($lightblue, 25);
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
