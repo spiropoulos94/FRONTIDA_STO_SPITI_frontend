@@ -11,7 +11,6 @@ import Login from "@/pages/Login.vue";
 import store from "../store/store";
 import NotFound from "@/components/NotFound.vue";
 import CompleteSignUp from "@/pages/CompleteSignUp.vue";
-
 const routes = [
   {
     path: "/login",
@@ -26,6 +25,11 @@ const routes = [
     },
   },
 
+  {
+    path: "/signup/:hash",
+    name: "signup",
+    component: CompleteSignUp,
+  },
   {
     path: "/reports",
     name: "Reports",
@@ -100,6 +104,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (
+    to.name === "signup" &&
+    to.params.hash.length &&
+    !store.getters.isAuthenticated
+  ) {
+    console.log({ to });
+    debugger;
+    next();
+  }
   if (to.name !== "login" && !store.getters.isAuthenticated) {
     next({
       path: "login",

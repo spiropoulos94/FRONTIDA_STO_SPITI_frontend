@@ -71,9 +71,9 @@
 
       Copy
     </button>
+    <pre>{{ formData }}</pre>
+    <pre>{{ response }}</pre>
   </div>
-  <pre>{{ formData }}</pre>
-  <pre>{{ response }}</pre>
 </template>
 <script>
 import Spinner from "@/components/Spinner.vue";
@@ -153,7 +153,7 @@ export default {
       return this.$store.getters.getHomepath;
     },
     userLink() {
-      return `${window.location.origin}/sign-up/${this.response["encodedFields(base64)"]}`;
+      return `${window.location.origin}/signup/${this.response["encodedFields(base64)"]}`;
     },
   },
   methods: {
