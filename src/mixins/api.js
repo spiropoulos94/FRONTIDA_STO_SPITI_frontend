@@ -15,8 +15,6 @@ const api = {
   methods: {
     async login(formData) {
       let { email, password } = formData;
-      console.log("trying to login!");
-      console.log(`${this.url}/login`, email, password);
 
       let res = await fetch(`${this.url}/login`, {
         headers: this.headers,
@@ -34,13 +32,11 @@ const api = {
       return data;
     },
     async adminCreateuser(formData) {
-      console.log(formData);
       const { Name, Surname, AFM, AMKA, Role_id } = formData;
       let Profession = {
         Role_id,
       };
       this.headers["Authorization"] = "Bearer " + this.api_token;
-      console.log({ headers: this.headers });
       let res = await fetch(`${this.url}/user/admin-create`, {
         headers: this.headers,
         method: "POST",
@@ -53,9 +49,17 @@ const api = {
       });
 
       let data = await res.json();
-      console.log({ data });
 
       return data;
+    },
+
+    async listUsers() {
+      this.headers["Authorization"] = "Bearer " + this.api_token;
+      let res = await fetch(`${this.url}/users/`, {
+        headers: this.headers,
+      });
+      let data = await res.json();
+      console.log({ data });
     },
   },
 };
