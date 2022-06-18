@@ -175,10 +175,14 @@ export default {
   name: "LoginForm",
   components: { Spinner, Switch, Switch1 },
   mixins: [api],
+  props: {
+    formType: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
-      formType: "login",
-      formType: "signup",
       loginFormData: {
         email: import.meta.env.VITE_DEVMAIL || "",
         password: import.meta.env.VITE_DEVPASS || "",

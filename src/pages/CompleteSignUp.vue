@@ -1,6 +1,6 @@
 <template>
   <div class="signup-page">
-    <login-form-vue />
+    <login-form-vue formType="signup" />
   </div>
 </template>
 
@@ -21,5 +21,7 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
+
+  @include entryPage;
 }
 </style>

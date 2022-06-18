@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
     <!-- <div class="login-wrapper"> -->
-    <LoginFormVue />
+    <LoginFormVue formType="login" />
     <!-- </div> -->
   </div>
 </template>
@@ -23,6 +23,8 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
+
+  @include entryPage;
 
   &:before {
     content: "";
