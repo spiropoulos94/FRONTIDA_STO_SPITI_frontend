@@ -16,16 +16,12 @@ export default {
 </script>
 
 <style lang="scss">
-.login-page {
-  // background: black;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-
+.login-page,
+.signup-page {
   @include entryPage;
+}
 
+.login-page {
   &:before {
     content: "";
     background-image: url("https://frontidastospiti.com/wp-content/uploads/2022/05/1_7UA2Rd0xs6AVxtASN-UaA-scaled.jpeg");
@@ -39,16 +35,5 @@ export default {
     left: 0px;
     opacity: 0.75;
   }
-
-  // .login-wrapper {
-  //   display: flex;
-  //   width: 100%;
-  //   height: 100vh;
-  //   position: relative;
-
-  //   justify-content: center;
-  //   align-items: center;
-  //   align-items: start;
-  // }
 }
 </style>

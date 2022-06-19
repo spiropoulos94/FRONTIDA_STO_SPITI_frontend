@@ -110,7 +110,6 @@ router.beforeEach((to, from, next) => {
     !store.getters.isAuthenticated
   ) {
     console.log({ to });
-    debugger;
     next();
   }
   if (to.name !== "login" && !store.getters.isAuthenticated) {

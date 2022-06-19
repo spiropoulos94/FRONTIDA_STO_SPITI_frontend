@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss">
 .fullHeight {
-  height: 100vh !important;
+  min-height: 100vh !important;
 }
 main {
   background-color: $bodyBg;
