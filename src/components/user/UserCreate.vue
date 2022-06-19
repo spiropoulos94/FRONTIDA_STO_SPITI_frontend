@@ -91,7 +91,7 @@ export default {
       response: {},
       response: {
         "encodedFields(base64)":
-          "eyJBRk0iOjQyMSwiQU1LQSI6MTI0LCJOYW1lIjoiZ2FzZGdhc2QiLCJQcm9mZXNzaW9uIjo2LCJTdXJuYW1lIjoiZ2FzZGdzZGEifQ==",
+          "eyJBRk0iOjEyMjMsIkFNS0EiOjEyMywiTmFtZSI6IkNyZWF0ZWQiLCJQcm9mZXNzaW9uIjp7IlJvbGVfaWQiOjYsIlRpdGxlIjoiUGh5c2lvdGhlcmFwaXN0In0sIlN1cm5hbWUiOiJVc2VyIn0=",
         message: "User added",
         ok: true,
         "rows affected": 1,

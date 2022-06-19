@@ -56,57 +56,78 @@
       <div class="form-inputs">
         <label>
           Name
-          <input class="input" type="text" v-model="signupFormData.name" />
-          <span
+          <input
+            disabled
+            class="input"
+            type="text"
+            v-model="signupFormData.name"
+          />
+          <!-- <span
             @click="clearInput('name')"
             v-if="signupFormData.name"
             class="clear-input"
             >x</span
-          >
+          > -->
         </label>
         <label>
           Surname
-          <input class="input" type="text" v-model="signupFormData.surname" />
-          <span
+          <input
+            disabled
+            class="input"
+            type="text"
+            v-model="signupFormData.surname"
+          />
+          <!-- <span
             @click="clearInput('surname')"
             v-if="signupFormData.surname"
             class="clear-input"
             >x</span
-          >
+          > -->
         </label>
         <label>
           Profession
           <input
+            disabled
             class="input"
             type="text"
             v-model="signupFormData.profession.Title"
           />
-          <span
+          <!-- <span
             @click="clearInput('profession.title')"
             v-if="signupFormData.profession.Title"
             class="clear-input"
             >x</span
-          >
+          > -->
         </label>
         <label>
           AFM
-          <input class="input" type="number" v-model="signupFormData.AFM" />
-          <span
+          <input
+            disabled
+            class="input"
+            type="number"
+            v-model="signupFormData.AFM"
+          />
+          <!-- <span
             @click="clearInput('AFM')"
             v-if="signupFormData.AFM"
             class="clear-input"
             >x</span
-          >
+          > -->
         </label>
         <label>
           AMKA
-          <input class="input" type="number" v-model="signupFormData.AMKA" />
-          <span
+          <input
+            disabled
+            class="input"
+            type="number"
+            v-model="signupFormData.AMKA"
+          />
+          <!-- <span
             @click="clearInput('AMKA')"
             v-if="signupFormData.AMKA"
             class="clear-input"
             >x</span
-          >
+          > -->
         </label>
         <label>
           Email
@@ -138,7 +159,7 @@
           Password Confirm
           <input
             class="input"
-            type="password"
+            :type="showPassword ? 'text' : 'password'"
             v-model="signupFormData.passwordConfirm"
           />
           <span
@@ -191,7 +212,7 @@ export default {
         password: import.meta.env.VITE_DEVPASS || "",
       },
       signupFormData: {
-        email: import.meta.env.VITE_DEVMAIL || "",
+        email: "",
         name: "",
         surname: "",
         profession: {
@@ -207,6 +228,25 @@ export default {
       showPassword: false,
     };
   },
+  computed: {
+    prefilledInfo() {
+      if (this.formType === "signup" && this.$route.params.hash) {
+        return JSON.parse(atob(this.$route.params.hash));
+      } else {
+        return null;
+      }
+    },
+  },
+  mounted() {
+    console.log("form mounted", this.prefilledInfo);
+    if (this.prefilledInfo) {
+      this.signupFormData.name = this.prefilledInfo.Name;
+      this.signupFormData.surname = this.prefilledInfo.Surname;
+      this.signupFormData.profession = this.prefilledInfo.Profession;
+      this.signupFormData.AFM = this.prefilledInfo.AFM;
+      this.signupFormData.AMKA = this.prefilledInfo.AMKA;
+    }
+  },
   methods: {
     async submit(e) {
       e.preventDefault();
@@ -219,9 +259,10 @@ export default {
       }
     },
     clearInput(input) {
+      console.log("clearrInput", input);
       if (this.formType === "login") {
         this.loginFormData[input] = "";
-      } else if (this.formType === "login") {
+      } else if (this.formType === "signup") {
         this.signupFormData[input] = "";
       }
     },
@@ -317,6 +358,7 @@ export default {
       display: flex;
       align-items: center;
       margin-left: auto;
+      margin-top: 10px;
 
       .title {
         font-size: 13px;
