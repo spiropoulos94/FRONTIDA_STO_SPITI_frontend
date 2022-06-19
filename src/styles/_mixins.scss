@@ -41,6 +41,9 @@
   border-radius: $borderRadius;
   max-width: 1100px;
   margin: auto;
+
+  -webkit-box-shadow: 0px 0px 27px 2px rgb(32 32 32);
+  box-shadow: 0px 0px 27px 2px rgb(32 32 32);
 }
 
 @mixin rippleEffect {

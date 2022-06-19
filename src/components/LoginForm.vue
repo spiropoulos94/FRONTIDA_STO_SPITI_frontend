@@ -105,7 +105,7 @@
             disabled
             class="input"
             type="text"
-            v-model="signupFormData.profession.Title"
+            v-model="signupFormData.Profession.Title"
           />
           <!-- <span
             @click="clearInput('profession.title')"
@@ -395,6 +395,7 @@ export default {
 }
 
 .form-card {
+  @include card;
   position: relative;
   background: white;
   border-radius: calc(2 * $borderRadius);
