@@ -67,131 +67,49 @@
     <div class="logo">
       <img src="@/assets/logoWhite.png" />
     </div>
-    <form>
+    <el-form :model="signupFormData" :rules="rules" ref="signupFormData">
       <div class="form-inputs">
-        <label>
-          Name
-          <input
-            disabled
-            class="input"
-            type="text"
-            v-model="signupFormData.name"
-          />
-          <!-- <span
-            @click="clearInput('name')"
-            v-if="signupFormData.name"
-            class="clear-input"
-            >x</span
-          > -->
-        </label>
-        <label>
-          Surname
-          <input
-            disabled
-            class="input"
-            type="text"
-            v-model="signupFormData.surname"
-          />
-          <!-- <span
-            @click="clearInput('surname')"
-            v-if="signupFormData.surname"
-            class="clear-input"
-            >x</span
-          > -->
-        </label>
-        <label>
-          Profession
-          <input
-            disabled
-            class="input"
-            type="text"
+        <el-form-item label="Name" prop="Name">
+          <el-input :disabled="true" v-model="signupFormData.Name"></el-input>
+        </el-form-item>
+        <el-form-item label="Surname" prop="Surname">
+          <el-input
+            :disabled="true"
+            v-model="signupFormData.Surname"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="Profession" prop="Profession">
+          <el-input
+            :disabled="true"
             v-model="signupFormData.Profession.Title"
-          />
-          <!-- <span
-            @click="clearInput('profession.title')"
-            v-if="signupFormData.profession.Title"
-            class="clear-input"
-            >x</span
-          > -->
-        </label>
-        <label>
-          AFM
-          <input
-            disabled
-            class="input"
-            type="number"
-            v-model="signupFormData.AFM"
-          />
-          <!-- <span
-            @click="clearInput('AFM')"
-            v-if="signupFormData.AFM"
-            class="clear-input"
-            >x</span
-          > -->
-        </label>
-        <label>
-          AMKA
-          <input
-            disabled
-            class="input"
-            type="number"
-            v-model="signupFormData.AMKA"
-          />
-          <!-- <span
-            @click="clearInput('AMKA')"
-            v-if="signupFormData.AMKA"
-            class="clear-input"
-            >x</span
-          > -->
-        </label>
-        <label>
-          Email
-          <input class="input" type="text" v-model="signupFormData.email" />
-          <span
-            @click="clearInput('email')"
-            v-if="signupFormData.email"
-            class="clear-input"
-            >x</span
-          >
-        </label>
-
-        <label>
-          Password
-          <input
-            class="input"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="AFM" prop="AFM">
+          <el-input :disabled="true" v-model="signupFormData.AFM"></el-input>
+        </el-form-item>
+        <el-form-item label="AMKA" prop="AMKA">
+          <el-input :disabled="true" v-model="signupFormData.AMKA"></el-input>
+        </el-form-item>
+        <el-form-item label="Email" prop="Email">
+          <el-input clearable v-model="signupFormData.Email"></el-input>
+        </el-form-item>
+        <el-form-item label="Password" prop="Password">
+          <el-input
             :type="showPassword ? 'text' : 'password'"
-            v-model="signupFormData.password"
-          />
-          <span
-            @click="clearInput('password')"
-            v-if="signupFormData.password"
-            class="clear-input"
-            >x</span
-          >
-        </label>
-        <!-- to password confirm epirreazei to width -->
-        <label>
-          Password Confirm
-          <input
-            class="input"
+            clearable
+            v-model="signupFormData.Password"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="Confirm Password" prop="PasswordConfirm">
+          <el-input
             :type="showPassword ? 'text' : 'password'"
-            v-model="signupFormData.passwordConfirm"
-          />
-          <span
-            @click="clearInput('passwordConfirm')"
-            v-if="signupFormData.passwordConfirm"
-            class="clear-input"
-            >x</span
-          >
-        </label>
+            clearable
+            v-model="signupFormData.Password"
+          ></el-input>
+        </el-form-item>
       </div>
       <div class="show-password">
         <span class="title">Show Password</span>
-        <!-- <input
-          v-model="showPassword"
-          type="checkbox"
-          class="show-password-checkbox"
-        /> -->
         <Switch @toggle="toggleShowPassword" />
       </div>
 
@@ -199,7 +117,7 @@
         <span v-if="!loading" class="text"> Sign Up </span>
         <Spinner v-if="loading" />
       </button>
-    </form>
+    </el-form>
     <!-- <pre>{{ signupFormData }}</pre> -->
   </div>
 </template>
@@ -235,13 +153,13 @@ export default {
             trigger: ["blur", "change"],
           },
         ],
-        Name: [
-          {
-            required: true,
-            message: "Please input Name",
-            trigger: "blur",
-          },
-        ],
+        // Name: [
+        //   {
+        //     required: true,
+        //     message: "Please input Name",
+        //     trigger: "blur",
+        //   },
+        // ],
         Password: [
           {
             required: true,
@@ -249,29 +167,36 @@ export default {
             trigger: "change",
           },
         ],
-        Surname: [
+        PasswordConfirm: [
           {
             required: true,
-            message: "Please input Surname",
-            trigger: "blur",
+            message: "Please input password",
+            trigger: "change",
           },
         ],
-        AFM: [
-          {
-            // type: "date",
-            required: true,
-            message: "Please pick a date",
-            trigger: "blur",
-          },
-        ],
-        AMKA: [
-          {
-            // type: "date",
-            required: true,
-            message: "Please pick a time",
-            trigger: "blur",
-          },
-        ],
+        // Surname: [
+        //   {
+        //     required: true,
+        //     message: "Please input Surname",
+        //     trigger: "blur",
+        //   },
+        // ],
+        // AFM: [
+        //   {
+        //     // type: "date",
+        //     required: true,
+        //     message: "Please pick a date",
+        //     trigger: "blur",
+        //   },
+        // ],
+        // AMKA: [
+        //   {
+        //     // type: "date",
+        //     required: true,
+        //     message: "Please pick a time",
+        //     trigger: "blur",
+        //   },
+        // ],
         Role_id: [
           {
             // type: "array",
@@ -314,11 +239,9 @@ export default {
   mounted() {
     console.log("form mounted", this.prefilledInfo);
     if (this.prefilledInfo) {
-      this.signupFormData.name = this.prefilledInfo.Name;
-      this.signupFormData.surname = this.prefilledInfo.Surname;
-      this.signupFormData.profession = this.prefilledInfo.Profession;
-      this.signupFormData.AFM = this.prefilledInfo.AFM;
-      this.signupFormData.AMKA = this.prefilledInfo.AMKA;
+      Object.keys(this.prefilledInfo).forEach((k) => {
+        this.signupFormData[k] = this.prefilledInfo[k];
+      });
     }
   },
   methods: {
