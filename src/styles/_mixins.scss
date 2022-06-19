@@ -140,3 +140,12 @@
 
   // background: green !important;
 }
+
+@mixin blue-gradient-bg {
+  background: rgb(145, 210, 237);
+  background: linear-gradient(
+    0deg,
+    rgba(145, 210, 237, 1) 34%,
+    rgba(13, 168, 232, 1) 100%
+  );
+}

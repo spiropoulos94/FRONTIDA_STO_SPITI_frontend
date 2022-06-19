@@ -25,10 +25,13 @@ export default {
 }
 
 .login-page {
+  @include blue-gradient-bg;
+
   &:before {
     content: "";
     background-image: url("https://frontidastospiti.com/wp-content/uploads/2022/05/1_7UA2Rd0xs6AVxtASN-UaA-scaled.jpeg");
     background-image: url("@/assets/login.jpeg");
+    // background-image: url("@/assets/signup.jpg");
     background-attachment: fixed;
     background-position: center;
     position: absolute;

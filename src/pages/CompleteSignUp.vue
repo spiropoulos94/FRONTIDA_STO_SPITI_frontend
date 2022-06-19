@@ -15,7 +15,7 @@ export default {
 <style lang="scss">
 .signup-page {
   // background: red;
-  background: lighten($lightblue, 25);
+  @include blue-gradient-bg;
   // position: absolute;
   // left: 0;
   // right: 0;
