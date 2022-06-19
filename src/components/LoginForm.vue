@@ -180,8 +180,8 @@
         <Switch @toggle="toggleShowPassword" />
       </div>
 
-      <button :disabled="loading" @click="submit" class="form-sbmt">
-        <span v-if="!loading" class="text"> Login </span>
+      <button :disabled="loading" @click="signUp" class="form-sbmt">
+        <span v-if="!loading" class="text"> Sign Up </span>
         <Spinner v-if="loading" />
       </button>
     </form>
@@ -248,6 +248,10 @@ export default {
     }
   },
   methods: {
+    async signUp(e) {
+      e.preventDefault();
+      console.log(this.signupFormData);
+    },
     async submit(e) {
       e.preventDefault();
       this.loading = true;
@@ -256,6 +260,11 @@ export default {
       this.loading = false;
       if (res.ok) {
         this.$store.commit("login", res);
+      } else if (res.error) {
+        this.$notify.error({
+          title: "Error",
+          message: res.error,
+        });
       }
     },
     clearInput(input) {

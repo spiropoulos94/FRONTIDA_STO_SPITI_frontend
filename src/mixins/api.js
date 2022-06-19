@@ -53,6 +53,10 @@ const api = {
       return data;
     },
 
+    async completeSignUp(formData) {
+      console.log("complete sign up", formData);
+    },
+
     async listUsers() {
       this.headers["Authorization"] = "Bearer " + this.api_token;
       let res = await fetch(`${this.url}/users/`, {
