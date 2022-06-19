@@ -3,9 +3,24 @@
     <div class="logo">
       <img src="@/assets/logoWhite.png" />
     </div>
-    <form>
+    <el-form :model="loginFormData" :rules="rules" ref="loginFormData">
       <div class="form-inputs">
-        <label>
+        <el-form-item label="Email" prop="Email">
+          <el-input
+            clearable
+            :disabled="loading"
+            v-model="loginFormData.Email"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="Password" prop="Password">
+          <el-input
+            clearable
+            :disabled="loading"
+            v-model="loginFormData.Password"
+            :type="showPassword ? 'text' : 'password'"
+          ></el-input>
+        </el-form-item>
+        <!-- <label>
           Email
           <input class="input" type="text" v-model="loginFormData.email" />
           <span
@@ -14,9 +29,9 @@
             class="clear-input"
             >x</span
           >
-        </label>
+        </label> -->
 
-        <label>
+        <!-- <label>
           Password
           <input
             class="input"
@@ -29,7 +44,7 @@
             class="clear-input"
             >x</span
           >
-        </label>
+        </label> -->
       </div>
       <div class="show-password">
         <span class="title">Show Password</span>
@@ -45,7 +60,7 @@
         <span v-if="!loading" class="text"> Login </span>
         <Spinner v-if="loading" />
       </button>
-    </form>
+    </el-form>
     <!-- <pre>{{ loginFormData }}</pre> -->
   </div>
   <div v-if="formType === 'signup'" class="form-card">
@@ -207,22 +222,81 @@ export default {
   },
   data() {
     return {
+      rules: {
+        Email: [
+          {
+            required: true,
+            message: "Please input email address",
+            trigger: "blur",
+          },
+          {
+            type: "email",
+            message: "Please input CORRECT email address",
+            trigger: ["blur", "change"],
+          },
+        ],
+        Name: [
+          {
+            required: true,
+            message: "Please input Name",
+            trigger: "blur",
+          },
+        ],
+        Password: [
+          {
+            required: true,
+            message: "Please input password",
+            trigger: "change",
+          },
+        ],
+        Surname: [
+          {
+            required: true,
+            message: "Please input Surname",
+            trigger: "blur",
+          },
+        ],
+        AFM: [
+          {
+            // type: "date",
+            required: true,
+            message: "Please pick a date",
+            trigger: "blur",
+          },
+        ],
+        AMKA: [
+          {
+            // type: "date",
+            required: true,
+            message: "Please pick a time",
+            trigger: "blur",
+          },
+        ],
+        Role_id: [
+          {
+            // type: "array",
+            required: true,
+            message: "Please select Profession",
+            trigger: "blur",
+          },
+        ],
+      },
       loginFormData: {
-        email: import.meta.env.VITE_DEVMAIL || "",
-        password: import.meta.env.VITE_DEVPASS || "",
+        Email: "",
+        Password: "",
       },
       signupFormData: {
-        email: "",
-        name: "",
-        surname: "",
-        profession: {
+        Email: "",
+        Name: "",
+        Surname: "",
+        Profession: {
           Role_id: "",
           Title: "",
         },
         AFM: null,
         AMKA: null,
-        password: import.meta.env.VITE_DEVPASS || "",
-        passwordConfirm: import.meta.env.VITE_DEVPASS || "",
+        Password: import.meta.env.VITE_DEVPASS || "",
+        PasswordConfirm: import.meta.env.VITE_DEVPASS || "",
       },
       loading: false,
       showPassword: false,
@@ -254,18 +328,24 @@ export default {
     },
     async submit(e) {
       e.preventDefault();
-      this.loading = true;
-      let res = await this.login(this.loginFormData);
-      console.log({ res });
-      this.loading = false;
-      if (res.ok) {
-        this.$store.commit("login", res);
-      } else if (res.error) {
-        this.$notify.error({
-          title: "Error",
-          message: res.error,
-        });
-      }
+      console.log("submit", this.$refs);
+      this.$refs["loginFormData"].validate(async (valid) => {
+        console.log({ valid });
+        if (valid) {
+          this.loading = true;
+          let res = await this.login(this.loginFormData);
+          console.log({ res });
+          this.loading = false;
+          if (res.ok) {
+            this.$store.commit("login", res);
+          } else if (res.error) {
+            this.$notify.error({
+              title: "Error",
+              message: res.error,
+            });
+          }
+        }
+      });
     },
     clearInput(input) {
       console.log("clearrInput", input);
@@ -283,7 +363,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .clear-input {
   width: 20px;
   font-size: 0.75rem;
@@ -305,15 +385,15 @@ export default {
   }
 }
 
-// .form-wrapper {
-//   display: flex;
-//   width: 100%;
-//   height: 100vh;
-//   position: relative;
-//   justify-content: center;
-//   align-items: center;
-//   align-items: start;
-// }
+.form-inputs {
+  .el-form-item {
+    flex-direction: column;
+    label {
+      justify-content: flex-start;
+    }
+  }
+}
+
 .form-card {
   position: relative;
   background: white;

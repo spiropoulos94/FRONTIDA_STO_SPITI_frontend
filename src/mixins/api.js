@@ -14,7 +14,7 @@ const api = {
   },
   methods: {
     async login(formData) {
-      let { email, password } = formData;
+      let { Email, Password } = formData;
 
       let res = await fetch(`${this.url}/login`, {
         headers: this.headers,
@@ -24,7 +24,7 @@ const api = {
         // credentials: "same-origin",
         // redirect: "follow", // manual, *follow, error
         // referrerPolicy: "no-referrer", // no-referrer
-        body: JSON.stringify({ Email: email, Password: password }),
+        body: JSON.stringify({ Email: Email, Password: Password }),
       });
 
       let data = await res.json();
