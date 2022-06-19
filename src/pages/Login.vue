@@ -19,6 +19,9 @@ export default {
 .login-page,
 .signup-page {
   @include entryPage;
+
+  //test
+  padding: 10px;
 }
 
 .login-page {

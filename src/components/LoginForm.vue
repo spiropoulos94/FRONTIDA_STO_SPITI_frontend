@@ -4,31 +4,33 @@
       <img src="@/assets/logoWhite.png" />
     </div>
     <form>
-      <label>
-        Email
-        <input class="input" type="text" v-model="loginFormData.email" />
-        <span
-          @click="clearInput('email')"
-          v-if="loginFormData.email"
-          class="clear-input"
-          >x</span
-        >
-      </label>
+      <div class="form-inputs">
+        <label>
+          Email
+          <input class="input" type="text" v-model="loginFormData.email" />
+          <span
+            @click="clearInput('email')"
+            v-if="loginFormData.email"
+            class="clear-input"
+            >x</span
+          >
+        </label>
 
-      <label>
-        Password
-        <input
-          class="input"
-          :type="showPassword ? 'text' : 'password'"
-          v-model="loginFormData.password"
-        />
-        <span
-          @click="clearInput('password')"
-          v-if="loginFormData.password"
-          class="clear-input"
-          >x</span
-        >
-      </label>
+        <label>
+          Password
+          <input
+            class="input"
+            :type="showPassword ? 'text' : 'password'"
+            v-model="loginFormData.password"
+          />
+          <span
+            @click="clearInput('password')"
+            v-if="loginFormData.password"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+      </div>
       <div class="show-password">
         <span class="title">Show Password</span>
         <!-- <input
@@ -51,100 +53,102 @@
       <img src="@/assets/logoWhite.png" />
     </div>
     <form>
-      <label>
-        Name
-        <input class="input" type="text" v-model="signupFormData.name" />
-        <span
-          @click="clearInput('name')"
-          v-if="signupFormData.name"
-          class="clear-input"
-          >x</span
-        >
-      </label>
-      <label>
-        Surname
-        <input class="input" type="text" v-model="signupFormData.surname" />
-        <span
-          @click="clearInput('surname')"
-          v-if="signupFormData.surname"
-          class="clear-input"
-          >x</span
-        >
-      </label>
-      <label>
-        Profession
-        <input
-          class="input"
-          type="text"
-          v-model="signupFormData.profession.Title"
-        />
-        <span
-          @click="clearInput('profession.title')"
-          v-if="signupFormData.profession.Title"
-          class="clear-input"
-          >x</span
-        >
-      </label>
-      <label>
-        AFM
-        <input class="input" type="number" v-model="signupFormData.AFM" />
-        <span
-          @click="clearInput('AFM')"
-          v-if="signupFormData.AFM"
-          class="clear-input"
-          >x</span
-        >
-      </label>
-      <label>
-        AMKA
-        <input class="input" type="number" v-model="signupFormData.AMKA" />
-        <span
-          @click="clearInput('AMKA')"
-          v-if="signupFormData.AMKA"
-          class="clear-input"
-          >x</span
-        >
-      </label>
-      <label>
-        Email
-        <input class="input" type="text" v-model="signupFormData.email" />
-        <span
-          @click="clearInput('email')"
-          v-if="signupFormData.email"
-          class="clear-input"
-          >x</span
-        >
-      </label>
+      <div class="form-inputs">
+        <label>
+          Name
+          <input class="input" type="text" v-model="signupFormData.name" />
+          <span
+            @click="clearInput('name')"
+            v-if="signupFormData.name"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          Surname
+          <input class="input" type="text" v-model="signupFormData.surname" />
+          <span
+            @click="clearInput('surname')"
+            v-if="signupFormData.surname"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          Profession
+          <input
+            class="input"
+            type="text"
+            v-model="signupFormData.profession.Title"
+          />
+          <span
+            @click="clearInput('profession.title')"
+            v-if="signupFormData.profession.Title"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          AFM
+          <input class="input" type="number" v-model="signupFormData.AFM" />
+          <span
+            @click="clearInput('AFM')"
+            v-if="signupFormData.AFM"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          AMKA
+          <input class="input" type="number" v-model="signupFormData.AMKA" />
+          <span
+            @click="clearInput('AMKA')"
+            v-if="signupFormData.AMKA"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <label>
+          Email
+          <input class="input" type="text" v-model="signupFormData.email" />
+          <span
+            @click="clearInput('email')"
+            v-if="signupFormData.email"
+            class="clear-input"
+            >x</span
+          >
+        </label>
 
-      <label>
-        Password
-        <input
-          class="input"
-          :type="showPassword ? 'text' : 'password'"
-          v-model="signupFormData.password"
-        />
-        <span
-          @click="clearInput('password')"
-          v-if="signupFormData.password"
-          class="clear-input"
-          >x</span
-        >
-      </label>
-      <!-- to password confirm epirreazei to width -->
-      <label>
-        Password Confirm
-        <input
-          class="input"
-          type="password"
-          v-model="signupFormData.passwordConfirm"
-        />
-        <span
-          @click="clearInput('passwordConfirm')"
-          v-if="signupFormData.passwordConfirm"
-          class="clear-input"
-          >x</span
-        >
-      </label>
+        <label>
+          Password
+          <input
+            class="input"
+            :type="showPassword ? 'text' : 'password'"
+            v-model="signupFormData.password"
+          />
+          <span
+            @click="clearInput('password')"
+            v-if="signupFormData.password"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+        <!-- to password confirm epirreazei to width -->
+        <label>
+          Password Confirm
+          <input
+            class="input"
+            type="password"
+            v-model="signupFormData.passwordConfirm"
+          />
+          <span
+            @click="clearInput('passwordConfirm')"
+            v-if="signupFormData.passwordConfirm"
+            class="clear-input"
+            >x</span
+          >
+        </label>
+      </div>
       <div class="show-password">
         <span class="title">Show Password</span>
         <!-- <input
@@ -242,7 +246,7 @@ export default {
   color: white;
   position: relative;
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   left: calc(100% - 20px - 10px);
   cursor: pointer;
   &:hover {
