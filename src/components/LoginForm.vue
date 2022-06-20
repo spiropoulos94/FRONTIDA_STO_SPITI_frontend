@@ -264,12 +264,12 @@ export default {
           console.log({ res });
           this.loading = false;
           if (res.ok) {
-            // handle ok
+            this.$store.commit("login", res);
           } else if (res.error) {
-            // this.$notify.error({
-            //   title: "Error",
-            //   message: res.error,
-            // });
+            this.$notify.error({
+              title: "Error",
+              message: res.error,
+            });
           }
         }
       });

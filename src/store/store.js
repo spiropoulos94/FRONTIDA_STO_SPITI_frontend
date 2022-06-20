@@ -110,6 +110,7 @@ const store = createStore({
       state.user_data.token = payload.token;
       state.user_data.Roles = payload.roles;
       router.push("/");
+      alert(1);
       state.sidebarStatus = window.innerWidth > 991;
     },
     signOut(state) {
