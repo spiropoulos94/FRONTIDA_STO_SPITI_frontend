@@ -37,7 +37,7 @@ const api = {
         Role_id,
       };
       this.headers["Authorization"] = "Bearer " + this.api_token;
-      let res = await fetch(`${this.url}/user/admin-create`, {
+      let res = await fetch(`${this.url}/users/admin-create`, {
         headers: this.headers,
         method: "POST",
         // mode: "cors",

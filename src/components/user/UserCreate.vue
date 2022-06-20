@@ -87,15 +87,7 @@ export default {
       loading: false,
       linkCopied: false,
       mode: "create",
-      mode: "response",
       response: {},
-      response: {
-        "encodedFields(base64)":
-          "eyJBRk0iOjEyMjMsIkFNS0EiOjEyMywiTmFtZSI6IkNyZWF0ZWQiLCJQcm9mZXNzaW9uIjp7IlJvbGVfaWQiOjYsIlRpdGxlIjoiUGh5c2lvdGhlcmFwaXN0In0sIlN1cm5hbWUiOiJVc2VyIn0=",
-        message: "User added",
-        ok: true,
-        "rows affected": 1,
-      },
       formData: {
         Name: "",
         Surname: "",
@@ -166,8 +158,8 @@ export default {
       }, 3000);
     },
     async submitForm(e, formName) {
-      e.preventDefault();
       this.loading = true;
+      e.preventDefault();
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           // this.loading = true;
