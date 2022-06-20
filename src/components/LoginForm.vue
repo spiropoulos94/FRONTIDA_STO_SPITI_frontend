@@ -104,7 +104,7 @@
           <el-input
             :type="showPassword ? 'text' : 'password'"
             clearable
-            v-model="signupFormData.Password"
+            v-model="signupFormData.PasswordConfirm"
           ></el-input>
         </el-form-item>
       </div>
@@ -139,6 +139,15 @@ export default {
     },
   },
   data() {
+    var PasswordConfirm = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("Please input the confirmation password "));
+      } else if (value !== this.signupFormData.Password) {
+        callback(new Error("Two passwords should match!"));
+      } else {
+        callback();
+      }
+    };
     return {
       rules: {
         Email: [
@@ -170,7 +179,7 @@ export default {
         PasswordConfirm: [
           {
             required: true,
-            message: "Please input password",
+            validator: PasswordConfirm,
             trigger: "change",
           },
         ],
@@ -248,6 +257,22 @@ export default {
     async signUp(e) {
       e.preventDefault();
       console.log(this.signupFormData);
+      this.$refs["signupFormData"].validate(async (valid) => {
+        if (valid) {
+          this.loading = true;
+          let res = await this.completeSignUp(this.signupFormData);
+          console.log({ res });
+          this.loading = false;
+          if (res.ok) {
+            // handle ok
+          } else if (res.error) {
+            // this.$notify.error({
+            //   title: "Error",
+            //   message: res.error,
+            // });
+          }
+        }
+      });
     },
     async submit(e) {
       e.preventDefault();

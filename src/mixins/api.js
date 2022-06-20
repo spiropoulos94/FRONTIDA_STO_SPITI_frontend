@@ -55,6 +55,22 @@ const api = {
 
     async completeSignUp(formData) {
       console.log("complete sign up", formData);
+      let { ID: User_id, Email, Password } = formData;
+      console.log({ User_id, Email, Password });
+      let res = await fetch(`${this.url}/complete-signup`, {
+        headers: this.headers,
+        method: "POST",
+        // mode: "cors",
+        cache: "no-cache",
+        // credentials: "include",
+        // redirect: "follow", // manual, *follow, error
+        // referrerPolicy: "no-referrer", // no-referrer
+        body: JSON.stringify({ User_id, Email, Password }),
+      });
+
+      let data = await res.json();
+
+      return data;
     },
 
     async listUsers() {
