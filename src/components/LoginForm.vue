@@ -239,7 +239,11 @@ export default {
   computed: {
     prefilledInfo() {
       if (this.formType === "signup" && this.$route.params.hash) {
-        return JSON.parse(atob(this.$route.params.hash));
+        try {
+          return JSON.parse(atob(this.$route.params.hash));
+        } catch (e) {
+          console.log(e);
+        }
       } else {
         return null;
       }
