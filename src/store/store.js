@@ -3,6 +3,12 @@ import { createStore } from "vuex";
 import _ from "lodash";
 import router from "@/router";
 
+const eraseState = (state) => {
+  for (const property in state) {
+    state[property] = null;
+  }
+};
+
 const store = createStore({
   state() {
     return JSON.parse(window.sessionStorage.getItem("state"));
@@ -19,11 +25,7 @@ const store = createStore({
     },
     signOut(state) {
       state.user_data = null;
-
-      for (const property in state) {
-        state[property] = null;
-      }
-
+      eraseState(state);
       router.push("/login");
     },
     setMobileSidebar(state, status) {
