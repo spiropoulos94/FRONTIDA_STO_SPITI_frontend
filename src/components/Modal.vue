@@ -120,7 +120,7 @@ export default {
 
   .modal-body {
     padding: 20px 15px;
-    font-size: 1.1rem;
+    // font-size: 1.1rem;
     color: $darken_lightblue;
     text-align: start;
   }

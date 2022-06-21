@@ -201,6 +201,7 @@ export default {
     .el-form-item {
       // @include card;
       flex-direction: column;
+      margin-bottom: 0px;
       label {
         // width: 120px;
         margin-right: auto;
@@ -208,7 +209,7 @@ export default {
         color: $lightblue;
         margin-bottom: 10px;
         margin-top: 10px;
-        font-size: 1.1rem;
+        // font-size: 1.1rem;
       }
 
       .el-input {
