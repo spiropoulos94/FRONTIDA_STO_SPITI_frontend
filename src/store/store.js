@@ -60,7 +60,7 @@ const store = createStore({
       return state.sidebarIconsOnly;
     },
     isAuthenticated(state) {
-      return state.user_data !== null;
+      return state.user_data;
     },
     getRoles(state) {
       return state.user_data.Roles;

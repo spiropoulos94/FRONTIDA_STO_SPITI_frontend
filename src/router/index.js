@@ -31,7 +31,7 @@ const routes = [
     name: "signup",
     component: CompleteSignUp,
     beforeEnter(to, from, next) {
-      if (store.state.user_data !== null) {
+      if (store.state.user_data && store.state.user_data !== null) {
         alert(
           "you need to sign out in order for the new user to complete sign up"
         );
