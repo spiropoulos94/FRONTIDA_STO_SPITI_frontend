@@ -1,5 +1,5 @@
 <template>
-  <div :class="`views-wrapper ${auth ? '' : 'no-padding'}`">
+  <div :class="`views-wrapper ${auth ? 'main-viw-max-height' : 'no-padding'}`">
     <router-view></router-view>
   </div>
 </template>
@@ -15,12 +15,15 @@ export default {
 </script>
 
 <style lang="scss">
+.main-viw-max-height {
+  max-height: calc(100vh - $header-height);
+  overflow: auto;
+}
+
 .views-wrapper {
   //   background: red;
   width: 100%;
   padding: 30px 50px;
-  max-height: calc(100vh - $header-height);
-  overflow: auto;
 }
 
 .no-padding {
