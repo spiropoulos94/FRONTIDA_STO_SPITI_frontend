@@ -19,6 +19,8 @@ export default {
   //   background: red;
   width: 100%;
   padding: 30px 50px;
+  max-height: calc(100vh - $header-height);
+  overflow: auto;
 }
 
 .no-padding {

@@ -11,6 +11,7 @@ import Login from "@/pages/Login.vue";
 import store from "../store/store";
 import NotFound from "@/components/NotFound.vue";
 import CompleteSignUp from "@/pages/CompleteSignUp.vue";
+
 const routes = [
   {
     path: "/login",
@@ -29,6 +30,16 @@ const routes = [
     path: "/signup/:hash",
     name: "signup",
     component: CompleteSignUp,
+    beforeEnter(to, from, next) {
+      if (store.state.user_data !== null) {
+        alert(
+          "you need to sign out in order for the new user to complete sign up"
+        );
+        next("/");
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/reports",
