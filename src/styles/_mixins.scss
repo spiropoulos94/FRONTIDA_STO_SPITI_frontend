@@ -42,8 +42,7 @@
   max-width: 1100px;
   margin: auto;
 
-  -webkit-box-shadow: 0px 0px 27px 2px rgb(32 32 32);
-  box-shadow: 0px 0px 27px 2px rgb(32 32 32);
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
 }
 
 @mixin rippleEffect {
