@@ -1,5 +1,5 @@
 // Create a new store instance.
-import { createStore } from "vuex";
+import { createLogger, createStore } from "vuex";
 import _ from "lodash";
 import router from "@/router";
 
@@ -22,6 +22,7 @@ const store = createStore({
       state.user_data.Roles = payload.roles;
       router.push("/");
       state.sidebarStatus = window.innerWidth > 991;
+      state.mobile = window.innerWidth > 991;
     },
     signOut(state) {
       state.user_data = null;
@@ -69,6 +70,7 @@ const store = createStore({
       return state.homepath;
     },
   },
+  // plugins: [createLogger()],
 });
 
 const unsubscribe = store.subscribe((mutation, state) => {

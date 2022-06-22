@@ -22,8 +22,13 @@ export default {
   },
   created() {
     this.$store.commit("toggleSidebar", this.windowWidth > 991);
-
+    this.adjustUI();
     window.addEventListener("resize", () => {
+      this.adjustUI();
+    });
+  },
+  methods: {
+    adjustUI() {
       if (window.innerWidth < 991) {
         this.$store.commit("toggleSidebar", false);
         this.$store.commit("setMobileSidebar", true);
@@ -32,7 +37,7 @@ export default {
         this.$store.commit("toggleSidebar", true);
         this.$store.commit("setMobileSidebar", false);
       }
-    });
+    },
   },
   computed: {
     auth() {
