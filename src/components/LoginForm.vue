@@ -340,6 +340,7 @@ export default {
 .form-inputs {
   .el-form-item {
     flex-direction: column;
+    margin-bottom: 10px;
     label {
       justify-content: flex-start;
     }
