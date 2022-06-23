@@ -2,16 +2,22 @@
 import { createLogger, createStore } from "vuex";
 import _ from "lodash";
 import router from "@/router";
+import Persister from "./plugins/store-persist.js";
 
-const eraseState = (state) => {
-  for (const property in state) {
-    state[property] = null;
-  }
+let initialState = {
+  user_data: null,
+  isMobileSidebar: null,
+  sidebarIconsOnly: null,
 };
 
 const store = createStore({
   state() {
-    return JSON.parse(window.sessionStorage.getItem("state"));
+    let sessionStorageState = window.sessionStorage.getItem("state");
+    if (sessionStorageState && sessionStorageState.length) {
+      return JSON.parse(window.sessionStorage.getItem("state"));
+    } else {
+      return initialState;
+    }
   },
   mutations: {
     login(state, payload) {
@@ -22,11 +28,10 @@ const store = createStore({
       state.user_data.Roles = payload.roles;
       router.push("/");
       state.sidebarStatus = window.innerWidth > 991;
-      state.mobile = window.innerWidth > 991;
     },
     signOut(state) {
       state.user_data = null;
-      eraseState(state);
+      // eraseState(state);
       router.push("/login");
     },
     setMobileSidebar(state, status) {
@@ -70,19 +75,7 @@ const store = createStore({
       return state.homepath;
     },
   },
-  // plugins: [createLogger()],
+  plugins: [Persister, createLogger()],
 });
-
-const unsubscribe = store.subscribe((mutation, state) => {
-  // console.clear();
-  console.log(mutation.type);
-  console.log(mutation.payload);
-
-  let stringifiedState = JSON.stringify(state);
-  window.sessionStorage.setItem("state", stringifiedState);
-});
-
-// you may call unsubscribe to stop the subscription
-// unsubscribe();
 
 export default store;

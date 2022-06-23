@@ -216,8 +216,8 @@ export default {
         ],
       },
       loginFormData: {
-        Email: "",
-        Password: "",
+        Email: import.meta.env.VITE_DEVMAIL || "",
+        Password: import.meta.env.VITE_DEVPASS || "",
       },
       signupFormData: {
         Email: "",
