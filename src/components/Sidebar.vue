@@ -150,7 +150,7 @@ export default {
   background: lightcyan;
   background: $lightblue;
   padding-top: 10px;
-  z-index: 99999999;
+  z-index: 10000;
 
   .item {
     display: block;

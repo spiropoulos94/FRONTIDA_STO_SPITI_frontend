@@ -69,6 +69,7 @@ export default {
 
 <style lang="scss">
 .modal-overlay {
+  z-index: 99999;
   position: fixed;
   top: 0;
   bottom: 0;
