@@ -158,7 +158,7 @@ export default {
           },
           {
             type: "email",
-            message: "Please input CORRECT email address",
+            message: "Please input email address in correct format",
             trigger: ["blur", "change"],
           },
         ],

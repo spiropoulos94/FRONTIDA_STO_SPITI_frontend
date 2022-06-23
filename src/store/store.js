@@ -66,7 +66,7 @@ const store = createStore({
       return state.sidebarIconsOnly;
     },
     isAuthenticated(state) {
-      return state.user_data;
+      return state.user_data && state.user_data !== null;
     },
     getRoles(state) {
       return state.user_data.Roles;
