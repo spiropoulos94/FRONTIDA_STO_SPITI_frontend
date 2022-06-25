@@ -13,6 +13,11 @@ const api = {
     },
   },
   methods: {
+    checkToken(response) {
+      if (response.code === 401 || response.message === "unauthorized") {
+        this.$store.commit("signOut");
+      }
+    },
     async login(formData) {
       let { Email, Password } = formData;
 
@@ -28,7 +33,7 @@ const api = {
       });
 
       let data = await res.json();
-
+      this.checkToken(data);
       return data;
     },
     async adminCreateuser(formData) {
@@ -49,7 +54,7 @@ const api = {
       });
 
       let data = await res.json();
-
+      this.checkToken(data);
       return data;
     },
 
@@ -69,7 +74,7 @@ const api = {
       });
 
       let data = await res.json();
-
+      this.checkToken(data);
       return data;
     },
 
@@ -80,6 +85,8 @@ const api = {
       });
       let data = await res.json();
       console.log({ data });
+      this.checkToken(data);
+      return data;
     },
   },
 };
