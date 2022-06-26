@@ -114,22 +114,30 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+const checkAuthStatus = (to) => {
+  console.log("checkAuthStatus");
   if (
     to.name === "signup" &&
     to.params.hash.length &&
     !store.getters.isAuthenticated
   ) {
-    console.log({ to });
-    next();
+    return true;
   }
   if (to.name !== "login" && !store.getters.isAuthenticated) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+router.beforeEach((to, from, next) => {
+  if (checkAuthStatus(to)) {
+    next();
+  } else {
     next({
       path: "login",
       replace: true,
     });
-  } else {
-    next();
   }
 });
 
