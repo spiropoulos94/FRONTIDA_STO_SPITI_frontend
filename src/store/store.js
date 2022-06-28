@@ -3,6 +3,7 @@ import { createLogger, createStore } from "vuex";
 import _ from "lodash";
 import router from "@/router";
 import Persister from "./plugins/store-persist.js";
+import { decrypt } from "./encryption.js";
 
 let initialState = {
   user_data: null,
@@ -12,9 +13,9 @@ let initialState = {
 
 const store = createStore({
   state() {
-    let sessionStorageState = window.localStorage.getItem("state");
+    let sessionStorageState = decrypt(window.localStorage.getItem("state"));
     if (sessionStorageState && sessionStorageState.length) {
-      return JSON.parse(window.localStorage.getItem("state"));
+      return JSON.parse(decrypt(window.localStorage.getItem("state")));
     } else {
       return initialState;
     }

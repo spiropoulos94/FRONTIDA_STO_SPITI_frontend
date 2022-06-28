@@ -1,14 +1,16 @@
+import { encrypt, decrypt } from "@/store/encryption.js";
+
 function WriteToStorage(state) {
   if (state) {
-    window.localStorage.setItem("state", JSON.stringify(state));
+    window.localStorage.setItem("state", encrypt(JSON.stringify(state)));
   }
 }
 
 function ReadFromStorage() {
-  let currentState = window.localStorage.getItem("state");
+  let currentState = decrypt(window.localStorage.getItem("state"));
 
   if (currentState && currentState.length) {
-    return JSON.parse(window.localStorage.getItem("state"));
+    return JSON.parse(decrypt(window.localStorage.getItem("state")));
   }
 }
 
