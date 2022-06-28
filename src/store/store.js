@@ -12,9 +12,9 @@ let initialState = {
 
 const store = createStore({
   state() {
-    let sessionStorageState = window.sessionStorage.getItem("state");
+    let sessionStorageState = window.localStorage.getItem("state");
     if (sessionStorageState && sessionStorageState.length) {
-      return JSON.parse(window.sessionStorage.getItem("state"));
+      return JSON.parse(window.localStorage.getItem("state"));
     } else {
       return initialState;
     }

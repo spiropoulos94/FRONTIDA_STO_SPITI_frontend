@@ -1,14 +1,14 @@
 function WriteToStorage(state) {
   if (state) {
-    window.sessionStorage.setItem("state", JSON.stringify(state));
+    window.localStorage.setItem("state", JSON.stringify(state));
   }
 }
 
 function ReadFromStorage() {
-  let currentState = window.sessionStorage.getItem("state");
+  let currentState = window.localStorage.getItem("state");
 
   if (currentState && currentState.length) {
-    return JSON.parse(window.sessionStorage.getItem("state"));
+    return JSON.parse(window.localStorage.getItem("state"));
   }
 }
 
