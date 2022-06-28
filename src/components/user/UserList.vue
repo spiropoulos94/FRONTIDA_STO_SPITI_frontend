@@ -1,6 +1,7 @@
 <template>
   <div class="user-list">User list</div>
   <pre>{{ users }}</pre>
+  <!-- user name, surname, email, reportsCount -->
 </template>
 <script>
 import api from "../../mixins/api";
