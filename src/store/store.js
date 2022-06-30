@@ -13,9 +13,12 @@ let initialState = {
 
 const store = createStore({
   state() {
-    let sessionStorageState = decrypt(window.localStorage.getItem("state"));
-    if (sessionStorageState && sessionStorageState.length) {
-      return JSON.parse(decrypt(window.localStorage.getItem("state")));
+    if (window.localStorage.getItem("state")) {
+      let sessionStorageState = decrypt(window.localStorage.getItem("state"));
+
+      if (sessionStorageState && sessionStorageState.length) {
+        return JSON.parse(decrypt(window.localStorage.getItem("state")));
+      }
     } else {
       return initialState;
     }

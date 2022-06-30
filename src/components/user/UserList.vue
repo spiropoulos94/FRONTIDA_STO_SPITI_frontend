@@ -1,7 +1,12 @@
 <template>
   <div class="user-list">User list</div>
-  <pre>{{ users }}</pre>
+  <!-- <pre>{{ users }}</pre> -->
   <!-- user name, surname, email, reportsCount -->
+  <div class="userCard" v-for="user in users" :key="user.User_id">
+    <div class="name">{{ user.Name }}</div>
+    <div class="surname">{{ user.Surname }}</div>
+    <div class="email">{{ user.Email }}</div>
+  </div>
 </template>
 <script>
 import api from "../../mixins/api";
@@ -33,4 +38,9 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.userCard {
+  @include card;
+  margin-bottom: 10px;
+}
+</style>
