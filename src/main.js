@@ -23,6 +23,8 @@ import {
   faArrowLeft,
   faPlus,
   faCopy,
+  faTools,
+  faDumbbell,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -49,6 +51,8 @@ library.add(
   faPlus,
   faCheckCircle,
   faCopy,
+  faTools,
+  faDumbbell,
   faSignOut
 );
 

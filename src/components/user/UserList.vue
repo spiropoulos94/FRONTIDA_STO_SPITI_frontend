@@ -1,11 +1,18 @@
 <template>
-  <div class="user-list">User list</div>
+  <div class="user-list-view">User list</div>
   <!-- <pre>{{ users }}</pre> -->
   <!-- user name, surname, email, reportsCount -->
-  <div class="userCard" v-for="user in users" :key="user.User_id">
-    <div class="name">{{ user.Name }}</div>
-    <div class="surname">{{ user.Surname }}</div>
-    <div class="email">{{ user.Email }}</div>
+  <div class="user-list">
+    <div class="userCard" v-for="user in users" :key="user.User_id">
+      <!-- <font-awesome-icon :icon="iconsMap[user.Profession.Title]" /> -->
+      <div class="basic-info">
+        <div class="fullname">{{ user.Name }} {{ user.Surname }}</div>
+        <div class="job">{{ user.Profession.Title }}</div>
+      </div>
+      <div class="contact-info">
+        <div class="email">{{ user.Email }}</div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -15,6 +22,11 @@ export default {
   data() {
     return {
       users: [],
+      iconsMap: {
+        Admin: "tools",
+        Patient: "user-injured",
+        Physiotherapist: "dumbbell",
+      },
     };
   },
   mixins: [api],
@@ -39,8 +51,18 @@ export default {
 </script>
 
 <style lang="scss">
+.user-list {
+  // display: flex;
+}
 .userCard {
   @include card;
+  margin: unset;
+  max-width: unset;
   margin-bottom: 10px;
+
+  display: flex;
+  div {
+    margin-left: 10px;
+  }
 }
 </style>
