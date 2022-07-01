@@ -42,7 +42,7 @@ export default {
   flex-wrap: wrap;
 
   .avatar {
-    background: blue;
+    background: $darken_lightblue;
     border-radius: 50%;
     width: 45px;
     height: 45px;
