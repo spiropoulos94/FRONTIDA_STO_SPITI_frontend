@@ -34,7 +34,7 @@ export default {
 <style lang="scss">
 .userCard {
   @include card;
-  padding: 10px;
+  padding: 10px 16px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -60,8 +60,7 @@ export default {
   }
 
   .info {
-    // border: 1px solid blue;
-    min-width: 285px;
+    flex-grow: 1;
     .info-top {
       display: flex;
       //   border: 1px solid red;
