@@ -13,7 +13,7 @@
           <div class="role-tag">{{ user.Profession.Title }}</div>
         </div>
       </div>
-      <div class="info-bottom">
+      <div v-if="user.Email" class="info-bottom">
         <div class="email">{{ user.Email }}</div>
       </div>
     </div>
@@ -65,8 +65,10 @@ export default {
     .info-top {
       display: flex;
       //   border: 1px solid red;
-      margin-bottom: 15px;
       width: 100%;
+    }
+    .info-bottom {
+      margin-top: 10px;
     }
   }
 
