@@ -10,7 +10,10 @@
 
       <div class="fullname">{{ user.Name }} {{ user.Surname }}</div>
     </div>
-    <div v-if="user.Email" class="email">{{ user.Email }}</div>
+    <div v-if="user.Email" class="email">
+      <img class="svg" src="@/assets/svg/mail.svg" />
+      {{ user.Email }}
+    </div>
     <div class="role">
       <div class="role-tag">{{ user.Profession.Title }}</div>
     </div>
@@ -96,7 +99,7 @@ export default {
   .email {
     font-style: normal;
     font-weight: 400;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     line-height: 14px;
     display: flex;
     align-items: center;
@@ -104,6 +107,9 @@ export default {
     font-feature-settings: "tnum" on, "lnum" on;
     color: #888c9b;
     margin-top: 10px;
+    .svg {
+      margin-right: 2px;
+    }
   }
 }
 // @media (max-width: $tablet) {
