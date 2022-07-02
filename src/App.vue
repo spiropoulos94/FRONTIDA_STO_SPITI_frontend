@@ -105,4 +105,9 @@ body {
 //     background-color: green;
 //   }
 // }
+// @media (min-width: $desktop) {
+//   main {
+//     background-color: yellow;
+//   }
+// }
 </style>
