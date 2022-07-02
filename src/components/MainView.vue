@@ -30,12 +30,12 @@ export default {
   padding: 0 !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: $desktop) {
   .views-wrapper {
     padding: 30px 30px;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: $mobile) {
   .views-wrapper {
     padding: 30px 15px;
   }

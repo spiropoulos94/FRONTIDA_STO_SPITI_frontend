@@ -89,4 +89,20 @@ body {
   --toggleBtnWidth: 40px;
   --toggleBtnHeight: 40px;
 } /* variables*/
+
+// @media (max-width: $mobile) {
+// * {
+//   border: 1px solid red !important;
+// }
+// // }
+// @media (min-width: $mobile) {
+//   * {
+//     border: 1px solid blue !important;
+//   }
+// }
+// @media (min-width: $tablet) {
+//   * {
+//     border: 1px solid green !important;
+//   }
+// }
 </style>

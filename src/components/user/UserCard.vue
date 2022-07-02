@@ -110,7 +110,7 @@ export default {
     color: #888c9b;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: $tablet) {
   .userCard {
     .info {
       //   border: 1px solid red;
