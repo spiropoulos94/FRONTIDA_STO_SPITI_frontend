@@ -34,6 +34,8 @@ export default {
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
+  padding: 8px 10px;
+  min-width: 250px;
 
   .name-and-avatar {
     width: 100%;
