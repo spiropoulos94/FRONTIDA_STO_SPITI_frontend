@@ -47,7 +47,7 @@ export default {
   align-items: center;
 
   .avatar-wrapper {
-    // border: 1px solid red;
+    margin-right: 10px;
   }
 
   .avatar {
