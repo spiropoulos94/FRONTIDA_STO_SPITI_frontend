@@ -8,9 +8,11 @@
       </div>
     </div>
     <div class="content">
-      <div class="fullname">{{ user.Name }} {{ user.Surname }}</div>
-      <div class="role">
-        <div class="role-tag">{{ user.Profession.Title }}</div>
+      <div class="fullname_and_role">
+        <div class="fullname">{{ user.Name }} {{ user.Surname }}</div>
+        <div class="role">
+          <div class="role-tag">{{ user.Profession.Title }}</div>
+        </div>
       </div>
       <div v-if="user.Email" class="email">
         <img class="svg" src="@/assets/svg/mail.svg" />
@@ -67,6 +69,7 @@ export default {
   .content {
     border: 1px solid blue;
     flex: 1;
+    margin-left: 5px;
   }
 
   .fullname {
@@ -74,6 +77,7 @@ export default {
     color: #000000;
     font-weight: 700;
     font-size: 12px;
+    margin-bottom: 5px;
   }
 
   .role {
@@ -102,6 +106,7 @@ export default {
     }
   }
   .email {
+    margin-top: 5px;
     font-style: normal;
     font-weight: 400;
     font-size: 9px;
