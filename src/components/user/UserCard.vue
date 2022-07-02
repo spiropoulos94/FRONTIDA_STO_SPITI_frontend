@@ -136,4 +136,18 @@ export default {
     }
   }
 }
+
+@media (min-width: $mobile) {
+  .userCard {
+    .content {
+      display: flex;
+    }
+    .fullname_and_role {
+      width: 120px;
+    }
+    .email {
+      margin-top: 0px;
+    }
+  }
+}
 </style>
