@@ -112,6 +112,40 @@ export default {
 }
 @media (min-width: 768px) {
   .userCard {
+    .info {
+      //   border: 1px solid red;
+      display: flex;
+      align-items: center;
+      text-align: start;
+      justify-content: start;
+
+      .info-top {
+        width: unset;
+        .fullname {
+          width: 300px;
+        }
+      }
+      .info-bottom {
+        margin: 0;
+      }
+    }
+
+    .role {
+      // margin-left: auto;
+      .role-tag {
+        background: #888c9b;
+        border-radius: 4px;
+        text-align: center;
+        width: auto;
+        font-size: 10px;
+        color: white;
+        padding: 0px 4px;
+        line-height: 22px;
+        width: fit-content;
+        margin-left: auto;
+        font-size: 0.8rem;
+      }
+    }
   }
 }
 </style>
