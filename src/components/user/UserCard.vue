@@ -1,21 +1,21 @@
 <template>
   <div class="userCard">
-    <!-- <font-awesome-icon :icon="iconsMap[user.Profession.Title]" /> -->
-    <div class="name-and-avatar">
+    <div class="avatar-wrapper">
       <div class="avatar">
         <div class="initials">
           {{ user.Name[0].toUpperCase() }} {{ user.Surname[0].toUpperCase() }}
         </div>
       </div>
-
+    </div>
+    <div class="content">
       <div class="fullname">{{ user.Name }} {{ user.Surname }}</div>
-    </div>
-    <div v-if="user.Email" class="email">
-      <img class="svg" src="@/assets/svg/mail.svg" />
-      {{ user.Email }}
-    </div>
-    <div class="role">
-      <div class="role-tag">{{ user.Profession.Title }}</div>
+      <div class="role">
+        <div class="role-tag">{{ user.Profession.Title }}</div>
+      </div>
+      <div v-if="user.Email" class="email">
+        <img class="svg" src="@/assets/svg/mail.svg" />
+        {{ user.Email }}
+      </div>
     </div>
   </div>
 </template>
@@ -39,74 +39,78 @@ export default {
   flex-wrap: wrap;
   padding: 8px 10px;
   min-width: 250px;
+  align-items: center;
 
-  .name-and-avatar {
-    width: 100%;
+  .avatar-wrapper {
+    border: 1px solid red;
+  }
+
+  .avatar {
+    background: $darken_lightblue;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    width: 35px;
+    height: 35px;
     display: flex;
+    justify-content: center;
     align-items: center;
-
-    .avatar {
-      background: $darken_lightblue;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      width: 35px;
-      height: 35px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      margin-right: 10px;
-      flex-shrink: 0;
-      .initials {
-        letter-spacing: -2px;
-        margin: auto;
-        font-weight: bold;
-        font-size: 14px;
-      }
-    }
-
-    .fullname {
-      font-style: normal;
-      font-weight: 700;
-      font-size: 1em;
-      line-height: 22px;
-      color: #000000;
-      text-align: end;
-      //
-      width: 100%;
-      text-align: end;
+    color: white;
+    flex-shrink: 0;
+    .initials {
+      margin: auto;
+      font-size: 12px;
+      font-weight: bold;
     }
   }
 
-  .role {
-    margin-top: 10px;
-    width: 100%;
+  .content {
+    border: 1px solid blue;
+    flex: 1;
+  }
 
+  .fullname {
+    font-style: normal;
+    color: #000000;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .role {
     .role-tag {
       background: #888c9b;
       border-radius: 4px;
-      text-align: center;
-      width: auto;
-      font-size: 10px;
-      color: white;
+      //   text-align: center;
+      //   width: auto;
+      //   font-size: 10px;
+      //   color: white;
       padding: 0px 4px;
-      line-height: 22px;
+      padding: 2px;
+      //   line-height: 22px;
       width: fit-content;
-      margin-left: auto;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 7px;
+      line-height: 14px;
+      /* or 200% */
+
+      display: flex;
+      align-items: center;
+      font-feature-settings: "tnum" on, "lnum" on;
+
+      color: #ffffff;
     }
   }
   .email {
     font-style: normal;
     font-weight: 400;
-    font-size: 0.7rem;
+    font-size: 9px;
     line-height: 14px;
     display: flex;
     align-items: center;
     text-decoration-line: underline;
     font-feature-settings: "tnum" on, "lnum" on;
     color: #888c9b;
-    margin-top: 10px;
     .svg {
       margin-right: 2px;
     }
