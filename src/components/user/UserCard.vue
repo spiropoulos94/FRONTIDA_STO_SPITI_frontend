@@ -9,13 +9,13 @@
     <div class="info">
       <div class="info-top">
         <div class="fullname">{{ user.Name }} {{ user.Surname }}</div>
-        <div class="role">
-          <div class="role-tag">{{ user.Profession.Title }}</div>
-        </div>
       </div>
       <div v-if="user.Email" class="info-bottom">
         <div class="email">{{ user.Email }}</div>
       </div>
+    </div>
+    <div class="role">
+      <div class="role-tag">{{ user.Profession.Title }}</div>
     </div>
   </div>
 </template>

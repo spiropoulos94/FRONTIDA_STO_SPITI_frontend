@@ -39,7 +39,7 @@ export default {
   }
 }
 .user-btn {
-  background-color: red;
+  background-color: #00bcd4;
   color: #fff;
   //   background: $bodyBg;
   //   color: $lightblue;
