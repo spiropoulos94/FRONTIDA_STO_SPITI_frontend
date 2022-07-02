@@ -19,6 +19,7 @@
         {{ user.Email }}
       </div>
     </div>
+    <button class="edit-user-btn">E</button>
   </div>
 </template>
 
@@ -119,6 +120,11 @@ export default {
     .svg {
       margin-right: 2px;
     }
+  }
+  .edit-user-btn {
+    @include simpleButton;
+    width: 35px;
+    height: 35px;
   }
 }
 </style>
