@@ -70,6 +70,9 @@ export default {
       line-height: 22px;
       color: #000000;
       text-align: end;
+      //
+      width: 100%;
+      text-align: end;
     }
   }
 
