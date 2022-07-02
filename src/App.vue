@@ -91,18 +91,18 @@ body {
 } /* variables*/
 
 // @media (max-width: $mobile) {
-// * {
-//   border: 1px solid red !important;
+//   main {
+//     background-color: red;
+//   }
 // }
-// // }
 // @media (min-width: $mobile) {
-//   * {
-//     border: 1px solid blue !important;
+//   main {
+//     background-color: blue;
 //   }
 // }
 // @media (min-width: $tablet) {
-//   * {
-//     border: 1px solid green !important;
+//   main {
+//     background-color: green;
 //   }
 // }
 </style>
