@@ -47,7 +47,7 @@ export default {
   align-items: center;
 
   .avatar-wrapper {
-    border: 1px solid red;
+    // border: 1px solid red;
   }
 
   .avatar {
@@ -70,7 +70,7 @@ export default {
   }
 
   .content {
-    border: 1px solid blue;
+    // border: 1px solid blue;
     flex: 1;
     margin-left: 5px;
   }
@@ -147,6 +147,28 @@ export default {
     }
     .email {
       margin-top: 0px;
+      margin-left: 10px;
+    }
+  }
+}
+
+@media (min-width: $tablet) {
+  .userCard {
+    .fullname_and_role {
+      width: unset;
+      display: flex;
+      margin-left: 15px;
+
+      .fullname {
+        margin-bottom: 0px;
+        // background: green;
+        width: 200px;
+      }
+
+      .role {
+        margin-left: 10px;
+        width: 110px;
+      }
     }
   }
 }
