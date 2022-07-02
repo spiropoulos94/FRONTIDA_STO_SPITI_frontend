@@ -19,7 +19,9 @@
         {{ user.Email }}
       </div>
     </div>
-    <button class="edit-user-btn">E</button>
+    <button class="edit-user-btn">
+      <img class="svg" src="@/assets/svg/pencil.svg" />
+    </button>
   </div>
 </template>
 
@@ -123,8 +125,15 @@ export default {
   }
   .edit-user-btn {
     @include simpleButton;
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .svg {
+      width: 10px;
+      height: 10px;
+    }
   }
 }
 </style>
