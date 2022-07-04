@@ -87,13 +87,7 @@ export default {
     .role-tag {
       background: #888c9b;
       border-radius: 4px;
-      //   text-align: center;
-      //   width: auto;
-      //   font-size: 10px;
-      //   color: white;
       padding: 0px 4px;
-      padding: 2px;
-      //   line-height: 22px;
       width: fit-content;
       font-style: normal;
       font-weight: 700;
@@ -144,6 +138,14 @@ export default {
     }
     .fullname_and_role {
       width: 120px;
+      .fullname {
+        font-size: 15px;
+      }
+      .role {
+        .role-tag {
+          font-size: 9px;
+        }
+      }
     }
     .email {
       margin-top: 0px;
@@ -167,8 +169,11 @@ export default {
 
       .role {
         margin-left: 10px;
-        width: 110px;
+        width: 130px;
       }
+    }
+    .email {
+      font-size: 12px;
     }
   }
 }
