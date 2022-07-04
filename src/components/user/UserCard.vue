@@ -39,6 +39,7 @@ export default {
 <style lang="scss">
 .userCard {
   @include card;
+  margin: 0px;
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
