@@ -90,24 +90,24 @@ body {
   --toggleBtnHeight: 40px;
 } /* variables*/
 
-@media (max-width: $mobile) {
-  main {
-    background-color: red;
-  }
-}
-@media (min-width: $mobile) {
-  main {
-    background-color: blue;
-  }
-}
-@media (min-width: $tablet) {
-  main {
-    background-color: green;
-  }
-}
-@media (min-width: $desktop) {
-  main {
-    background-color: yellow;
-  }
-}
+// @media (max-width: $mobile) {
+//   main {
+//     background-color: red;
+//   }
+// }
+// @media (min-width: $mobile) {
+//   main {
+//     background-color: blue;
+//   }
+// }
+// @media (min-width: $tablet) {
+//   main {
+//     background-color: green;
+//   }
+// }
+// @media (min-width: $desktop) {
+//   main {
+//     background-color: yellow;
+//   }
+// }
 </style>
