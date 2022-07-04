@@ -5,6 +5,12 @@
         <div class="initials">
           {{ user.Name[0].toUpperCase() }} {{ user.Surname[0].toUpperCase() }}
         </div>
+        <img
+          v-if="user.Email"
+          class="status-icon"
+          src="@/assets/svg/confirm.svg"
+        />
+        <img v-else class="status-icon" src="@/assets/svg/cancel.svg" />
       </div>
     </div>
     <div class="content">
@@ -63,10 +69,18 @@ export default {
     align-items: center;
     color: white;
     flex-shrink: 0;
+    position: relative;
+
     .initials {
       margin: auto;
       font-size: 12px;
       font-weight: bold;
+    }
+    .status-icon {
+      width: 12px;
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
     }
   }
 
