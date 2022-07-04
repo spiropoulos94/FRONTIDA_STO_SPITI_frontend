@@ -93,12 +93,9 @@ export default {
       font-weight: 700;
       font-size: 7px;
       line-height: 14px;
-      /* or 200% */
-
       display: flex;
       align-items: center;
       font-feature-settings: "tnum" on, "lnum" on;
-
       color: #ffffff;
     }
   }
@@ -143,13 +140,14 @@ export default {
       }
       .role {
         .role-tag {
+          white-space: nowrap;
           font-size: 9px;
         }
       }
     }
     .email {
       margin-top: 0px;
-      margin-left: 10px;
+      margin-left: 13px;
     }
   }
 }
