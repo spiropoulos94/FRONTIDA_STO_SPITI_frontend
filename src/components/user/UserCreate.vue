@@ -57,7 +57,10 @@
   </el-form>
   <div v-if="mode === 'response'" class="response">
     <h3>User {{ userFullName }} created!</h3>
-    <span>Sent {{ userFullName }} this link to complete sign up</span>
+    <p>
+      Sent <span class="userFull">{{ userFullName }} </span> this link to
+      complete sign up
+    </p>
     <el-input
       ref="userlink"
       v-model="userLink"
@@ -294,10 +297,14 @@ export default {
       margin-bottom: 15px;
     }
 
-    span {
+    p {
       display: block;
       margin-bottom: 20px;
       font-size: 0.7rem;
+      text-align: end;
+      .userFull {
+        font-weight: bold;
+      }
     }
 
     .response-button {
