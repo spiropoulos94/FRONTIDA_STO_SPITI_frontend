@@ -59,9 +59,7 @@ const api = {
     },
 
     async completeSignUp(formData) {
-      console.log("complete sign up", formData);
       let { ID: User_id, Email, Password } = formData;
-      console.log({ User_id, Email, Password });
       let res = await fetch(`${this.url}/complete-signup`, {
         headers: this.headers,
         method: "POST",
@@ -78,13 +76,31 @@ const api = {
       return data;
     },
 
+    async getUser(userID) {
+      this.headers["Authorization"] = "Bearer " + this.api_token;
+      let res = await fetch(`${this.url}/users/${userID}`, {
+        headers: this.headers,
+      });
+      let data = await res.json();
+      this.checkToken(data);
+      console.log("data apo to getUser request", { data });
+      return data;
+    },
+    async getUserHash(userID) {
+      this.headers["Authorization"] = "Bearer " + this.api_token;
+      let res = await fetch(`${this.url}/users/hash/${userID}`, {
+        headers: this.headers,
+      });
+      let data = await res.json();
+      this.checkToken(data);
+      return data;
+    },
     async listUsers() {
       this.headers["Authorization"] = "Bearer " + this.api_token;
       let res = await fetch(`${this.url}/users/`, {
         headers: this.headers,
       });
       let data = await res.json();
-      console.log({ data });
       this.checkToken(data);
       return data;
     },

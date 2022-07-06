@@ -6,7 +6,7 @@
           {{ user.Name[0].toUpperCase() }} {{ user.Surname[0].toUpperCase() }}
         </div>
         <img
-          v-if="user.Email"
+          v-if="hasRegistered"
           class="status-icon"
           src="@/assets/svg/confirm.svg"
         />
@@ -25,9 +25,15 @@
         {{ user.Email }}
       </div>
     </div>
-    <button class="edit-user-btn">
+    <button v-if="hasRegistered" class="card-btn show-profile">
       <img class="svg" src="@/assets/svg/pencil.svg" />
     </button>
+    <router-link v-else :to="`/users/create/${user.User_id}`">
+      <button class="card-btn complete-signup">
+        <font-awesome-icon size="sm" icon="external-link" />
+        <!-- <img class="svg" src="@/assets/send-message.png" /> -->
+      </button>
+    </router-link>
   </div>
 </template>
 
@@ -39,6 +45,11 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    hasRegistered() {
+      return this.user.Email;
+    },
   },
 };
 </script>
@@ -129,7 +140,7 @@ export default {
       margin-right: 2px;
     }
   }
-  .edit-user-btn {
+  .card-btn {
     @include simpleButton;
     width: 25px;
     height: 25px;
@@ -137,8 +148,22 @@ export default {
     align-items: center;
     justify-content: center;
     .svg {
-      width: 10px;
-      height: 10px;
+      width: 15px;
+      height: 15px;
+    }
+
+    &.complete-signup {
+      background: none;
+      border: 1px solid $lightblue;
+      svg {
+        color: $lightblue;
+      }
+      &:hover {
+        background: $lightblue;
+        svg {
+          color: white;
+        }
+      }
     }
   }
 }

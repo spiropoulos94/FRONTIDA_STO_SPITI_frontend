@@ -72,6 +72,7 @@ const routes = [
       },
       {
         path: "create",
+        alias: "create/:id",
         components: {
           // default: Users,
           users: UserCreate,

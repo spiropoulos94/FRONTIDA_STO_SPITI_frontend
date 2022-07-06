@@ -26,6 +26,7 @@ import {
   faTools,
   faDumbbell,
   faCheckCircle,
+  faExternalLink,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -37,6 +38,7 @@ import clickOutside from "@/utils/click-outside.js";
 library.add(
   faPhone,
   faBars,
+  faExternalLink,
   faFolder,
   faHome,
   faUserPlus,

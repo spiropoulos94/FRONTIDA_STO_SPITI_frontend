@@ -71,8 +71,8 @@
 
       Copy
     </button>
-    <pre>{{ formData }}</pre>
-    <pre>{{ response }}</pre>
+    <!-- <pre>{{ formData }}</pre>
+    <pre>{{ userHash }}</pre> -->
   </div>
 </template>
 <script>
@@ -84,10 +84,11 @@ export default {
   mixins: [api],
   data() {
     return {
+      userHash: null,
       loading: false,
       linkCopied: false,
       mode: "create",
-      response: {},
+      // mode: "response",
       formData: {
         Name: "",
         Surname: "",
@@ -145,7 +146,7 @@ export default {
       return this.$store.getters.getHomepath;
     },
     userLink() {
-      return `${window.location.origin}/signup/${this.response["encodedFields(base64)"]}`;
+      return `${window.location.origin}/signup/${this.userHash}`;
     },
   },
   methods: {
@@ -156,6 +157,25 @@ export default {
       setTimeout(() => {
         this.linkCopied = false;
       }, 3000);
+    },
+    async checkUserStatus(userID) {
+      let res = await this.getUser(userID);
+      if (res.ok) {
+        return res.user.Active;
+      }
+    },
+    async getUserSignUpLink(userID) {
+      let userStatus = await this.checkUserStatus(userID);
+
+      if (userStatus === true) {
+        this.$router.push("/users");
+        return;
+      } else {
+        let res = await this.getUserHash(userID);
+        if (res.ok) {
+          return res.hash;
+        }
+      }
     },
     async submitForm(e, formName) {
       this.loading = true;
@@ -170,7 +190,7 @@ export default {
               message: "User succesfully created.",
               type: "success",
             });
-            this.response = res;
+            this.userHash = res["encodedFields(base64)"];
             this.mode = "response";
           } else {
             this.$message({
@@ -188,6 +208,14 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
+  },
+  async mounted() {
+    if (this.$route.params["id"]) {
+      let userID = this.$route.params["id"];
+      this.mode = "response";
+      this.userHash = await this.getUserSignUpLink(userID);
+      console.log({ hash: this.userHash });
+    }
   },
 };
 </script>
