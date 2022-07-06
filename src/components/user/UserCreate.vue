@@ -56,8 +56,8 @@
     </div>
   </el-form>
   <div v-if="mode === 'response'" class="response">
-    <h3>User created!</h3>
-    <span>Sent user this link to complete sign up</span>
+    <h3>User {{ userFullName }} created!</h3>
+    <span>Sent {{ userFullName }} this link to complete sign up</span>
     <el-input
       ref="userlink"
       v-model="userLink"
@@ -148,6 +148,13 @@ export default {
     userLink() {
       return `${window.location.origin}/signup/${this.userHash}`;
     },
+    userFullName() {
+      if (this.formData.Name || this.formData.Surname) {
+        return `${this.formData.Name} ${this.formData.Surname}`;
+      } else {
+        return " user ";
+      }
+    },
   },
   methods: {
     copyLink() {
@@ -161,6 +168,8 @@ export default {
     async checkUserStatus(userID) {
       let res = await this.getUser(userID);
       if (res.ok) {
+        this.formData.Name = res.user.Name;
+        this.formData.Surname = res.user.Surname;
         return res.user.Active;
       }
     },
