@@ -153,6 +153,7 @@ export default {
     grid-area: button;
     display: flex;
     align-items: center;
+    justify-content: center;
     .card-btn {
       @include simpleButton;
       margin-left: 0;
