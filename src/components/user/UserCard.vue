@@ -58,17 +58,17 @@ export default {
   @include card;
   padding: 5px;
   display: grid;
-  grid-template-columns: 1fr 44px 44px 2fr 2fr 1fr;
 
+  grid-template-columns: 1fr 88px 3fr 1fr;
   margin-bottom: 10px;
 
   height: 60px;
 
   grid-template-areas:
-    "avatar fullname fullname email email button"
-    "avatar fullname fullname email email button"
-    "avatar role     role     email  email   button"
-    "avatar role     role   email   email   button";
+    "avatar fullname email button"
+    "avatar fullname email button"
+    "avatar role email button"
+    "avatar role email button";
 
   .avatar-wrapper {
     grid-area: avatar;
