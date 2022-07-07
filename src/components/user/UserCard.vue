@@ -24,13 +24,13 @@
       {{ user.Email }}
     </div>
     <div class="btn-wrapper">
-      <button v-if="hasRegistered || true" class="card-btn show-profile">
+      <button v-if="hasRegistered" class="card-btn show-profile">
         <img class="svg" src="@/assets/svg/pencil.svg" />
       </button>
       <router-link v-else :to="`/users/create/${user.User_id}`">
         <button class="card-btn complete-signup">
           <font-awesome-icon size="sm" icon="external-link" />
-          <img class="svg" src="@/assets/send-message.png" />
+          <!-- <img class="svg" src="@/assets/send-message.png" /> -->
         </button>
       </router-link>
     </div>
@@ -62,7 +62,7 @@ export default {
 
   margin-bottom: 10px;
 
-  height: 75px;
+  height: 60px;
 
   grid-template-areas:
     "avatar fullname fullname email email button"
