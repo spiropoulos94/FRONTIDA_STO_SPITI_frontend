@@ -66,8 +66,6 @@ export default {
 
   grid-template-areas:
     "avatar fullname email button"
-    "avatar fullname email button"
-    "avatar role email button"
     "avatar role email button";
 
   .avatar-wrapper {
@@ -186,11 +184,22 @@ export default {
 
 @media (min-width: $mobile) {
   .userCard {
+    grid-template-columns: 1fr 125px 3fr 1fr;
+    // no more tiny font size for xtra small screens
+    .role {
+      .role-tag {
+        font-size: 9px;
+      }
+    }
+    .email {
+      font-size: 10px;
+    }
   }
 }
 
 @media (min-width: $tablet) {
   .userCard {
+    background: lightcoral;
   }
 }
 </style>
