@@ -1,6 +1,6 @@
 <template>
   <div class="userCard">
-    <div class="avatar-wrapper">
+    <div class="avatar-wrapper grid-item">
       <div class="avatar">
         <div class="initials">
           {{ user.Name[0].toUpperCase() }} {{ user.Surname[0].toUpperCase() }}
@@ -13,17 +13,17 @@
         <img v-else class="status-icon" src="@/assets/svg/cancel.svg" />
       </div>
     </div>
-    <div class="fullname">{{ user.Name }} {{ user.Surname }}</div>
-    <div class="role">
+    <div class="fullname grid-item">{{ user.Name }} {{ user.Surname }}</div>
+    <div class="role grid-item">
       <div class="role-tag">
         {{ user.Profession.Title }}
       </div>
     </div>
-    <div v-if="user.Email" class="email">
+    <div v-if="user.Email" class="email grid-item">
       <img class="svg" src="@/assets/svg/mail.svg" />
       {{ user.Email }}
     </div>
-    <div class="btn-wrapper">
+    <div class="btn-wrapper grid-item">
       <button v-if="hasRegistered" class="card-btn show-profile">
         <img class="svg" src="@/assets/svg/pencil.svg" />
       </button>
@@ -56,6 +56,7 @@ export default {
 <style lang="scss">
 .userCard {
   @include card;
+  min-width: 290px;
   padding: 5px;
   display: grid;
 
@@ -199,7 +200,14 @@ export default {
 
 @media (min-width: $tablet) {
   .userCard {
-    background: lightcoral;
+    grid-template-areas: "avatar fullname role email button";
+    grid-template-columns: 40px 160px 160px 1fr 25px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    .email {
+      justify-content: flex-start;
+    }
   }
 }
 </style>
