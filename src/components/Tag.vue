@@ -30,7 +30,7 @@ export default {
           return "#81c2d8";
           break;
         case "social worker/ psychologist":
-          return "lightgreen";
+          return "#cd5a5a";
           break;
         case "physiotherapist":
           return "orange";

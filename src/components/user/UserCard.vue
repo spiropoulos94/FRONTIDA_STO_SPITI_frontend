@@ -57,6 +57,7 @@ export default {
 };
 </script>
 <style lang="scss">
+// 320px viewport
 .userCard {
   @include card;
   min-width: 290px;
