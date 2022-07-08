@@ -15,9 +15,10 @@
     </div>
     <div class="fullname grid-item">{{ user.Name }} {{ user.Surname }}</div>
     <div class="role grid-item">
-      <div class="role-tag">
+      <Tag :content="user.Profession.Title" />
+      <!-- <div class="role-tag">
         {{ user.Profession.Title }}
-      </div>
+      </div> -->
     </div>
     <div v-if="user.Email" class="email grid-item">
       <img class="svg" src="@/assets/svg/mail.svg" />
@@ -38,8 +39,10 @@
 </template>
 
 <script>
+import Tag from "@/components/Tag.vue";
 export default {
   name: "UserCard",
+  components: { Tag },
   props: {
     user: Object,
   },
@@ -204,6 +207,10 @@ export default {
     grid-template-columns: 40px 160px 160px 1fr 25px;
     padding-right: 15px;
     padding-left: 15px;
+
+    .fullname {
+      font-size: 13px;
+    }
 
     .email {
       justify-content: flex-start;
