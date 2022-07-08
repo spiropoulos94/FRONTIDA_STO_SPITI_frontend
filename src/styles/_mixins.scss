@@ -103,7 +103,6 @@
 }
 
 @mixin simpleButton {
-  padding: 5px;
   cursor: pointer;
   background: $lightblue;
   color: white;
@@ -112,6 +111,10 @@
   height: 40px;
   border-radius: $borderRadius;
   margin-left: 10px;
+
+  font-size: 14px;
+  width: 80px;
+  height: 30px;
 
   &:active {
     background: $darken_lightblue;
@@ -161,7 +164,6 @@
 @mixin create-btn {
   background-color: #00bcd4;
   color: #fff;
-  //   background: $bodyBg;
   //   color: $lightblue;
   &.return {
     background: $bodyBg;

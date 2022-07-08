@@ -1,6 +1,11 @@
 <template>
   <div class="report-view">
-    <div class="report-controls">
+    <PageControls
+      :isHome="reportsHome"
+      createPath="/reports/create"
+      listPath="/reports/"
+    />
+    <!-- <div class="report-controls">
       <router-link v-if="reportsHome" to="/reports/create">
         <button class="report-btn create">
           Add
@@ -13,13 +18,17 @@
           Back
         </button>
       </router-link>
-    </div>
+    </div> -->
     <router-view name="reports"></router-view>
   </div>
 </template>
 <script>
+import PageControls from "../components/PageControls.vue";
 export default {
   name: "Reports",
+  components: {
+    PageControls,
+  },
   computed: {
     reportsHome() {
       return (
