@@ -60,6 +60,9 @@ const store = createStore({
     getCount(state) {
       return state.count;
     },
+    getUserData(state) {
+      return state.user_data;
+    },
     isMobileSidebar(state) {
       return state.isMobileSidebar;
     },
