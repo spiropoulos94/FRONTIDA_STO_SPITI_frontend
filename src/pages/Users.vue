@@ -33,30 +33,10 @@ export default {
 <style lang="scss">
 .user-view {
   .user-controls {
-    display: flex;
-    justify-content: end;
-    margin-bottom: 15px;
+    @include page-controls;
   }
 }
 .user-btn {
-  background-color: #00bcd4;
-  color: #fff;
-  //   background: $bodyBg;
-  //   color: $lightblue;
-  &.return {
-    background: $bodyBg;
-    color: $lightblue;
-    svg {
-      margin-right: 5px;
-    }
-  }
-  &.create {
-    background: $bodyBg;
-    color: $lightblue;
-    svg {
-      margin-left: 5px;
-    }
-  }
-  @include simpleButton;
+  @include create-btn;
 }
 </style>

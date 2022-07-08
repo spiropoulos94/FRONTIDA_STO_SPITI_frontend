@@ -11,6 +11,9 @@ import Login from "@/pages/Login.vue";
 import store from "../store/store";
 import NotFound from "@/components/NotFound.vue";
 import CompleteSignUp from "@/pages/CompleteSignUp.vue";
+import ReportList from "@/components/report/ReportList.vue";
+import ReportCreate from "@/components/report/ReportCreate.vue";
+import SingleReport from "@/components/report/SingleReport.vue";
 
 const routes = [
   {
@@ -45,6 +48,30 @@ const routes = [
     path: "/reports",
     name: "Reports",
     component: Reports,
+    children: [
+      {
+        path: "",
+        components: {
+          default: Reports,
+          reports: ReportList,
+        },
+      },
+      {
+        path: ":id",
+        components: {
+          default: Reports,
+          reports: SingleReport,
+        },
+      },
+      {
+        path: "create",
+        alias: "create/:id",
+        components: {
+          default: Reports,
+          reports: ReportCreate,
+        },
+      },
+    ],
   },
   {
     path: "/account",

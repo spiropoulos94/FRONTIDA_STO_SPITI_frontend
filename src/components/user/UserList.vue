@@ -1,5 +1,4 @@
 <template>
-  <div class="user-list-view">User list</div>
   <div class="user-list">
     <UserCard v-for="user in users" :key="user.User_id" :user="user" />
   </div>
