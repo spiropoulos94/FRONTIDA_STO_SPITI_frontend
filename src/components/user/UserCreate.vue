@@ -7,6 +7,7 @@
     :rules="rules"
     ref="formData"
   >
+    <p>Create User</p>
     <el-form-item label="Name" prop="Name">
       <el-input :disabled="loading" v-model="formData.Name"></el-input>
     </el-form-item>

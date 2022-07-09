@@ -1,6 +1,7 @@
 <template>
-  from to
-  <el-form :model="formData" :rules="rules" ref="formData">
+  <div v-if="loading" class="test"></div>
+  <el-form v-if="!loading" :model="formData" :rules="rules" ref="formData">
+    <p>Report</p>
     <el-divider content-position="right"> Professional Information </el-divider>
     <el-form-item label="Name" prop="Name">
       <el-input :disabled="loading" v-model="formData.Name"></el-input>
