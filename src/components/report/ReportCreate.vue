@@ -238,7 +238,7 @@ export default {
   }
   .abscence-text {
     display: flex;
-
+    flex-wrap: wrap;
     .el-switch {
       margin-right: 5px;
       margin-left: 5px;
