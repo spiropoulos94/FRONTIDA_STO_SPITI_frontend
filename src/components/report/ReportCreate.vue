@@ -37,31 +37,30 @@
 
     <el-divider content-position="right"> Address </el-divider>
     <div class="address-inputs">
-      <el-form-item label="Street" prop="Street">
+      <el-form-item class="street" label="Street" prop="Street">
         <el-input
           v-model="formData.PatientAddress.Street"
           placeholder="Street"
           type="text"
         />
       </el-form-item>
-      <el-form-item label="Number" prop="Number">
-        <el-input-number
-          placeholder="Street number"
-          :controls="false"
+      <el-form-item class="number" label="Number" prop="Number">
+        <el-input
+          placeholder="Number"
+          type="text"
           :disabled="loading"
-          type="number"
           v-model="formData.PatientAddress.Number"
-        ></el-input-number>
+        ></el-input>
       </el-form-item>
 
-      <el-form-item label="City" prop="City">
+      <el-form-item class="city" label="City" prop="City">
         <el-input
           v-model="formData.PatientAddress.City"
           placeholder="City"
           type="text"
         />
       </el-form-item>
-      <el-form-item label="Postal Code" prop="PostalCode">
+      <el-form-item class="postal-code" label="Postal Code" prop="PostalCode">
         <el-input-number
           placeholder="Postal Code"
           :controls="false"
@@ -224,9 +223,27 @@ export default {
   .el-form {
     @include custom-element-form;
   }
+}
+@media (min-width: $desktop) {
+  .report-view {
+    .address-inputs {
+      display: flex;
 
-  .address-inputs {
-    border: 1px solid red;
+      .el-form-item {
+        margin-right: 5px;
+      }
+
+      .street,
+      .city {
+        flex: 4;
+      }
+      .number {
+        flex: 2;
+      }
+      .postal-code {
+        flex: 3;
+      }
+    }
   }
 }
 </style>
