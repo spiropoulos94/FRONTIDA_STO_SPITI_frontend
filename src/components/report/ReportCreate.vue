@@ -100,6 +100,18 @@
       </el-col>
     </el-form-item>
     <el-divider content-position="right"> Report </el-divider>
+    <el-form-item label="Abscence Status">
+      <div class="abscence-text">
+        Patient was
+        <el-switch
+          v-model="formData.AbscenceStatus"
+          active-text="Abscent"
+          inactive-text="Present"
+          style="--el-switch-on-color: #ff4949; --el-switch-off-color: #13ce66"
+        ></el-switch>
+        during the visit.
+      </div>
+    </el-form-item>
     <el-form-item label="Delivered Services">
       <el-select
         v-model="formData.DeliveredServices"
@@ -117,7 +129,7 @@
     </el-form-item>
     <el-form-item label="Report">
       <el-input
-        v-model="formData.ReportCoontent"
+        v-model="formData.ReportContent"
         :autosize="{ minRows: 4 }"
         type="textarea"
       ></el-input>
@@ -162,7 +174,8 @@ export default {
           End: null,
         },
         DeliveredServices: [],
-        ReportCoontent: "",
+        AbscenceStatus: false,
+        ReportContent: "",
       },
       rules: {
         Name: [
@@ -222,6 +235,14 @@ export default {
 .report-view {
   .el-form {
     @include custom-element-form;
+  }
+  .abscence-text {
+    display: flex;
+
+    .el-switch {
+      margin-right: 5px;
+      margin-left: 5px;
+    }
   }
 }
 @media (min-width: $desktop) {
