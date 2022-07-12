@@ -1,16 +1,15 @@
 <template>
-  <div v-if="loading" class="test"></div>
-  <el-form v-if="!loading" :model="formData" :rules="rules" ref="formData">
+  <el-form :model="formData" :rules="rules" ref="formData">
     <p>Report</p>
     <el-divider content-position="right"> Professional Information </el-divider>
     <el-form-item label="Name" prop="Name">
-      <el-input :disabled="loading" v-model="formData.Name"></el-input>
+      <el-input disabled :value="userData.Name"></el-input>
     </el-form-item>
     <el-form-item label="Surname" prop="Surname">
-      <el-input :disabled="loading" v-model="formData.Surname"></el-input>
+      <el-input disabled :value="userData.Surname"></el-input>
     </el-form-item>
     <el-form-item label="Profession" prop="Profession">
-      <el-input :disabled="loading" v-model="formData.Profession"></el-input>
+      <el-input disabled :value="userData.Profession.Title"></el-input>
     </el-form-item>
     <el-divider content-position="right"> Patient Information </el-divider>
     <el-form-item label="Fullname" prop="PatientFullname">
@@ -21,6 +20,8 @@
     </el-form-item>
     <el-form-item label=" AMKA" prop="PatientAMKA">
       <el-input-number
+        :min="0"
+        :max="999999999"
         :controls="false"
         :disabled="loading"
         type="number"
@@ -29,6 +30,7 @@
     </el-form-item>
     <el-form-item label=" Health Security" prop="PatientHealthSecurity">
       <el-switch
+        :disabled="loading"
         active-text="Yes"
         inactive-text="No"
         v-model="formData.PatientHealthSecurity"
@@ -39,6 +41,7 @@
     <div class="address-inputs">
       <el-form-item class="street" label="Street" prop="Street">
         <el-input
+          :disabled="loading"
           v-model="formData.PatientAddress.Street"
           placeholder="Street"
           type="text"
@@ -55,6 +58,7 @@
 
       <el-form-item class="city" label="City" prop="City">
         <el-input
+          :disabled="loading"
           v-model="formData.PatientAddress.City"
           placeholder="City"
           type="text"
@@ -62,6 +66,8 @@
       </el-form-item>
       <el-form-item class="postal-code" label="Postal Code" prop="PostalCode">
         <el-input-number
+          :min="0"
+          :max="999999999"
           placeholder="Postal Code"
           :controls="false"
           :disabled="loading"
@@ -76,6 +82,7 @@
       <el-col :span="24">
         <el-form-item label="Start" prop="date1">
           <el-date-picker
+            :disabled="loading"
             style="width: 100%"
             v-model="formData.VisitDuration.Start"
             type="datetime"
@@ -89,6 +96,7 @@
       <el-col :span="24">
         <el-form-item label="End" prop="date2">
           <el-date-picker
+            :disabled="loading"
             :style="`width: 100%`"
             v-model="formData.VisitDuration.End"
             type="datetime"
@@ -104,6 +112,7 @@
       <div class="abscence-text">
         Patient was
         <el-switch
+          :disabled="loading"
           v-model="formData.AbscenceStatus"
           active-text="Abscent"
           inactive-text="Present"
@@ -114,6 +123,7 @@
     </el-form-item>
     <el-form-item label="Delivered Services">
       <el-select
+        :disabled="loading"
         v-model="formData.DeliveredServices"
         multiple
         placeholder="Select"
@@ -129,6 +139,7 @@
     </el-form-item>
     <el-form-item label="Report">
       <el-input
+        :disabled="loading"
         v-model="formData.ReportContent"
         :autosize="{ minRows: 4 }"
         type="textarea"
@@ -147,19 +158,22 @@
     </div>
   </el-form>
   <pre>{{ formData }}</pre>
+  <pre>{{ userData }}</pre>
 </template>
 <script>
 import Spinner from "@/components/Spinner.vue";
+import api from "../../mixins/api";
 export default {
   name: "ReportCreate",
   components: { Spinner },
+  mixins: [api],
   data() {
     return {
       loading: false,
       formData: {
-        Name: "",
-        Surname: "",
-        Profession: "",
+        // Name: "",
+        // Surname: "",
+        // Profession: "",
         PatientFullname: "",
         PatientAMKA: null,
         PatientHealthSecurity: null,
@@ -178,20 +192,20 @@ export default {
         ReportContent: "",
       },
       rules: {
-        Name: [
-          {
-            required: true,
-            message: "Please input Name",
-            trigger: "blur",
-          },
-        ],
-        Surname: [
-          {
-            required: true,
-            message: "Please input Surname",
-            trigger: "blur",
-          },
-        ],
+        // Name: [
+        //   {
+        //     required: true,
+        //     message: "Please input Name",
+        //     trigger: "blur",
+        //   },
+        // ],
+        // Surname: [
+        //   {
+        //     required: true,
+        //     message: "Please input Surname",
+        //     trigger: "blur",
+        //   },
+        // ],
         AFM: [
           {
             // type: "date",
@@ -225,7 +239,17 @@ export default {
     },
   },
   methods: {
-    submitForm() {
+    async submitForm(e) {
+      this.loading = true;
+      e.preventDefault();
+      // "validation"
+      if (true) {
+        let res = await this.createReport({
+          ...this.formData,
+          ...this.userData,
+        });
+      }
+
       console.log("submit form");
     },
   },

@@ -16,6 +16,8 @@
     </el-form-item>
     <el-form-item label="AFM" prop="AFM">
       <el-input-number
+        :max="999999999"
+        :min="0"
         :controls="false"
         :disabled="loading"
         type="number"
@@ -24,6 +26,8 @@
     </el-form-item>
     <el-form-item label="AMKA" prop="AMKA">
       <el-input-number
+        :max="999999999"
+        :min="0"
         :controls="false"
         :disabled="loading"
         type="number"
