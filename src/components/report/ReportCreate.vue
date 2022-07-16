@@ -17,32 +17,47 @@
       inactive-text="Select existing patient"
       v-model="newPatient"
     />
-    <el-form-item v-if="newPatient" label="Fullname" prop="PatientFullname">
+    <el-form-item label="Select patient">
+      <el-select
+        v-if="!newPatient"
+        filterable
+        clearable
+        v-model="selectedPatient"
+        value-key="Patient_id"
+      >
+        <el-option
+          v-for="patient in patients"
+          :key="patient.Patient_id"
+          :value="patient"
+          :label="patient.Fullname"
+        ></el-option>
+      </el-select>
+    </el-form-item>
+    <pre>{{ formData.Patient }}</pre>
+    <pre>{{ selectedPatient }}</pre>
+    <!--  -->
+    <el-form-item label="Fullname" prop="PatientFullname">
       <el-input
         :disabled="loading"
-        v-model="formData.PatientFullname"
+        v-model="formData.Patient.Fullname"
       ></el-input>
     </el-form-item>
-    <el-form-item v-if="newPatient" label="AMKA" prop="PatientAMKA">
+    <el-form-item label="AMKA" prop="PatientAMKA">
       <el-input-number
         :min="0"
         :max="999999999"
         :controls="false"
         :disabled="loading"
         type="number"
-        v-model="formData.PatientAMKA"
+        v-model="formData.Patient.Patient_AMKA"
       ></el-input-number>
     </el-form-item>
-    <el-form-item
-      v-if="newPatient"
-      label=" Health Security"
-      prop="PatientHealthSecurity"
-    >
+    <el-form-item label=" Health Security" prop="PatientHealthSecurity">
       <el-switch
         :disabled="loading"
         active-text="Yes"
         inactive-text="No"
-        v-model="formData.PatientHealthSecurity"
+        v-model="formData.Patient.Health_security"
       />
     </el-form-item>
 
@@ -51,7 +66,7 @@
       <el-form-item class="street" label="Street" prop="PatientAddress.Street">
         <el-input
           :disabled="loading"
-          v-model="formData.PatientAddress.Street"
+          v-model="formData.Patient.Address.Street"
           placeholder="Street"
           type="text"
         />
@@ -61,14 +76,14 @@
           placeholder="Number"
           type="text"
           :disabled="loading"
-          v-model="formData.PatientAddress.Number"
+          v-model="formData.Patient.Address.Number"
         ></el-input>
       </el-form-item>
 
       <el-form-item class="city" label="City" prop="PatientAddress.City">
         <el-input
           :disabled="loading"
-          v-model="formData.PatientAddress.City"
+          v-model="formData.Patient.Address.City"
           placeholder="City"
           type="text"
         />
@@ -85,7 +100,7 @@
           :controls="false"
           :disabled="loading"
           type="number"
-          v-model="formData.PatientAddress.PostalCode"
+          v-model="formData.Patient.Address.PostalCode"
         ></el-input-number>
       </el-form-item>
     </div>
@@ -185,21 +200,31 @@ export default {
       loading: false,
       newPatient: true,
       patients: [],
+      selectedPatient: {},
       formData: {
         // Name: "",
         // Surname: "",
         // Profession: "",
-        PatientFullname: "",
-        PatientAMKA: null,
-        PatientHealthSecurity: null,
+        Patient: {
+          Fullname: "",
+          PatientAMKA: null,
+          HealthSecurity: null,
+          Patient_id: null,
+          Address: {
+            Street: "",
+            Number: null,
+            City: "",
+            PostalCode: null,
+          },
+        },
         Arrival_Time_ts: null,
         Departure_Time_ts: null,
-        PatientAddress: {
-          Street: "",
-          Number: null,
-          City: "",
-          PostalCode: null,
-        },
+        // PatientAddress: {
+        //   Street: "",
+        //   Number: null,
+        //   City: "",
+        //   PostalCode: null,
+        // },
         VisitDuration: {
           Start: null,
           End: null,
@@ -299,6 +324,62 @@ export default {
   computed: {
     userData() {
       return this.$store.getters.getUserData;
+    },
+  },
+  watch: {
+    //update selected patient on clear
+    selectedPatient(selectedPatient) {
+      if (!selectedPatient) {
+        this.formData.Patient = {
+          Fullname: "",
+          PatientAMKA: null,
+          HealthSecurity: null,
+          Patient_id: null,
+          Address: {
+            Street: "",
+            Number: null,
+            City: "",
+            PostalCode: null,
+          },
+        };
+      } else {
+        this.formData.Patient = selectedPatient;
+      }
+    },
+    //set formdata to selected patient or default
+
+    newPatient(isNew) {
+      if (isNew) {
+        this.formData.Patient = {
+          Fullname: "",
+          PatientAMKA: null,
+          HealthSecurity: null,
+          Patient_id: null,
+          Address: {
+            Street: "",
+            Number: null,
+            City: "",
+            PostalCode: null,
+          },
+        };
+      } else {
+        if (Object.keys(this.selectedPatient).length) {
+          this.formData.Patient = this.selectedPatient;
+        } else {
+          this.formData.Patient = {
+            Fullname: "",
+            PatientAMKA: null,
+            HealthSecurity: null,
+            Patient_id: null,
+            Address: {
+              Street: "",
+              Number: null,
+              City: "",
+              PostalCode: null,
+            },
+          };
+        }
+      }
     },
   },
   async mounted() {
