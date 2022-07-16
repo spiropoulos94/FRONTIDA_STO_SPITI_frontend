@@ -12,13 +12,18 @@
       <el-input disabled :value="userData.Profession.Title"></el-input>
     </el-form-item>
     <el-divider content-position="right"> Patient Information </el-divider>
-    <el-form-item label="Fullname" prop="PatientFullname">
+    <el-switch
+      active-text="Create new patient"
+      inactive-text="Select existing patient"
+      v-model="newPatient"
+    />
+    <el-form-item v-if="newPatient" label="Fullname" prop="PatientFullname">
       <el-input
         :disabled="loading"
         v-model="formData.PatientFullname"
       ></el-input>
     </el-form-item>
-    <el-form-item label=" AMKA" prop="PatientAMKA">
+    <el-form-item v-if="newPatient" label="AMKA" prop="PatientAMKA">
       <el-input-number
         :min="0"
         :max="999999999"
@@ -28,7 +33,11 @@
         v-model="formData.PatientAMKA"
       ></el-input-number>
     </el-form-item>
-    <el-form-item label=" Health Security" prop="PatientHealthSecurity">
+    <el-form-item
+      v-if="newPatient"
+      label=" Health Security"
+      prop="PatientHealthSecurity"
+    >
       <el-switch
         :disabled="loading"
         active-text="Yes"
@@ -174,6 +183,8 @@ export default {
   data() {
     return {
       loading: false,
+      newPatient: true,
+      patients: [],
       formData: {
         // Name: "",
         // Surname: "",
@@ -290,6 +301,10 @@ export default {
       return this.$store.getters.getUserData;
     },
   },
+  async mounted() {
+    let patients = await this.fetchPatients();
+    this.patients = patients;
+  },
   methods: {
     async submitForm(e, formName) {
       e.preventDefault();
@@ -305,6 +320,18 @@ export default {
           });
         }
       });
+    },
+    async fetchPatients() {
+      let res = await this.listPatients();
+      if (res.ok) {
+        return res.patients;
+      } else {
+        this.$message({
+          message: res.error,
+          duration: 5000,
+          type: "error",
+        });
+      }
     },
   },
 };

@@ -115,6 +115,15 @@ const api = {
       this.checkToken(data);
       return data;
     },
+    async listPatients() {
+      this.headers["Authorization"] = "Bearer " + this.api_token;
+      let res = await fetch(`${this.url}/patients/`, {
+        headers: this.headers,
+      });
+      let data = await res.json();
+      this.checkToken(data);
+      return data;
+    },
   },
 };
 
