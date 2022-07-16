@@ -376,6 +376,7 @@ export default {
             ...this.userData,
           });
           if (res.ok) {
+            this.$router.push("/reports");
             this.$message({
               message: res.message,
               duration: 5000,
