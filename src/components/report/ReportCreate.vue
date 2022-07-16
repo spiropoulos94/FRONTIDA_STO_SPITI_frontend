@@ -13,13 +13,12 @@
     </el-form-item>
     <el-divider content-position="right"> Patient Information </el-divider>
     <el-switch
-      active-text="Create new patient"
-      inactive-text="Select existing patient"
-      v-model="newPatient"
+      inactive-text="Create new patient"
+      active-text="Select existing patient"
+      v-model="useExistingPatient"
     />
-    <el-form-item label="Select patient">
+    <el-form-item v-if="useExistingPatient" label="Select patient">
       <el-select
-        v-if="!newPatient"
         filterable
         clearable
         v-model="selectedPatient"
@@ -33,12 +32,12 @@
         ></el-option>
       </el-select>
     </el-form-item>
-    <pre>{{ formData.Patient }}</pre>
-    <pre>{{ selectedPatient }}</pre>
+    <!-- <pre>{{ formData.Patient }}</pre> -->
+    <!-- <pre>{{ selectedPatient }}</pre> -->
     <!--  -->
     <el-form-item label="Fullname" prop="Patient.Fullname">
       <el-input
-        :disabled="loading"
+        :disabled="loading || useExistingPatient"
         v-model="formData.Patient.Fullname"
       ></el-input>
     </el-form-item>
@@ -47,14 +46,14 @@
         :min="0"
         :max="999999999"
         :controls="false"
-        :disabled="loading"
+        :disabled="loading || useExistingPatient"
         type="number"
         v-model="formData.Patient.Patient_AMKA"
       ></el-input-number>
     </el-form-item>
     <el-form-item label=" Health Security" prop="Patient.HealthSecurity">
       <el-switch
-        :disabled="loading"
+        :disabled="loading || useExistingPatient"
         active-text="Yes"
         inactive-text="No"
         v-model="formData.Patient.Health_security"
@@ -65,7 +64,7 @@
     <div class="address-inputs">
       <el-form-item class="street" label="Street" prop="Patient.Address.Street">
         <el-input
-          :disabled="loading"
+          :disabled="loading || useExistingPatient"
           v-model="formData.Patient.Address.Street"
           placeholder="Street"
           type="text"
@@ -75,14 +74,14 @@
         <el-input
           placeholder="Number"
           type="text"
-          :disabled="loading"
+          :disabled="loading || useExistingPatient"
           v-model="formData.Patient.Address.Number"
         ></el-input>
       </el-form-item>
 
       <el-form-item class="city" label="City" prop="Patient.Address.City">
         <el-input
-          :disabled="loading"
+          :disabled="loading || useExistingPatient"
           v-model="formData.Patient.Address.City"
           placeholder="City"
           type="text"
@@ -98,7 +97,7 @@
           :max="999999999"
           placeholder="Postal Code"
           :controls="false"
-          :disabled="loading"
+          :disabled="loading || useExistingPatient"
           type="number"
           v-model="formData.Patient.Address.PostalCode"
         ></el-input-number>
@@ -165,10 +164,10 @@
         />
       </el-select>
     </el-form-item>
-    <el-form-item label="Report" prop="ReportContent">
+    <el-form-item label="Report" prop="Report_Content">
       <el-input
         :disabled="loading"
-        v-model="formData.ReportContent"
+        v-model="formData.Report_Content"
         :autosize="{ minRows: 4 }"
         type="textarea"
       ></el-input>
@@ -212,7 +211,7 @@ export default {
   data() {
     return {
       loading: false,
-      newPatient: true,
+      useExistingPatient: false,
       patients: [],
       selectedPatient: {},
       formData: {
@@ -228,7 +227,7 @@ export default {
         },
         Services_ids: [],
         AbscenceStatus: false,
-        ReportContent: "",
+        Report_Content: "",
       },
       rules: {
         Patient: {
@@ -305,7 +304,7 @@ export default {
             trigger: "blur",
           },
         ],
-        ReportContent: [
+        Report_Content: [
           {
             required: true,
             message: "Report cannot be blank",
@@ -347,8 +346,8 @@ export default {
     },
     //set formdata to selected patient or default
 
-    newPatient(isNew) {
-      if (isNew) {
+    useExistingPatient(isExisting) {
+      if (!isExisting) {
         this.formData.Patient = emptyPatientObj;
       } else {
         if (Object.keys(this.selectedPatient).length) {
@@ -377,7 +376,11 @@ export default {
             ...this.userData,
           });
           if (res.ok) {
-            return res.patients;
+            this.$message({
+              message: res.message,
+              duration: 5000,
+              type: "success",
+            });
           } else {
             this.$message({
               message: res.error,
@@ -386,6 +389,8 @@ export default {
             });
           }
         }
+
+        this.loading = false;
       });
     },
     async fetchPatients() {
