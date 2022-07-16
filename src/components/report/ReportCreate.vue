@@ -36,13 +36,13 @@
     <pre>{{ formData.Patient }}</pre>
     <pre>{{ selectedPatient }}</pre>
     <!--  -->
-    <el-form-item label="Fullname" prop="PatientFullname">
+    <el-form-item label="Fullname" prop="Patient.Fullname">
       <el-input
         :disabled="loading"
         v-model="formData.Patient.Fullname"
       ></el-input>
     </el-form-item>
-    <el-form-item label="AMKA" prop="PatientAMKA">
+    <el-form-item label="AMKA" prop="Patient.PatientAMKA">
       <el-input-number
         :min="0"
         :max="999999999"
@@ -52,7 +52,7 @@
         v-model="formData.Patient.Patient_AMKA"
       ></el-input-number>
     </el-form-item>
-    <el-form-item label=" Health Security" prop="PatientHealthSecurity">
+    <el-form-item label=" Health Security" prop="Patient.HealthSecurity">
       <el-switch
         :disabled="loading"
         active-text="Yes"
@@ -63,7 +63,7 @@
 
     <el-divider content-position="right"> Address </el-divider>
     <div class="address-inputs">
-      <el-form-item class="street" label="Street" prop="PatientAddress.Street">
+      <el-form-item class="street" label="Street" prop="Patient.Address.Street">
         <el-input
           :disabled="loading"
           v-model="formData.Patient.Address.Street"
@@ -71,7 +71,7 @@
           type="text"
         />
       </el-form-item>
-      <el-form-item class="number" label="Number" prop="PatientAddress.Number">
+      <el-form-item class="number" label="Number" prop="Patient.Address.Number">
         <el-input
           placeholder="Number"
           type="text"
@@ -80,7 +80,7 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item class="city" label="City" prop="PatientAddress.City">
+      <el-form-item class="city" label="City" prop="Patient.Address.City">
         <el-input
           :disabled="loading"
           v-model="formData.Patient.Address.City"
@@ -91,7 +91,7 @@
       <el-form-item
         class="postal-code"
         label="Postal Code"
-        prop="PatientAddress.PostalCode"
+        prop="Patient.Address.PostalCode"
       >
         <el-input-number
           :min="0"
@@ -149,7 +149,7 @@
         during the visit.
       </div>
     </el-form-item>
-    <el-form-item label="Delivered Services" prop="DeliveredServices">
+    <el-form-item label="Delivered Services" prop="Services_ids">
       <el-select
         :disabled="loading"
         v-model="formData.Services_ids"
@@ -191,6 +191,20 @@
 <script>
 import Spinner from "@/components/Spinner.vue";
 import api from "../../mixins/api";
+
+let emptyPatientObj = {
+  Fullname: "",
+  Patient_AMKA: null,
+  HealthSecurity: null,
+  Patient_id: null,
+  Address: {
+    Street: "",
+    Number: null,
+    City: "",
+    PostalCode: null,
+  },
+};
+
 export default {
   name: "ReportCreate",
   components: { Spinner },
@@ -205,26 +219,9 @@ export default {
         // Name: "",
         // Surname: "",
         // Profession: "",
-        Patient: {
-          Fullname: "",
-          PatientAMKA: null,
-          HealthSecurity: null,
-          Patient_id: null,
-          Address: {
-            Street: "",
-            Number: null,
-            City: "",
-            PostalCode: null,
-          },
-        },
+        Patient: emptyPatientObj,
         Arrival_Time_ts: null,
         Departure_Time_ts: null,
-        // PatientAddress: {
-        //   Street: "",
-        //   Number: null,
-        //   City: "",
-        //   PostalCode: null,
-        // },
         VisitDuration: {
           Start: null,
           End: null,
@@ -234,42 +231,44 @@ export default {
         ReportContent: "",
       },
       rules: {
-        PatientFullname: [
-          {
-            required: true,
-            message: "Please input patient full name",
-            trigger: "blur",
+        Patient: {
+          Fullname: [
+            {
+              required: true,
+              message: "Please input patient full name",
+              trigger: "blur",
+            },
+          ],
+          Patient_AMKA: [
+            {
+              required: true,
+              message: "Please input patient AMKA",
+              trigger: "blur",
+            },
+          ],
+          Address: {
+            Street: [
+              {
+                required: true,
+                message: "Please input adress street",
+                trigger: "blur",
+              },
+            ],
+            Number: [
+              {
+                required: true,
+                message: "Please input adress street number",
+                trigger: "blur",
+              },
+            ],
+            City: [
+              {
+                required: true,
+                message: "Please input adress city",
+                trigger: "blur",
+              },
+            ],
           },
-        ],
-        PatientAMKA: [
-          {
-            required: true,
-            message: "Please input patient AMKA",
-            trigger: "blur",
-          },
-        ],
-        PatientAddress: {
-          Street: [
-            {
-              required: true,
-              message: "Please input adress street",
-              trigger: "blur",
-            },
-          ],
-          Number: [
-            {
-              required: true,
-              message: "Please input adress street number",
-              trigger: "blur",
-            },
-          ],
-          City: [
-            {
-              required: true,
-              message: "Please input adress city",
-              trigger: "blur",
-            },
-          ],
           // PostalCode: [
           //   {
           //     required: true,
@@ -292,14 +291,14 @@ export default {
             trigger: "blur",
           },
         ],
-        DeliveredServices: [
+        Services_ids: [
           {
             required: true,
             message: "Please select services provided during visit",
             trigger: "blur",
           },
         ],
-        DeliveredServices: [
+        Services_ids: [
           {
             required: true,
             message: "Please select services provided during visit",
@@ -350,34 +349,12 @@ export default {
 
     newPatient(isNew) {
       if (isNew) {
-        this.formData.Patient = {
-          Fullname: "",
-          PatientAMKA: null,
-          HealthSecurity: null,
-          Patient_id: null,
-          Address: {
-            Street: "",
-            Number: null,
-            City: "",
-            PostalCode: null,
-          },
-        };
+        this.formData.Patient = emptyPatientObj;
       } else {
         if (Object.keys(this.selectedPatient).length) {
           this.formData.Patient = this.selectedPatient;
         } else {
-          this.formData.Patient = {
-            Fullname: "",
-            PatientAMKA: null,
-            HealthSecurity: null,
-            Patient_id: null,
-            Address: {
-              Street: "",
-              Number: null,
-              City: "",
-              PostalCode: null,
-            },
-          };
+          this.formData.Patient = emptyPatientObj;
         }
       }
     },
