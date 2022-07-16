@@ -281,14 +281,14 @@ export default {
           {
             required: true,
             message: "Please select when the visit started",
-            trigger: "blur",
+            trigger: "focus",
           },
         ],
         Departure_Time_ts: [
           {
             required: true,
             message: "Please select when the visit ended",
-            trigger: "blur",
+            trigger: "focus",
           },
         ],
         Services_ids: [
@@ -376,6 +376,15 @@ export default {
             ...this.formData,
             ...this.userData,
           });
+          if (res.ok) {
+            return res.patients;
+          } else {
+            this.$message({
+              message: res.error,
+              duration: 5000,
+              type: "error",
+            });
+          }
         }
       });
     },
