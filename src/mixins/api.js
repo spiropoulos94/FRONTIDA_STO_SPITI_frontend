@@ -58,6 +58,17 @@ const api = {
       return data;
     },
 
+    async createReport(formData) {
+      // const {User_id, Patient_id, Profession, } = formData
+
+      let finalReportFormData = {};
+
+      finalReportFormData["User_id"] = formData.User_id;
+
+      console.log({ formData });
+      this.headers["Authorization"] = "Bearer " + this.api_token;
+    },
+
     async completeSignUp(formData) {
       let { ID: User_id, Email, Password } = formData;
       let res = await fetch(`${this.url}/complete-signup`, {

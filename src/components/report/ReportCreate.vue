@@ -1,5 +1,5 @@
 <template>
-  <el-form :model="formData" :rules="rules" ref="formData">
+  <el-form :model="formData" :rules="rules" ref="reportFormData">
     <p>Report</p>
     <el-divider content-position="right"> Professional Information </el-divider>
     <el-form-item label="Name" prop="Name">
@@ -39,7 +39,7 @@
 
     <el-divider content-position="right"> Address </el-divider>
     <div class="address-inputs">
-      <el-form-item class="street" label="Street" prop="Street">
+      <el-form-item class="street" label="Street" prop="PatientAddress.Street">
         <el-input
           :disabled="loading"
           v-model="formData.PatientAddress.Street"
@@ -47,7 +47,7 @@
           type="text"
         />
       </el-form-item>
-      <el-form-item class="number" label="Number" prop="Number">
+      <el-form-item class="number" label="Number" prop="PatientAddress.Number">
         <el-input
           placeholder="Number"
           type="text"
@@ -56,7 +56,7 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item class="city" label="City" prop="City">
+      <el-form-item class="city" label="City" prop="PatientAddress.City">
         <el-input
           :disabled="loading"
           v-model="formData.PatientAddress.City"
@@ -64,7 +64,11 @@
           type="text"
         />
       </el-form-item>
-      <el-form-item class="postal-code" label="Postal Code" prop="PostalCode">
+      <el-form-item
+        class="postal-code"
+        label="Postal Code"
+        prop="PatientAddress.PostalCode"
+      >
         <el-input-number
           :min="0"
           :max="999999999"
@@ -80,11 +84,11 @@
 
     <el-form-item>
       <el-col :span="24">
-        <el-form-item label="Start" prop="date1">
+        <el-form-item label="Start" prop="Arrival_Time_ts">
           <el-date-picker
             :disabled="loading"
             style="width: 100%"
-            v-model="formData.VisitDuration.Start"
+            v-model="formData.Arrival_Time_ts"
             type="datetime"
             placeholder="Pick a Date and Time"
             format="DD/MM/YYYY HH:mm:ss"
@@ -94,11 +98,11 @@
       </el-col>
       <el-col class="text-center" :span="2"> </el-col>
       <el-col :span="24">
-        <el-form-item label="End" prop="date2">
+        <el-form-item label="End" prop="Departure_Time_ts">
           <el-date-picker
             :disabled="loading"
             :style="`width: 100%`"
-            v-model="formData.VisitDuration.End"
+            v-model="formData.Departure_Time_ts"
             type="datetime"
             placeholder="Pick a Date and Time"
             format="DD/MM/YYYY HH:mm:ss"
@@ -121,10 +125,10 @@
         during the visit.
       </div>
     </el-form-item>
-    <el-form-item label="Delivered Services">
+    <el-form-item label="Delivered Services" prop="DeliveredServices">
       <el-select
         :disabled="loading"
-        v-model="formData.DeliveredServices"
+        v-model="formData.Services_ids"
         multiple
         placeholder="Select"
         style="width: 100%"
@@ -137,7 +141,7 @@
         />
       </el-select>
     </el-form-item>
-    <el-form-item label="Report">
+    <el-form-item label="Report" prop="ReportContent">
       <el-input
         :disabled="loading"
         v-model="formData.ReportContent"
@@ -149,7 +153,7 @@
     <!-- controls -->
     <div class="submit-btn-wrapper">
       <button
-        @click="submitForm($event, 'formData')"
+        @click="submitForm($event, 'reportFormData')"
         class="form-button create"
       >
         <span v-if="!loading" class="text"> Save </span>
@@ -177,6 +181,8 @@ export default {
         PatientFullname: "",
         PatientAMKA: null,
         PatientHealthSecurity: null,
+        Arrival_Time_ts: null,
+        Departure_Time_ts: null,
         PatientAddress: {
           Street: "",
           Number: null,
@@ -187,47 +193,93 @@ export default {
           Start: null,
           End: null,
         },
-        DeliveredServices: [],
+        Services_ids: [],
         AbscenceStatus: false,
         ReportContent: "",
       },
       rules: {
-        // Name: [
-        //   {
-        //     required: true,
-        //     message: "Please input Name",
-        //     trigger: "blur",
-        //   },
-        // ],
-        // Surname: [
-        //   {
-        //     required: true,
-        //     message: "Please input Surname",
-        //     trigger: "blur",
-        //   },
-        // ],
-        AFM: [
+        PatientFullname: [
           {
-            // type: "date",
             required: true,
-            message: "Please pick a date",
+            message: "Please input patient full name",
             trigger: "blur",
           },
         ],
-        AMKA: [
+        PatientAMKA: [
           {
-            // type: "date",
             required: true,
-            message: "Please pick a time",
+            message: "Please input patient AMKA",
             trigger: "blur",
           },
         ],
-        Role_id: [
+        PatientAddress: {
+          Street: [
+            {
+              required: true,
+              message: "Please input adress street",
+              trigger: "blur",
+            },
+          ],
+          Number: [
+            {
+              required: true,
+              message: "Please input adress street number",
+              trigger: "blur",
+            },
+          ],
+          City: [
+            {
+              required: true,
+              message: "Please input adress city",
+              trigger: "blur",
+            },
+          ],
+          // PostalCode: [
+          //   {
+          //     required: true,
+          //     message: "Please input adress postal code",
+          //     trigger: "blur",
+          //   },
+          // ],
+        },
+        Arrival_Time_ts: [
           {
-            // type: "array",
             required: true,
-            message: "Please select Profession",
+            message: "Please select when the visit started",
             trigger: "blur",
+          },
+        ],
+        Departure_Time_ts: [
+          {
+            required: true,
+            message: "Please select when the visit ended",
+            trigger: "blur",
+          },
+        ],
+        DeliveredServices: [
+          {
+            required: true,
+            message: "Please select services provided during visit",
+            trigger: "blur",
+          },
+        ],
+        DeliveredServices: [
+          {
+            required: true,
+            message: "Please select services provided during visit",
+            trigger: "blur",
+          },
+        ],
+        ReportContent: [
+          {
+            required: true,
+            message: "Report cannot be blank",
+            trigger: "blur",
+          },
+          {
+            message: "Report should be at least 50 characters long",
+            trigger: "blur",
+            min: 50, // min length
           },
         ],
       },
@@ -239,18 +291,20 @@ export default {
     },
   },
   methods: {
-    async submitForm(e) {
-      this.loading = true;
+    async submitForm(e, formName) {
       e.preventDefault();
       // "validation"
-      if (true) {
-        let res = await this.createReport({
-          ...this.formData,
-          ...this.userData,
-        });
-      }
 
-      console.log("submit form");
+      this.$refs[formName].validate(async (valid) => {
+        if (valid) {
+          this.loading = true;
+
+          let res = await this.createReport({
+            ...this.formData,
+            ...this.userData,
+          });
+        }
+      });
     },
   },
 };
